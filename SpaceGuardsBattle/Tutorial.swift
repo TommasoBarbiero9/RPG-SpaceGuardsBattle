@@ -41,6 +41,12 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     var star2 = SKEmitterNode(fileNamed: "Starfield")
     var timer3: Int = 100
     var timlab = SKLabelNode(text: "Time : 0")
+    let Time = NSLocalizedString("Time", comment: "")
+    let Scor = NSLocalizedString("Score", comment: "")
+    let Playag = NSLocalizedString("PlayAgain", comment: "")
+    let Pau = NSLocalizedString("Pause", comment: "")
+    let Mainss = NSLocalizedString("MenPri", comment: "")
+    
     var tim : Timer? = nil
     var tutorial = false
     let arrow = SKSpriteNode(imageNamed: "arrow2")
@@ -50,8 +56,8 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     let pauseButton = SKSpriteNode(imageNamed: "pause")
     
     let pauseBG = SKSpriteNode(imageNamed: "pauseBG")
-    let pauseText = SKLabelNode(text: "Game is currently paused.")
-    let pauseLeave = SKLabelNode(text: "Main Screen")
+    let pauseText = SKLabelNode(text: "")
+    let pauseLeave = SKLabelNode(text: "")
     let pauseCancel = SKSpriteNode(imageNamed: "pauseCancel")
     
     let palle = 10
@@ -204,7 +210,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                     
                     tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
                         timer3 = timer3 - 1
-                        timlab.text = "Time : \(timer3)"
+                        timlab.text = "\(Time) : \(timer3)"
                         if timer3 < 0 {
                             timer3 = 30
                             tim?.invalidate()
@@ -238,7 +244,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
     //                  print("\(timer3)")
                       timer3 = timer3 - 1
-                      timlab.text = "Time : \(timer3)"
+                      timlab.text = "\(Time) : \(timer3)"
                       if timer3 < 0 {
                           timer3 = 30
                           tim?.invalidate()
@@ -260,7 +266,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
     //                  print("\(timer3)")
                       timer3 = timer3 - 1
-                      timlab.text = "Time : \(timer3)"
+                      timlab.text = "\(Time) : \(timer3)"
                       if timer3 < 0 {
                           timer3 = 30
                           tim?.invalidate()
@@ -370,7 +376,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                 contact.bodyA.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
 
                 score = score + 5
-                scoreLabel.text = "Score : \(score)"
+                scoreLabel.text = "\(Scor) : \(score)"
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                  
@@ -394,7 +400,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                     
                     contact.bodyB.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
                     score = score + 3
-                    scoreLabel.text = "Score : \(score)"
+                    scoreLabel.text = "\(Scor) : \(score)"
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                        
@@ -519,6 +525,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         pauseCancel.position = CGPoint(x: -ScreenSize.width * 0.285, y: ScreenSize.height * 0.15)
             pauseCancel.zPosition = 11
         
+        pauseText.text = Pau
         pauseText.position = CGPoint(x: 0, y: 100)
             pauseText.zPosition = 11
             pauseText.lineBreakMode = .byWordWrapping
@@ -526,6 +533,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             pauseText.preferredMaxLayoutWidth = 300
             pauseText.verticalAlignmentMode = .top
         
+        pauseLeave.text = Mainss
         pauseLeave.position = CGPoint(x: 0, y: -100)
             pauseLeave.zPosition = 11
             pauseLeave.lineBreakMode = .byWordWrapping
@@ -590,8 +598,10 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         hudLayer.addChild(analogJoystick)
         hudLayer.addChild(progressBar)
         hudLayer.addChild(pauseButton)
+        scoreLabel.text = "\(Scor): \(score)"
         hudLayer.addChild(scoreLabel)
             scoreLabel.zPosition = 3
+        timlab.text = "\(Time): \(timer3)"
         hudLayer.addChild(timlab)
         
         gameLayer.addChild(star!)

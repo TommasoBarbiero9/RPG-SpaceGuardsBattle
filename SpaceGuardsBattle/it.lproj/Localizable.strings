@@ -1,0 +1,27 @@
+/* 
+  Localy.strings
+  SGB-SpaceGuardsBattle
+
+  Created by Piero Chianese on 02/03/22.
+  
+*/
+
+
+/* No comment provided by engineer. */
+"MenPri" = "Menu Principale";
+
+/* No comment provided by engineer. */
+"Pause" = "Il gioco è in pausa";
+
+/* No comment provided by engineer. */
+"PlayAgain" = "Gioca di Nuovo";
+
+/* No comment provided by engineer. */
+"Score" = "Punteggio";
+
+/* No comment provided by engineer. */
+"Time" = "Tempo";
+
+"Win" = "HAI VINTO";
+
+"GameOver" = "HAI PERSO";
