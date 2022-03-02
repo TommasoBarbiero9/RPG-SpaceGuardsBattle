@@ -73,8 +73,12 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     
     //MARK: DIDMOVE FUNCTION
     override func didMove(to view: SKView) {
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
+          
+          NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
+          
+          let backgroundSound = SKAudioNode(fileNamed: "Tutorial.wav")
+          backgroundSound.run(SKAction.changeVolume(to: 0.05, duration: 0))
+          addChild(backgroundSound)
         
        func CBApplicationDidBecomeActive() {}
         

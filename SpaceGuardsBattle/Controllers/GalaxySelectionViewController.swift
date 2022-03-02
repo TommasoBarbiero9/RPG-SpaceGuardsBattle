@@ -15,6 +15,7 @@ class GalaxySelectionViewController : UIViewController{
     @IBOutlet weak var startButton: UIButton!
     @IBAction func playGameButtonPressed(_ sender: UIButton) {
     self.navigationController?.isNavigationBarHidden = true
+        HomeScreenViewController.audioPlayer.stop()
     if let play = storyboard?.instantiateViewController(withIdentifier: "TutorialViewController") as? TutorialViewController {
         navigationController?.pushViewController(play, animated: false)
     }
