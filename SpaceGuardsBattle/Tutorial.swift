@@ -54,6 +54,8 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     let pauseLeave = SKLabelNode(text: "Main Screen")
     let pauseCancel = SKSpriteNode(imageNamed: "pauseCancel")
     
+    let palle = 10
+    
     let cam = SKCameraNode()
     var canShoot = false
     enum NodesZPosition: CGFloat {
