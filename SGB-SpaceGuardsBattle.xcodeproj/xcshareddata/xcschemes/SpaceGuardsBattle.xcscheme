@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4B86F12027B2601C00805DB7"
-               BuildableName = "SpaceGuardsBattle.app"
+               BuildableName = "SGB-SpaceGuardsBattle.app"
                BlueprintName = "SGB-SpaceGuardsBattle"
                ReferencedContainer = "container:SGB-SpaceGuardsBattle.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4B86F13927B2601D00805DB7"
-               BuildableName = "SpaceGuardsBattleTests.xctest"
+               BuildableName = "SGB-SpaceGuardsBattleTests.xctest"
                BlueprintName = "SGB-SpaceGuardsBattleTests"
                ReferencedContainer = "container:SGB-SpaceGuardsBattle.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4B86F14327B2601D00805DB7"
-               BuildableName = "SpaceGuardsBattleUITests.xctest"
+               BuildableName = "SGB-SpaceGuardsBattleUITests.xctest"
                BlueprintName = "SGB-SpaceGuardsBattleUITests"
                ReferencedContainer = "container:SGB-SpaceGuardsBattle.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4B86F12027B2601C00805DB7"
-            BuildableName = "SpaceGuardsBattle.app"
+            BuildableName = "SGB-SpaceGuardsBattle.app"
             BlueprintName = "SGB-SpaceGuardsBattle"
             ReferencedContainer = "container:SGB-SpaceGuardsBattle.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4B86F12027B2601C00805DB7"
-            BuildableName = "SpaceGuardsBattle.app"
+            BuildableName = "SGB-SpaceGuardsBattle.app"
             BlueprintName = "SGB-SpaceGuardsBattle"
             ReferencedContainer = "container:SGB-SpaceGuardsBattle.xcodeproj">
          </BuildableReference>
