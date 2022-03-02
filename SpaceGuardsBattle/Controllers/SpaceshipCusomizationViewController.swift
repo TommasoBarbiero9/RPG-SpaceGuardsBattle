@@ -140,15 +140,8 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship5.setBackgroundImage(imagec5r, for: .normal)
             ship6.setBackgroundImage(imagec6r, for: .normal)
         default :
-            NavType.sharedGameData.form = "q"
-            ship1.setBackgroundImage(imageq1r, for: .normal)
-            ship2.setBackgroundImage(imageq2r, for: .normal)
-            ship3.setBackgroundImage(imageq3r, for: .normal)
-            ship4.setBackgroundImage(imageq4r, for: .normal)
-            ship5.setBackgroundImage(imageq5r, for: .normal)
-            ship6.setBackgroundImage(imageq6r, for: .normal)
-           
-        }
+            break
+           }
         
         print(segmentedBodies.selectedSegmentIndex)
         
