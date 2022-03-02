@@ -467,7 +467,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     
     //MARK: VARIABLES
     lazy var hero: SKSpriteNode = {
-        var sprite = SKSpriteNode(imageNamed: "navicellarossa")
+        var sprite = SKSpriteNode(imageNamed: "1qr")
         sprite.position = CGPoint(x: 0, y: 0)
         sprite.zPosition = NodesZPosition.hero.rawValue
         sprite.scaleTo(screenWidthPercentage: 0.35)
