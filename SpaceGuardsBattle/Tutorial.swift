@@ -185,39 +185,42 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             if pauseButton.contains(location) {
                 pauseGame()
             }
-            if pauseCancel.contains(location) {
-                
-                isGamePaused = false
-                
-                pauseLayer.isHidden = true
-                gameLayer.isPaused = false
-                hudLayer.isPaused = false
-                
-                analogJoystick.isUserInteractionEnabled = true
-                
-                tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-                    timer3 = timer3 - 1
-                    timlab.text = "Time : \(timer3)"
-                    if timer3 < 0 {
-                        timer3 = 30
-                        tim?.invalidate()
-                        self.over!.scaleMode = scaleMode
-                        view?.presentScene(over)
+            if pauseLayer.isHidden == false {
+                if pauseCancel.contains(location) {
+                    
+                    isGamePaused = false
+                    
+                    pauseLayer.isHidden = true
+                    gameLayer.isPaused = false
+                    hudLayer.isPaused = false
+                    
+                    analogJoystick.isUserInteractionEnabled = true
+                    
+                    tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                        timer3 = timer3 - 1
+                        timlab.text = "Time : \(timer3)"
+                        if timer3 < 0 {
+                            timer3 = 30
+                            tim?.invalidate()
+                            self.over!.scaleMode = scaleMode
+                            view?.presentScene(over)
+                        }
                     }
                 }
+                if pauseLeave.contains(location) {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "NavigationViewController")
+                    
+                    vc.view.frame = (self.view?.frame)!
+                    vc.view.layoutIfNeeded()
+                    
+                    UIView.transition(with: self.view!, duration: 0, animations: {
+                        self.view?.window?.rootViewController = vc
+                    }, completion: { completed in
+                    })
+                }
             }
-            if pauseLeave.contains(location) {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "NavigationViewController")
-                
-                vc.view.frame = (self.view?.frame)!
-                vc.view.layoutIfNeeded()
-                
-                UIView.transition(with: self.view!, duration: 0, animations: {
-                    self.view?.window?.rootViewController = vc
-                }, completion: { completed in
-                })
-            }
+            
         }
     }
     

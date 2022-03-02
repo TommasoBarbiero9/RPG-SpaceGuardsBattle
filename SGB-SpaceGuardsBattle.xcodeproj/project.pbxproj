@@ -23,6 +23,7 @@
 		4B28939B27B57606009556A2 /* Space.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B28939A27B57606009556A2 /* Space.sks */; };
 		4B5582B927B2D67800FF5CBC /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5582B827B2D67800FF5CBC /* Extension.swift */; };
 		4B60382B27CF6B3700A05906 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B60382A27CF6B3700A05906 /* GameKit.framework */; };
+		4B73B8D227CF87940072D797 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B73B8D427CF87940072D797 /* Localizable.strings */; };
 		4B86F12527B2601C00805DB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B86F12427B2601C00805DB7 /* AppDelegate.swift */; };
 		4B86F12727B2601C00805DB7 /* Tutorial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B86F12627B2601C00805DB7 /* Tutorial.sks */; };
 		4B86F12B27B2601C00805DB7 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B86F12A27B2601C00805DB7 /* Tutorial.swift */; };
@@ -77,6 +78,8 @@
 		4B28939A27B57606009556A2 /* Space.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Space.sks; sourceTree = "<group>"; };
 		4B5582B827B2D67800FF5CBC /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		4B60382A27CF6B3700A05906 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		4B73B8D327CF87940072D797 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4B73B8D527CF87F70072D797 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4B86F12127B2601C00805DB7 /* SGB-SpaceGuardsBattle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SGB-SpaceGuardsBattle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B86F12427B2601C00805DB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B86F12627B2601C00805DB7 /* Tutorial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tutorial.sks; sourceTree = "<group>"; };
@@ -241,6 +244,7 @@
 			children = (
 				4B5582B827B2D67800FF5CBC /* Extension.swift */,
 				0B3FF07127B6DDAA000F9C12 /* SKTAudio.swift */,
+				4B73B8D427CF87940072D797 /* Localizable.strings */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -343,6 +347,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = 4B86F11827B2601C00805DB7;
 			productRefGroup = 4B86F12227B2601C00805DB7 /* Products */;
@@ -361,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B73B8D227CF87940072D797 /* Localizable.strings in Resources */,
 				4B246E2527CEBE7400172D65 /* Win.sks in Resources */,
 				0B6E9B7427C4D443000FDB7D /* Starfield.sks in Resources */,
 				0BCF756727BEE32A003A31C0 /* Over.sks in Resources */,
@@ -450,11 +456,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		4B73B8D427CF87940072D797 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B73B8D327CF87940072D797 /* en */,
+				4B73B8D527CF87F70072D797 /* it */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		4B86F14C27B2601D00805DB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -516,6 +535,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

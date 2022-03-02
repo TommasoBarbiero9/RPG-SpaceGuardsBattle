@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  SGB-SpaceGuardsBattle
+
+  Created by Tommaso Barbiero on 02/03/22.
+  
+*/
+
+"pauseText" = "Game is currently Paused";
