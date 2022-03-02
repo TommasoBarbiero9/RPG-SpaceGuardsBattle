@@ -73,7 +73,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     let gameLayer = SKNode()
     let pauseLayer = SKNode()
     let hudLayer = SKNode()
-    
+    var Nav = NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color
     
 //    var palle : TransitionDelegate?
     
@@ -94,7 +94,6 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             addChild(rettangolo)
             rettangolo.addChild(boxTUT)
         }
-        
         setupPauseMenu()
         setupNodes()
         let emitter = SKEmitterNode(fileNamed: "playerTrail.sks")
@@ -467,7 +466,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     
     //MARK: VARIABLES
     lazy var hero: SKSpriteNode = {
-        var sprite = SKSpriteNode(imageNamed: "1qr")
+        var sprite = SKSpriteNode(imageNamed: Nav)
         sprite.position = CGPoint(x: 0, y: 0)
         sprite.zPosition = NodesZPosition.hero.rawValue
         sprite.scaleTo(screenWidthPercentage: 0.35)

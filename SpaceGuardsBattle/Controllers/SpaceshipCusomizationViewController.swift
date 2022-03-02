@@ -87,7 +87,35 @@ class SpaceshipCustomizationViewController: UIViewController {
     @IBOutlet weak var ship5: UIButton!
     @IBOutlet weak var ship6: UIButton!
     
+    @IBAction func type1(_ sender: UIButton) {
+        
+        NavType.sharedGameData.type = "1"
+    }
     
+    @IBAction func type2(_ sender: UIButton) {
+        
+        NavType.sharedGameData.type = "2"
+    }
+    
+    @IBAction func type3(_ sender: UIButton) {
+        
+        NavType.sharedGameData.type = "3"
+    }
+    
+    @IBAction func type4(_ sender: UIButton) {
+        
+        NavType.sharedGameData.type = "4"
+    }
+    
+    @IBAction func type5(_ sender: UIButton) {
+        
+        NavType.sharedGameData.type = "5"
+    }
+    
+    @IBAction func type6(_ sender: UIButton) {
+        
+        NavType.sharedGameData.type = "6"
+    }
     
     
 //    CAMBIO FORME NAVICELLE
@@ -95,7 +123,7 @@ class SpaceshipCustomizationViewController: UIViewController {
         
         switch sender.selectedSegmentIndex{
         case 0 :
-            
+            NavType.sharedGameData.form = "q"
             ship1.setBackgroundImage(imageq1r, for: .normal)
             ship2.setBackgroundImage(imageq2r, for: .normal)
             ship3.setBackgroundImage(imageq3r, for: .normal)
@@ -104,6 +132,7 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship6.setBackgroundImage(imageq6r, for: .normal)
            
         case 1 :
+            NavType.sharedGameData.form = "c"
             ship1.setBackgroundImage(imagec1r, for: .normal)
             ship2.setBackgroundImage(imagec2r, for: .normal)
             ship3.setBackgroundImage(imagec3r, for: .normal)
@@ -111,7 +140,13 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship5.setBackgroundImage(imagec5r, for: .normal)
             ship6.setBackgroundImage(imagec6r, for: .normal)
         default :
-            break
+            NavType.sharedGameData.form = "q"
+            ship1.setBackgroundImage(imageq1r, for: .normal)
+            ship2.setBackgroundImage(imageq2r, for: .normal)
+            ship3.setBackgroundImage(imageq3r, for: .normal)
+            ship4.setBackgroundImage(imageq4r, for: .normal)
+            ship5.setBackgroundImage(imageq5r, for: .normal)
+            ship6.setBackgroundImage(imageq6r, for: .normal)
            
         }
         
@@ -125,6 +160,8 @@ class SpaceshipCustomizationViewController: UIViewController {
 //    ARANCIONE
     @IBAction func orangeButton(_ sender: Any) {
 
+        NavType.sharedGameData.color = "r"
+        
         if segmentedBodies.selectedSegmentIndex == 0
         {
 
@@ -151,7 +188,7 @@ class SpaceshipCustomizationViewController: UIViewController {
     
     @IBAction func greenButton(_ sender: Any) {
         
-        
+        NavType.sharedGameData.color = "v"
         if segmentedBodies.selectedSegmentIndex == 0
         {
 
@@ -180,6 +217,7 @@ class SpaceshipCustomizationViewController: UIViewController {
 //    VIOLA
     
     @IBAction func violetButton(_ sender: Any) {
+        NavType.sharedGameData.color = "viola"
         if segmentedBodies.selectedSegmentIndex == 0
         {
 
@@ -205,7 +243,7 @@ class SpaceshipCustomizationViewController: UIViewController {
 //    blu
     
     @IBAction func blueButton(_ sender: Any) {
-        
+        NavType.sharedGameData.color = "b"
         if segmentedBodies.selectedSegmentIndex == 0
         {
 

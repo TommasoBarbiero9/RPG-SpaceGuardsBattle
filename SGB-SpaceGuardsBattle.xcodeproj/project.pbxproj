@@ -12,6 +12,7 @@
 		0B068BC727CFCD4D00CE7427 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B068BC927CFCD4D00CE7427 /* Localizable.strings */; };
 		0B3FF07227B6DDAA000F9C12 /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3FF07127B6DDAA000F9C12 /* SKTAudio.swift */; };
 		0B3FF08527B6E2E2000F9C12 /* laserj.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B3FF08427B6E2E2000F9C12 /* laserj.mp3 */; };
+		0B56E7B227D0154200A30ADB /* NavType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7B127D0154200A30ADB /* NavType.swift */; };
 		0B6E9B6827C3C560000FDB7D /* Over.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E9B6727C3C560000FDB7D /* Over.swift */; };
 		0B6E9B6C27C3D792000FDB7D /* PauseMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */; };
 		0B6E9B7227C4D1E4000FDB7D /* asteroidsDestroyed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */; };
@@ -71,6 +72,7 @@
 		0B068BCB27CFD0DB00CE7427 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0B3FF07127B6DDAA000F9C12 /* SKTAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
 		0B3FF08427B6E2E2000F9C12 /* laserj.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laserj.mp3; sourceTree = "<group>"; };
+		0B56E7B127D0154200A30ADB /* NavType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavType.swift; sourceTree = "<group>"; };
 		0B6E9B6727C3C560000FDB7D /* Over.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Over.swift; sourceTree = "<group>"; };
 		0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseMenu.sks; sourceTree = "<group>"; };
 		0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = asteroidsDestroyed.sks; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		4B86F12327B2601C00805DB7 /* SpaceGuardsBattle */ = {
 			isa = PBXGroup;
 			children = (
+				0B56E7B127D0154200A30ADB /* NavType.swift */,
 				4B86F12427B2601C00805DB7 /* AppDelegate.swift */,
 				0B068BC927CFCD4D00CE7427 /* Localizable.strings */,
 				4B86F12A27B2601C00805DB7 /* Tutorial.swift */,
@@ -433,6 +436,7 @@
 				4B86F12527B2601C00805DB7 /* AppDelegate.swift in Sources */,
 				4B246E2B27CEBFB400172D65 /* Win.swift in Sources */,
 				4B5582B927B2D67800FF5CBC /* Extension.swift in Sources */,
+				0B56E7B227D0154200A30ADB /* NavType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +610,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z6L7DM8C9X;
+				DEVELOPMENT_TEAM = F74CDVCN7J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceGuardsBattle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SGB;
@@ -638,7 +642,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z6L7DM8C9X;
+				DEVELOPMENT_TEAM = F74CDVCN7J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceGuardsBattle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SGB;
