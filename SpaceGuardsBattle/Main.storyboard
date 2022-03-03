@@ -781,7 +781,7 @@
         <scene sceneID="jIS-5w-pew">
             <objects>
                 <viewController storyboardIdentifier="Mission2ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v7C-Rr-Ucb" customClass="Mission2ViewController" customModule="SGB_SpaceGuardsBattle" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Dhv-LV-i6x" customClass="SKView">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Dhv-LV-i6x" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="wdG-Rv-zGz"/>
