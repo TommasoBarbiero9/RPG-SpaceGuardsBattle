@@ -35,7 +35,6 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     var isFiring = false
     var updateTime: Double = 0
     var firingInterval: Double = 1
-    var audioPlayer : AVAudioPlayer!
     var isGamePaused = false
     var star = SKEmitterNode(fileNamed: "Starfield")
     var star2 = SKEmitterNode(fileNamed: "Starfield")
@@ -82,9 +81,20 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
           
           NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
           
-          let backgroundSound = SKAudioNode(fileNamed: "Tutorial.wav")
-          backgroundSound.run(SKAction.changeVolume(to: 0.05, duration: 0))
-          addChild(backgroundSound)
+        let sound = Bundle.main.path(forResource: "Tutorial", ofType:
+                                        "wav")
+        do {
+            // We try to get the initialize it with the URL we created above.
+            HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
+        }
+        catch{
+            print(error)
+            
+        }
+        HomeScreenViewController.audioPlayer.numberOfLoops = -1
+        HomeScreenViewController.audioPlayer.volume = 0.05
+        HomeScreenViewController.audioPlayer.play()
+    
         
        func CBApplicationDidBecomeActive() {}
         
