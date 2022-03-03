@@ -348,14 +348,18 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         let location = hero.position
         
         for enemy in enemies {
-            if enemy.position.distance(point: location) < 1000 {
-                //Aim
-                let dx = (location.x) - enemy.position.x
-                let dy = (location.y) - enemy.position.y
-                let angle = atan2(dy, dx)
+            
+            //Aim
+            let dx = (location.x) - enemy.position.x
+            let dy = (location.y) - enemy.position.y
+            let angle = atan2(dy, dx)
 
-                enemy.zRotation = angle - 3 * .pi/2
+            enemy.zRotation = angle - 3 * .pi/6
 
+            
+            
+            if enemy.position.distance(point: location) < 1000 && enemy.position.distance(point: location) > 450 {
+               
                 //Seek
                 let velocityX =  cos(angle) * 5
                 let velocityY =  sin(angle) * 5
@@ -459,7 +463,9 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                         eShot.name = "laser"
                         eShot.position = enemy.position
                         eShot.zPosition = enemy.zPosition - 1
-                        eShot.zRotation = -enemy.zRotation
+                        
+                        
+                        eShot.zRotation = enemy.zRotation
                         
                         guard isPlayerAlive else { return }
                         
