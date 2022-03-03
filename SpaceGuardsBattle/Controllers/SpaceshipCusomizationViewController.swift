@@ -13,6 +13,21 @@ class SpaceshipCustomizationViewController: UIViewController {
     @IBAction func dismissPopup(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBOutlet weak var shipSelected: UIImageView!
+    
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
+//    }
+    override func viewDidLoad() {
+        shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
+//        segmentedBodies.selectedSegmentIndex = 0
+        bodiesChange(segmentedBodies)
+        
+    
+    }
+       
+    
 //    ROMBI
 //    rosse
     let imageq1r = UIImage(named: "1qr")
@@ -90,31 +105,37 @@ class SpaceshipCustomizationViewController: UIViewController {
     @IBAction func type1(_ sender: UIButton) {
         
         NavType.sharedGameData.type = "1"
+        shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
     }
     
     @IBAction func type2(_ sender: UIButton) {
         
         NavType.sharedGameData.type = "2"
+        shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
     }
     
     @IBAction func type3(_ sender: UIButton) {
         
         NavType.sharedGameData.type = "3"
+        shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
     }
     
     @IBAction func type4(_ sender: UIButton) {
         
         NavType.sharedGameData.type = "4"
+        shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
     }
     
     @IBAction func type5(_ sender: UIButton) {
         
         NavType.sharedGameData.type = "5"
+        shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
     }
     
     @IBAction func type6(_ sender: UIButton) {
         
         NavType.sharedGameData.type = "6"
+        shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
     }
     
     
@@ -130,6 +151,7 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship4.setBackgroundImage(imageq4r, for: .normal)
             ship5.setBackgroundImage(imageq5r, for: .normal)
             ship6.setBackgroundImage(imageq6r, for: .normal)
+            shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
            
         case 1 :
             NavType.sharedGameData.form = "c"
@@ -139,6 +161,7 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship4.setBackgroundImage(imagec4r, for: .normal)
             ship5.setBackgroundImage(imagec5r, for: .normal)
             ship6.setBackgroundImage(imagec6r, for: .normal)
+            shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
         default :
             break
            }
@@ -191,6 +214,7 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship4.setBackgroundImage(imageq4v, for: .normal)
             ship5.setBackgroundImage(imageq5v, for: .normal)
             ship6.setBackgroundImage(imageq6v, for: .normal)
+            shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
         }
         else{
             
@@ -200,7 +224,7 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship4.setBackgroundImage(imagec4v, for: .normal)
             ship5.setBackgroundImage(imagec5v, for: .normal)
             ship6.setBackgroundImage(imagec6v, for: .normal)
-            
+            shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
         }
         
         
@@ -220,6 +244,7 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship4.setBackgroundImage(imageq4violet, for: .normal)
             ship5.setBackgroundImage(imageq5violet, for: .normal)
             ship6.setBackgroundImage(imageq6violet, for: .normal)
+            shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
         }
         else{
             
@@ -229,6 +254,7 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship4.setBackgroundImage(imagec4violet, for: .normal)
             ship5.setBackgroundImage(imagec5violet, for: .normal)
             ship6.setBackgroundImage(imagec6violet, for: .normal)
+            shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
             
         }
     }
@@ -246,6 +272,7 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship4.setBackgroundImage(imageq4b, for: .normal)
             ship5.setBackgroundImage(imageq5b, for: .normal)
             ship6.setBackgroundImage(imageq6b, for: .normal)
+            shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
         }
         else{
             
@@ -255,6 +282,7 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship4.setBackgroundImage(imagec4b, for: .normal)
             ship5.setBackgroundImage(imagec5b, for: .normal)
             ship6.setBackgroundImage(imagec6b, for: .normal)
+            shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
             
         }
     }

@@ -18,8 +18,9 @@ class NavType {
     
     var Nav = "navicellarossa"
     var type = "1"
-    var color = "r"
     var form = "q"
+    var color = "r"
+    
     init () {
 
     }

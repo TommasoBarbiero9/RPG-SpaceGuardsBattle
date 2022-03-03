@@ -511,7 +511,7 @@
                                 <rect key="frame" x="-568" y="-121" width="2645" height="1069"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navicellarossa" translatesAutoresizingMaskIntoConstraints="NO" id="NbN-tE-djf">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NbN-tE-djf">
                                 <rect key="frame" x="52" y="129" width="310" height="249"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="249" id="Fv7-KF-BDI"/>
@@ -747,6 +747,7 @@
                         <outlet property="ship4" destination="2Wh-Jm-zQ9" id="AfM-S0-eRY"/>
                         <outlet property="ship5" destination="8g0-pS-GoQ" id="shv-tT-bce"/>
                         <outlet property="ship6" destination="wzy-yb-mR7" id="Ga0-DG-eQs"/>
+                        <outlet property="shipSelected" destination="NbN-tE-djf" id="9BY-IF-eXb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PsC-ft-Woz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -778,7 +779,6 @@
         <image name="blue" width="100" height="100"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="green" width="100" height="100"/>
-        <image name="navicellarossa" width="1727" height="968"/>
         <image name="orange" width="100" height="100"/>
         <image name="planets" width="6073" height="5513"/>
         <image name="rhombus.fill" catalog="system" width="107" height="128"/>
