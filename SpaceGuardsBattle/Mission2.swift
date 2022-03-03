@@ -28,6 +28,8 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     var isFiring = false
     var updateTime: Double = 0
     var firingInterval: Double = 0.5
+    var updateeShotTime : Double = 0
+    var firingEnemyInterval : Double = 0.8
     var isGamePaused = false
     var star = SKEmitterNode(fileNamed: "Starfield")
     var star2 = SKEmitterNode(fileNamed: "Starfield")
@@ -212,6 +214,28 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         }
         
         
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        randomEnemy()
+        
         self.camera = cam
     }
     
@@ -323,19 +347,33 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         
         let location = hero.position
         
-        //Aim
-        let dx = (location.x) - enemy.position.x
-        let dy = (location.y) - enemy.position.y
-        let angle = atan2(dy, dx)
-        
-        enemy.zRotation = angle - 3 * .pi/2
-        
-        //Seek
-        let velocityX =  cos(angle) * 5
-        let velocityY =  sin(angle) * 5
-        
-        enemy.position.x += velocityX
-        enemy.position.y += velocityY
+        for enemy in enemies {
+            if enemy.position.distance(point: location) < 1000 {
+                //Aim
+                let dx = (location.x) - enemy.position.x
+                let dy = (location.y) - enemy.position.y
+                let angle = atan2(dy, dx)
+
+                enemy.zRotation = angle - 3 * .pi/2
+
+                //Seek
+                let velocityX =  cos(angle) * 5
+                let velocityY =  sin(angle) * 5
+
+                enemy.position.x += velocityX
+                enemy.position.y += velocityY
+            }
+            if enemy.position.distance(point: location) < 700 {
+                if updateeShotTime == 0 {
+                    updateeShotTime = currentTime
+                }
+                if currentTime - updateeShotTime > firingInterval {
+                    fireEnemyBullet()
+                    updateeShotTime = currentTime
+                }
+            }
+        }
+
         
         guard !isGamePaused else {
             gameLayer.isPaused = true
@@ -403,6 +441,50 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+    func fireEnemyBullet() {
+        if pauseLayer.isHidden == true {
+            if tutorial == false {
+                if action(forKey: "shooting") == nil {
+                    
+//                    eShot.physicsBody = SKPhysicsBody(rectangleOf: eShot.size)
+//                    eShot.physicsBody?.collisionBitMask = PhysicsCategory.None
+//                    eShot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
+//                    eShot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
+//                    eShot.physicsBody?.usesPreciseCollisionDetection = true
+                    
+                    
+                    for enemy in enemies {
+                        let eShot = SKSpriteNode(imageNamed: "laser")
+                        eShot.name = "laser"
+                        eShot.position = enemy.position
+                        eShot.zPosition = enemy.zPosition - 1
+                        eShot.zRotation = -enemy.zRotation
+                        
+                        guard isPlayerAlive else { return }
+                        
+                        gameLayer.addChild(eShot)
+                        
+                        var angolo : CGFloat
+                        
+                        if eShot.zRotation + (3.14 / 2 ) >= 0 {
+                            angolo = (((eShot.zRotation * 180) / Double.pi ) + 90)
+                        } else {
+                            angolo = ( (360 + ((eShot.zRotation * 180) / Double.pi ))  + 90)
+                        }
+                        
+                        let movement = SKAction.move(to: CGPoint(x: (1000 * cos(((angolo) * Double.pi) / 180)) + enemy.position.x, y: (1000 * cos(((180 - 90 - angolo ) * Double.pi) / 180 )) + enemy.position.y), duration: 0.6)
+                        let sound = SKAction.playSoundFileNamed("laserj", waitForCompletion: false)
+                        let removeFromParent = SKAction.removeFromParent()
+                        let actions = [sound, movement, removeFromParent]
+                        
+                        eShot.run(SKAction.sequence(actions))
+                    }
+                }
+            }
+        }
+    }
+    
     
     //MARK: DIDBEGIN FUNCTION
     func didBegin(_ contact: SKPhysicsContact) {
@@ -526,19 +608,39 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         return sprite
     }()
     
-    lazy var enemy: SKSpriteNode = {
-        var sprite = SKSpriteNode(imageNamed: Nav)
-        sprite.position = CGPoint(x: -150, y: -150)
-        sprite.zPosition = NodesZPosition.hero.rawValue
-        sprite.scaleTo(screenWidthPercentage: 0.35)
-        sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
-        sprite.physicsBody?.allowsRotation = false
-        sprite.physicsBody?.mass = 100
-        sprite.physicsBody?.categoryBitMask = PhysicsCategory.Hero
-        sprite.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine
-        sprite.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid
-        return sprite
-    }()
+    var enemies : [SKSpriteNode] = []
+    
+    func randomEnemy () {
+        let enemy = SKSpriteNode(imageNamed: "enemyBig")
+        enemy.position = CGPoint(x: Int.random(in: -6500...6500), y: Int.random(in: -6500...6500))
+        enemy.zPosition = NodesZPosition.hero.rawValue
+        enemy.scaleTo(screenWidthPercentage: 0.35)
+        enemy.physicsBody = SKPhysicsBody(texture: enemy.texture!, size: enemy.size)
+        
+        
+//        enemy.physicsBody?.allowsRotation = false
+//        enemy.physicsBody?.mass = 100
+//        enemy.physicsBody?.categoryBitMask = PhysicsCategory.Hero
+//        enemy.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine
+//        enemy.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid
+
+        addChild(enemy)
+        enemies.append(enemy)
+    }
+    
+//    lazy var enemy: SKSpriteNode = {
+//        var enemy = SKSpriteNode(imageNamed: Nav)
+//        enemy.position = CGPoint(x: Int.random(in: 1500...6500), y: Int.random(in: 1500...6500))
+//        enemy.zPosition = NodesZPosition.hero.rawValue
+//        enemy.scaleTo(screenWidthPercentage: 0.35)
+//        enemy.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+//        enemy.physicsBody?.allowsRotation = false
+//        enemy.physicsBody?.mass = 100
+//        enemy.physicsBody?.categoryBitMask = PhysicsCategory.Hero
+//        enemy.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine
+//        enemy.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid
+//        return sprite
+//    }()
     
     
     
@@ -646,7 +748,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         gameLayer.addChild(hero)
-        gameLayer.addChild(enemy)
+//        gameLayer.addChild(enemy)
         addChild(gameLayer)
         addChild(hudLayer)
         addChild(pauseLayer)

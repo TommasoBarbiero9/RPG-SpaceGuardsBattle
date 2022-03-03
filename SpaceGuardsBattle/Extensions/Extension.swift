@@ -45,3 +45,9 @@ public extension SKSpriteNode {
 extension NSNotification.Name {
     static let goToBackground = Notification.Name(rawValue: "goToBackground")
 }
+
+extension CGPoint {
+    func distance(point: CGPoint) -> CGFloat {
+        return abs(CGFloat(hypotf(Float(point.x - x), Float(point.y - y))))
+    }
+}
