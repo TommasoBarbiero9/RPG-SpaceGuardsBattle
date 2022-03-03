@@ -59,7 +59,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     let pauseLeave = SKLabelNode(text: "")
     let pauseCancel = SKSpriteNode(imageNamed: "pauseCancel")
     
-    let palle = 10
+    let palle = 18
     
     let cam = SKCameraNode()
     var canShoot = false
