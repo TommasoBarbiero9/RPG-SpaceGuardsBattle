@@ -13,16 +13,49 @@ class SpaceshipCustomizationViewController: UIViewController {
     @IBAction func dismissPopup(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-//    var Lisa = NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color
+
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var button2: UIButton!
+    @IBOutlet weak var button3: UIButton!
+    @IBOutlet weak var button4: UIButton!
+    @IBOutlet weak var button5: UIButton!
+    @IBOutlet weak var button6: UIButton!
+    
+    
     @IBOutlet weak var shipSelected: UIImageView!
     
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
-//    }
+
     override func viewDidLoad() {
         shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
 //        segmentedBodies.selectedSegmentIndex = 0
         bodiesChange(segmentedBodies)
+        
+//         STROKES AND CORNER RADIUS
+        
+        button1.layer.borderWidth = 2.0
+        button1.layer.borderColor = UIColor.blue.cgColor;
+        button1.layer.cornerRadius = 10
+        
+        button2.layer.borderWidth = 2.0
+        button2.layer.borderColor = UIColor.blue.cgColor;
+        button2.layer.cornerRadius = 10
+        
+        button3.layer.borderWidth = 2.0
+        button3.layer.borderColor = UIColor.blue.cgColor;
+        button3.layer.cornerRadius = 10
+        
+        button4.layer.borderWidth = 2.0
+        button4.layer.borderColor = UIColor.blue.cgColor;
+        button4.layer.cornerRadius = 10
+        
+        button5.layer.borderWidth = 2.0
+        button5.layer.borderColor = UIColor.blue.cgColor;
+        button5.layer.cornerRadius = 10
+        
+        button6.layer.borderWidth = 2.0
+        button6.layer.borderColor = UIColor.init(red: 10, green: 20, blue: 30, alpha: 1).cgColor;
+        button6.layer.cornerRadius = 10
+
         
     
     }
@@ -291,6 +324,9 @@ class SpaceshipCustomizationViewController: UIViewController {
             
         }
     }
+   
+    
+    
     
     override var prefersStatusBarHidden: Bool {
         return true

@@ -658,6 +658,13 @@
                                             <action selector="type2:" destination="O67-jd-yUT" eventType="touchUpInside" id="958-xA-7xf"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzy-yb-mR7" userLabel="ship6">
+                                        <rect key="frame" x="278" y="0.0" width="136" height="79"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="type6:" destination="O67-jd-yUT" eventType="touchUpInside" id="VrZ-Zz-sSV"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ztZ-1r-NU9" userLabel="ship1">
                                         <rect key="frame" x="0.0" y="0.0" width="136" height="79"/>
                                         <constraints>
@@ -667,13 +674,6 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
                                             <action selector="type1:" destination="O67-jd-yUT" eventType="touchUpInside" id="Ed5-g8-4KA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzy-yb-mR7" userLabel="ship6">
-                                        <rect key="frame" x="278" y="0.0" width="136" height="79"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <connections>
-                                            <action selector="type6:" destination="O67-jd-yUT" eventType="touchUpInside" id="VrZ-Zz-sSV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -739,6 +739,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="P7P-Q5-3Px"/>
                     <connections>
+                        <outlet property="button1" destination="ztZ-1r-NU9" id="W35-2J-1p2"/>
+                        <outlet property="button2" destination="VpS-hO-5n4" id="F7p-b5-QHt"/>
+                        <outlet property="button3" destination="xTN-5e-Ghb" id="iVk-Ky-oEn"/>
+                        <outlet property="button4" destination="2Wh-Jm-zQ9" id="n4z-kf-lrP"/>
+                        <outlet property="button5" destination="8g0-pS-GoQ" id="s5O-bY-OBW"/>
+                        <outlet property="button6" destination="wzy-yb-mR7" id="rNt-OO-P0N"/>
                         <outlet property="done" destination="iaL-te-cfo" id="1il-RH-OuB"/>
                         <outlet property="segmentedBodies" destination="cGQ-ff-uYq" id="2pL-hn-ZR7"/>
                         <outlet property="ship1" destination="ztZ-1r-NU9" id="272-j3-hOs"/>
@@ -767,7 +773,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="L7X-3R-KFx"/>
+        <segue reference="5Vs-Iq-hlN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="GalaxyMilk" width="265" height="138"/>

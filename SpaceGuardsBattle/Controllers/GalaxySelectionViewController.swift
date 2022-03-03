@@ -77,18 +77,18 @@ class GalaxySelectionViewController : UIViewController{
 //        if let custom = storyboard?.instantiateViewController(withIdentifier: "SpaceshipCustomizationViewController") as? SpaceshipCustomizationViewController {
 //            navigationController?.pushViewController(custom, animated: false)
 //        }
-    
-    //
-    //    override func viewDidLoad() {
-    //        let borderLayer = CAShapeLayer()
-    //        borderLayer.strokeColor = UIColor.orange.cgColor
-    //        borderLayer.borderWidth = 8.0
-    //
-    //        let borderPath = UIBezierPath(roundedRect: startButton1.bounds,
-    //                                      byRoundingCorners: [.allCorners],
-    //            cornerRadii: CGSize(width:10.0, height: 10.0))
-    //        borderLayer.path = borderPath.cgPath
-    //
-    //        startButton1.layer.insertSublayer(borderLayer, at: 0)
+//    
+//    
+//        override func viewDidLoad() {
+//            let borderLayer = CAShapeLayer()
+//            borderLayer.strokeColor = UIColor.orange.cgColor
+//            borderLayer.borderWidth = 8.0
+//    
+//            let borderPath = UIBezierPath(roundedRect: startButton1.bounds,
+//                                          byRoundingCorners: [.allCorners],
+//                cornerRadii: CGSize(width:10.0, height: 10.0))
+//            borderLayer.path = borderPath.cgPath
+//    
+//            startButton1.layer.insertSublayer(borderLayer, at: 0)
 //        }
 
