@@ -398,10 +398,13 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gj4-tK-xAa">
                                         <rect key="frame" x="29.5" y="127" width="229" height="58.5"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="LOCKED">
+                                        <buttonConfiguration key="configuration" style="filled" title="MISSION 1">
                                             <backgroundConfiguration key="background" cornerRadius="15"/>
                                             <color key="baseBackgroundColor" red="0.13333332540000001" green="0.15294116739999999" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="Mission1play:" destination="TZH-4i-bEE" eventType="touchUpInside" id="o2B-AX-fFp"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5P4-mj-XPy">
                                         <rect key="frame" x="29.5" y="203.5" width="229" height="59"/>
@@ -409,10 +412,13 @@
                                             <constraint firstAttribute="height" constant="59" id="Sia-eg-gfK"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="LOCKED">
+                                        <buttonConfiguration key="configuration" style="filled" title="MISSION 2">
                                             <backgroundConfiguration key="background" cornerRadius="15"/>
                                             <color key="baseBackgroundColor" red="0.13333332540000001" green="0.15294116739999999" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="Mission2play:" destination="TZH-4i-bEE" eventType="touchUpInside" id="6Nn-gY-zln"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGl-iO-oxZ">
                                         <rect key="frame" x="29.5" y="279.5" width="229" height="59.5"/>
@@ -770,6 +776,36 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1555.072463768116" y="-1009.1517857142857"/>
+        </scene>
+        <!--Mission2 View Controller-->
+        <scene sceneID="jIS-5w-pew">
+            <objects>
+                <viewController storyboardIdentifier="Mission2ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v7C-Rr-Ucb" customClass="Mission2ViewController" customModule="SGB_SpaceGuardsBattle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dhv-LV-i6x" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="wdG-Rv-zGz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4kx-xI-hB2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3706" y="-1009"/>
+        </scene>
+        <!--Mission1 View Controller-->
+        <scene sceneID="MDk-Na-1dx">
+            <objects>
+                <viewController storyboardIdentifier="Mission1ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="laH-dU-6gV" customClass="Mission1ViewController" customModule="SGB_SpaceGuardsBattle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ngo-Ld-6I7" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="WyA-JN-Vqt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="54F-Mi-cUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3706" y="370"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

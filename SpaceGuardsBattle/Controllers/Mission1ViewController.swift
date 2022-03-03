@@ -1,37 +1,38 @@
 //
-//  GameViewController.swift
-//  SpaceGuardsBattle
+//  Mission1ViewController.swift
+//  SGB-SpaceGuardsBattle
 //
-//  Created by Tommaso Barbiero on 08/02/22.
+//  Created by Tommaso Barbiero on 03/03/22.
 //
 
+import Foundation
 import UIKit
 import SpriteKit
 import GameplayKit
 
-class TutorialViewController: UIViewController{
+class Mission1ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-       
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "Tutorial") {
+            if let scene = SKScene(fileNamed: "Mission1") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 // Present the scene
                 view.presentScene(scene)
             }
-
+            
             self.dismiss(animated: true, completion: nil)
         }
     }
-
+    
     override var shouldAutorotate: Bool {
         return true
     }
-
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -39,7 +40,7 @@ class TutorialViewController: UIViewController{
             return .all
         }
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

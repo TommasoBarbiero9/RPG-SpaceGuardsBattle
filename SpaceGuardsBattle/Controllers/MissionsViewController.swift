@@ -32,6 +32,17 @@ class MissionsViewController : UIViewController{
             navigationController?.pushViewController(back, animated: false)
         }
     }
-    
+    @IBAction func Mission2play(_ sender: UIButton) {
+        self.navigationController?.isNavigationBarHidden = true
+        if let mission2 = storyboard?.instantiateViewController(withIdentifier: "Mission2ViewController") as? Mission2ViewController {
+            navigationController?.pushViewController(mission2, animated: false)
+        }
+    }
+    @IBAction func Mission1play(_ sender: UIButton) {
+        self.navigationController?.isNavigationBarHidden = true
+        if let mission1 = storyboard?.instantiateViewController(withIdentifier: "Mission1ViewController") as? Mission1ViewController {
+            navigationController?.pushViewController(mission1, animated: false)
+        }
+    }
 }
     

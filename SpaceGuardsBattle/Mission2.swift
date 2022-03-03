@@ -1,12 +1,9 @@
 //
-//  Mission_1.swift
-//  SpaceGuardsBattle
+//  Mission2.swift
+//  SGB-SpaceGuardsBattle
 //
-//  Created by Luca Perrotti on 28/02/22.
+//  Created by Tommaso Barbiero on 03/03/22.
 //
-
-
-
 
 import SpriteKit
 import GameplayKit
@@ -20,7 +17,7 @@ import UIKit
 //    func returnToMainMenu()
 //}
 
-class Mission1: SKScene, SKPhysicsContactDelegate {
+class Mission2: SKScene, SKPhysicsContactDelegate {
     let velocityMultiplier: CGFloat = 0.10
     var health: CGFloat = 1
     var isPlayerAlive = true
@@ -324,6 +321,22 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
+        let location = hero.position
+        
+        //Aim
+        let dx = (location.x) - enemy.position.x
+        let dy = (location.y) - enemy.position.y
+        let angle = atan2(dy, dx)
+        
+        enemy.zRotation = angle - 3 * .pi/2
+        
+        //Seek
+        let velocityX =  cos(angle) * 5
+        let velocityY =  sin(angle) * 5
+        
+        enemy.position.x += velocityX
+        enemy.position.y += velocityY
+        
         guard !isGamePaused else {
             gameLayer.isPaused = true
             hudLayer.isPaused = true
@@ -511,11 +524,21 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         sprite.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine
         sprite.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid
         return sprite
-        
-        
-        
     }()
     
+    lazy var enemy: SKSpriteNode = {
+        var sprite = SKSpriteNode(imageNamed: Nav)
+        sprite.position = CGPoint(x: -150, y: -150)
+        sprite.zPosition = NodesZPosition.hero.rawValue
+        sprite.scaleTo(screenWidthPercentage: 0.35)
+        sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+        sprite.physicsBody?.allowsRotation = false
+        sprite.physicsBody?.mass = 100
+        sprite.physicsBody?.categoryBitMask = PhysicsCategory.Hero
+        sprite.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine
+        sprite.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid
+        return sprite
+    }()
     
     
     
@@ -623,7 +646,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         gameLayer.addChild(hero)
-        
+        gameLayer.addChild(enemy)
         addChild(gameLayer)
         addChild(hudLayer)
         addChild(pauseLayer)
