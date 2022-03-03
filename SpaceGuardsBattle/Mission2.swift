@@ -459,7 +459,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                     
                     
                     for enemy in enemies {
-                        let eShot = SKSpriteNode(imageNamed: "laser")
+                        let eShot = SKSpriteNode(imageNamed: "lasere")
                         eShot.name = "laser"
                         eShot.position = enemy.position
                         eShot.zPosition = enemy.zPosition - 1
