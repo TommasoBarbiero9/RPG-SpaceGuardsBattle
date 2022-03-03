@@ -18,6 +18,8 @@ struct PhysicsCategory {
     static let Asteroid:   UInt32 = 0b11 // 3
     static let Planet: UInt32 = 0b100 //4
     static let Confine: UInt32 = 0b101 //5
+    static let eneShot:  UInt32 = 0b1010 //5
+
 }
 //
 //protocol TransitionDelegate: SKSceneDelegate {

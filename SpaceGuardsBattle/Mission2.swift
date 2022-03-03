@@ -464,6 +464,10 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                         eShot.position = enemy.position
                         eShot.zPosition = enemy.zPosition - 1
                         
+                        eShot.physicsBody = SKPhysicsBody(rectangleOf: eShot.size)
+                        eShot.physicsBody?.collisionBitMask = PhysicsCategory.None
+                        eShot.physicsBody?.categoryBitMask = PhysicsCategory.eneShot
+                        eShot.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
                         
                         eShot.zRotation = enemy.zRotation
                         
@@ -588,6 +592,59 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
+       
+        
+        if collision3 == PhysicsCategory.eneShot {
+            if collision4 == PhysicsCategory.Hero{
+                let generator = UIImpactFeedbackGenerator(style: .soft)
+                generator.impactOccurred()
+                contact.bodyA.node?.removeFromParent()
+                health = health - 0.002
+                progressBar.setXProgress(xProgress: health)
+                if health < 0.01 {
+                    
+                    tim?.invalidate()
+                    over!.scaleMode = scaleMode
+                    view?.presentScene(over!)
+                    
+                    hero.isHidden = false
+                    
+                    analogJoystick.removeFromParent()
+                }
+            }
+        }else {
+            
+            if collision4 == PhysicsCategory.eneShot {
+                if collision3 == PhysicsCategory.Hero{
+                    let generator = UIImpactFeedbackGenerator(style: .soft)
+                    generator.impactOccurred()
+                    contact.bodyB.node?.removeFromParent()
+                    health = health - 0.002
+                    progressBar.setXProgress(xProgress: health)
+                    if health < 0.01 {
+                        
+                        tim?.invalidate()
+                        
+                        over!.scaleMode = scaleMode
+                        
+                        view?.presentScene(over!)
+                        //                        self.removeFromParent()
+                        hero.isHidden = false
+                        //                        isPlayerAlive = false
+                        analogJoystick.removeFromParent()
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         if collision == PhysicsCategory.Planet {
             print("Conquista")
