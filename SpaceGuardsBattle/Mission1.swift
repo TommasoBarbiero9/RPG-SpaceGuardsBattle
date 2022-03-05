@@ -296,20 +296,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
             rettangolo.removeFromParent()
             analogJoystick.isUserInteractionEnabled = true
             
-            tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-                //                  print("\(timer3)")
-                timer3 = timer3 - 1
-                timlab.text = "\(Time) : \(timer3)"
-                if timer3 < 0 {
-                    timer3 = 30
-                    tim?.invalidate()
-                    self.over!.scaleMode = scaleMode
-                    view!.presentScene(over)
-                }
-            }
-            
-            
-            
+
             
             
             tutorial = false }
