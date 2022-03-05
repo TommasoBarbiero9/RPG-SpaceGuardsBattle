@@ -26,6 +26,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     var conquistato = false
     var firingInterval: Double = 0.5
     var updateeShotTime : Double = 0
+    var stoconqui = false
     var firingEnemyInterval : Double = 0.8
     var isGamePaused = false
     var recupero = false
@@ -37,7 +38,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     let Playag = NSLocalizedString("PlayAgain", comment: "")
     let Pau = NSLocalizedString("Pause", comment: "")
     let Mainss = NSLocalizedString("MenPri", comment: "")
-    var timer3 = 40
+    var timer3 = 4
     var timlab = SKLabelNode(text: "Time: ")
     var tim : Timer? = nil
     var tutorial = false
@@ -262,7 +263,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             if conquer.contains(location) {
-                if recupero == false {
+                if recupero == false && stoconqui == false {
                 conquerplanet(tempo: timer3)
                 }
                 if recupero {
@@ -658,21 +659,40 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        if inizioanimazione {
-        if collision == PhysicsCategory.Hero {
-            if collision2 == PhysicsCategory.Sonda{
-            inizioanimazione = false
-            contact.bodyB.node?.removeFromParent()
-        }
-    }
-        else if collision2 == PhysicsCategory.Hero{
-            if collision == PhysicsCategory.Sonda {
-                inizioanimazione = false
-                contact.bodyA.node?.removeFromParent()
+       
+        if collision3 == PhysicsCategory.Sonda {
+            if collision4 == PhysicsCategory.Hero{
+                
+                if inizioanimazione  {
+                    
+                    contact.bodyA.node?.removeFromParent()
+                    inizioanimazione = false
+                    recupero = false
+                    tim?.invalidate()
+                    timlab.removeFromParent()
+                    stoconqui = false
+                }
+            }
+        }else {
+            
+            if collision4 == PhysicsCategory.Sonda {
+                if collision3 == PhysicsCategory.Hero{
+                    
+                    
+              
+                    if inizioanimazione == true {
+                        
+                        contact.bodyB.node?.removeFromParent()
+                        inizioanimazione = false
+                        recupero = false
+                        tim?.invalidate()
+                        timlab.removeFromParent()
+                        stoconqui = false
+                    }
+                }
             }
         }
     }
-}
     
     //MARK: VARIABLES
     lazy var hero: SKSpriteNode = {
@@ -684,7 +704,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         sprite.physicsBody?.allowsRotation = false
         sprite.physicsBody?.mass = 100
         sprite.physicsBody?.categoryBitMask = PhysicsCategory.Hero
-        sprite.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine
+        sprite.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine | PhysicsCategory.Sonda
         sprite.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid
         return sprite
     }()
@@ -733,9 +753,9 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     func sondabutton() {
         
         for planet in planets {
-            if planet.position.distance(point: hero.position) < 550 {
+            if planet.position.distance(point: hero.position) < 550 &&  stoconqui == false {
                 conquer.isHidden = false
-                conquer.isUserInteractionEnabled = false
+                    conquer.isUserInteractionEnabled = false
             } else {
                 conquer.isHidden = true
                 conquer.isUserInteractionEnabled = true
@@ -746,16 +766,18 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             var cooldown = 20
             var palle = tempo
             let sonda = SKSpriteNode(imageNamed: "ColorWheel")
+        sonda.physicsBody = SKPhysicsBody(texture: sonda.texture!, size: sonda.size)
             sonda.position = hero.position
+        sonda.physicsBody?.collisionBitMask = PhysicsCategory.None
             sonda.physicsBody?.categoryBitMask = PhysicsCategory.Sonda
-            sonda.physicsBody?.contactTestBitMask = PhysicsCategory.Planet
+        sonda.physicsBody?.contactTestBitMask = PhysicsCategory.Planet | PhysicsCategory.Hero
             let Textures = (1...6).map { SKTexture(imageNamed: "\($0)qr") }
         sonda.name = "Sonda"
         
         gameLayer.addChild(sonda)
         timlab.text = "\(Time) : \(tempo)"
         gameLayer.addChild(timlab)
-        
+        stoconqui = true
         for planet in planets {
             let landing = SKAction.move(to: planet.position, duration: 5)
 //            let conquista = SKAction.wait(forDuration: 10)
@@ -774,15 +796,18 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
                 cooldown = cooldown - 1
                 timlab.text = "\(Time) : \(cooldown)"
+                    stoconqui = false
+                    if cooldown < 0 {
+                        tim?.invalidate()
+                        timlab.removeFromParent()
+                        sonda.removeFromParent()
+                        conquistato = false
+                        recupero = false
+                        stoconqui = false
+                    }
                 }
             }
-            if cooldown < 0 {
-                tim?.invalidate()
-                timlab.removeFromParent()
-                sonda.removeFromParent()
-                conquistato = false
-                recupero = false
-            }
+            
         }
     }
         

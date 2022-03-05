@@ -476,10 +476,13 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         }
         
         if collision == PhysicsCategory.Planet {
-            print("Conquista")
+            if collision2 == PhysicsCategory.Hero{
+                print("Conquista")}
         }
         else if collision2 == PhysicsCategory.Planet{
-            print("Conquista")
+            if collision == PhysicsCategory.Hero{
+            
+                print("Conquista")}
         }
         
         
