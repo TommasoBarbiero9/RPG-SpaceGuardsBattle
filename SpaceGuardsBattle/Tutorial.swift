@@ -73,7 +73,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
           
           NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
-          
+        if GeneralSettings.sharedGameData.bgsound == true {
         let sound = Bundle.main.path(forResource: "Tutorial", ofType:
                                         "wav")
         do {
@@ -87,7 +87,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         HomeScreenViewController.audioPlayer.numberOfLoops = -1
         HomeScreenViewController.audioPlayer.volume = 0.05
         HomeScreenViewController.audioPlayer.play()
-    
+        }
         
        func CBApplicationDidBecomeActive() {}
         

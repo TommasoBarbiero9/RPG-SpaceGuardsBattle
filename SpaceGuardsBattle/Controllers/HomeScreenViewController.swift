@@ -56,6 +56,14 @@ class HomeScreenViewController: UIViewController {
             
         }
     }
+    
+    
+    @IBAction func audioonoff( sender: UIButton) {
+        
+        GeneralSettings.sharedGameData.bgsound.toggle()
+    }
+    
+    
 //    @IBAction func playGamecenterButton( sender: UIButton) {
 //        self.navigationController?.isNavigationBarHidden = true
 //        if let pippo = storyboard?.instantiateViewController(withIdentifier: "MultiplayerViewController") as? MultiplayerViewController {

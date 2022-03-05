@@ -35,6 +35,8 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     var star2 = SKEmitterNode(fileNamed: "Starfield")
     let Time = NSLocalizedString("Time", comment: "")
     let Scor = NSLocalizedString("Score", comment: "")
+    let Conquista = NSLocalizedString("Conquista", comment: "")
+    let Recupera = NSLocalizedString("Recupera", comment: "")
     let Playag = NSLocalizedString("PlayAgain", comment: "")
     let Pau = NSLocalizedString("Pause", comment: "")
     let Mainss = NSLocalizedString("MenPri", comment: "")
@@ -46,7 +48,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     var startmission = true
     var score: Int = 0
     let pauseButton = SKSpriteNode(imageNamed: "pause")
-    let conquer = SKSpriteNode(imageNamed: "pause")
+    let conquer = SKSpriteNode(imageNamed: "ufo")
     let pauseBG = SKSpriteNode(imageNamed: "pauseBG")
     let pauseText = SKLabelNode(text: "")
     let pauseLeave = SKLabelNode(text: "")
@@ -73,6 +75,8 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
         
+        if GeneralSettings.sharedGameData.bgsound == true {
+        
         let sound = Bundle.main.path(forResource: "Tutorial", ofType:
                                         "wav")
         do {
@@ -87,7 +91,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         HomeScreenViewController.audioPlayer.volume = 0.05
         HomeScreenViewController.audioPlayer.play()
         
-        
+        }
        
             setupTutorial()
             addChild(rettangolo)
@@ -491,7 +495,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     
                     contact.bodyA.node?.removeFromParent()
                 }
-                if score > 100 {
+                if score > 500 {
                     win!.scaleMode = scaleMode
                     view?.presentScene(win!)
                 }
@@ -516,7 +520,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                         contact.bodyB.node?.removeFromParent()
                     }
                     
-                    if score > 100 {
+                    if score > 500 {
                         win!.scaleMode = scaleMode
                         view?.presentScene(win!)
                     }
@@ -582,7 +586,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     
                     contact.bodyA.node?.removeFromParent()
                 }
-                if score > 100 {
+                if score > 500 {
                     win!.scaleMode = scaleMode
                     view?.presentScene(win!)
                 }
@@ -607,7 +611,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                         contact.bodyB.node?.removeFromParent()
                     }
                     
-                    if score > 100 {
+                    if score > 500 {
                         win!.scaleMode = scaleMode
                         view?.presentScene(win!)
                     }
@@ -776,8 +780,8 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         sonda.name = "Sonda"
         
         gameLayer.addChild(sonda)
-        timlab.text = "\(Time) : \(tempo)"
-        gameLayer.addChild(timlab)
+//        timlab.text = "\(Time) : \(tempo)"
+        
         stoconqui = true
         for planet in planets {
             let landing = SKAction.move(to: planet.position, duration: 5)
@@ -786,17 +790,23 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             let actions = [landing,ritiro]
             sonda.run(SKAction.sequence(actions))
             }
+        timlab.text = "\(Conquista) : \(palle)"
+        timlab.fontColor = .yellow
+        gameLayer.addChild(timlab)
         tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
             palle = palle - 1
-            timlab.text = "\(Time) : \(palle)"
-            if palle < 0 {
+            
+            timlab.text = "\(Conquista) : \(palle)"
+            
+            if palle <= 0 {
                 recupero = true
                 tim?.invalidate()
                 timlab.removeFromParent()
                 gameLayer.addChild(timlab)
                 tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
                 cooldown = cooldown - 1
-                timlab.text = "\(Time) : \(cooldown)"
+                    timlab.fontColor = .red
+                timlab.text = "\(Recupera) : \(cooldown + 1)"
                     stoconqui = false
                     if cooldown < 0 {
                         tim?.invalidate()
