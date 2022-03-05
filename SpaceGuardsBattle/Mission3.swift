@@ -38,7 +38,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     let Playag = NSLocalizedString("PlayAgain", comment: "")
     let Pau = NSLocalizedString("Pause", comment: "")
     let Mainss = NSLocalizedString("MenPri", comment: "")
-    var timer3 = 4
+    var timer3 = 40
     var timlab = SKLabelNode(text: "Time: ")
     var tim : Timer? = nil
     var tutorial = false
@@ -765,13 +765,14 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     func conquerplanet( tempo:  Int) {
             var cooldown = 20
             var palle = tempo
-            let sonda = SKSpriteNode(imageNamed: "ColorWheel")
+            let sonda = SKSpriteNode(imageNamed: "0sonda")
+        sonda.scaleTo(screenWidthPercentage: 0.20)
         sonda.physicsBody = SKPhysicsBody(texture: sonda.texture!, size: sonda.size)
             sonda.position = hero.position
         sonda.physicsBody?.collisionBitMask = PhysicsCategory.None
             sonda.physicsBody?.categoryBitMask = PhysicsCategory.Sonda
         sonda.physicsBody?.contactTestBitMask = PhysicsCategory.Planet | PhysicsCategory.Hero
-            let Textures = (1...6).map { SKTexture(imageNamed: "\($0)qr") }
+            let Textures = (1...6).map { SKTexture(imageNamed: "\($0)sonda") }
         sonda.name = "Sonda"
         
         gameLayer.addChild(sonda)
