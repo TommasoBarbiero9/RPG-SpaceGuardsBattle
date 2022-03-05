@@ -1,21 +1,17 @@
 //
-//  Mission2.swift
+//  Mission3.swift
 //  SGB-SpaceGuardsBattle
 //
-//  Created by Tommaso Barbiero on 03/03/22.
+//  Created by Luca Perrotti on 04/03/22.
 //
 
+import Foundation
 import SpriteKit
 import GameplayKit
 import AVKit
 import NotificationCenter
 import UIKit
 
-
-//
-//protocol TransitionDelegate: SKSceneDelegate {
-//    func returnToMainMenu()
-//}
 
 class Mission2: SKScene, SKPhysicsContactDelegate {
     let velocityMultiplier: CGFloat = 0.10
@@ -43,7 +39,6 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     
     var tim : Timer? = nil
     var tutorial = false
-    let arrow = SKSpriteNode(imageNamed: "arrow2")
     let rettangolo = SKSpriteNode(imageNamed: "orangebox")
     var startmission = true
     var score: Int = 0
@@ -91,14 +86,11 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         HomeScreenViewController.audioPlayer.play()
         
         
-        func CBApplicationDidBecomeActive() {}
-        
-        if isAppAlreadyLaunchedOnce() == false {
+       
             setupTutorial()
-            addChild(arrow)
             addChild(rettangolo)
             rettangolo.addChild(boxTUT)
-        }
+      
         setupPauseMenu()
         setupNodes()
         let emitter = SKEmitterNode(fileNamed: "playerTrail.sks")
@@ -120,31 +112,31 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         boxTUT.fontColor = .white
         if tutorial == false {
             analogJoystick.isUserInteractionEnabled = false
-            boxTUT.text = ("\(level1)")
+            
             
             addChild(rettangolo)
             rettangolo.addChild(boxTUT)
             
         }
         
-        arrow.position = CGPoint(x: 0, y: -ScreenSize.height + (ScreenSize.height * 0.45))
+       
         
         
         
         
         
         
-        let tlanet = SKSpriteNode(imageNamed: "1")
-        tlanet.scaleTo(screenWidthPercentage: 0.60)
-        tlanet.position = CGPoint(x: 400  , y: 600)
-        tlanet.zPosition = 0
-        tlanet.physicsBody = SKPhysicsBody(texture: tlanet.texture!, size: tlanet.size)
-        tlanet.physicsBody?.isDynamic = false
-        tlanet.physicsBody?.categoryBitMask = PhysicsCategory.Planet
-        tlanet.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
+//        let tlanet = SKSpriteNode(imageNamed: "1")
+//        tlanet.scaleTo(screenWidthPercentage: 0.60)
+//        tlanet.position = CGPoint(x: 400  , y: 600)
+//        tlanet.zPosition = 0
+//        tlanet.physicsBody = SKPhysicsBody(texture: tlanet.texture!, size: tlanet.size)
+//        tlanet.physicsBody?.isDynamic = false
+//        tlanet.physicsBody?.categoryBitMask = PhysicsCategory.Planet
+//        tlanet.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
         
-        gameLayer.addChild(tlanet)
-        
+//        gameLayer.addChild(tlanet)
+        createplanets(name: "pianetaarancione")
         var g = scene!.calculateAccumulatedFrame()
         g.size.height = g.size.height - 2000
         g.size.width = g.size.width - 2000
@@ -306,14 +298,12 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                     view?.presentScene(over)
                 }
             }
-            arrow.removeFromParent()
             rettangolo.removeFromParent()
             startmission = false
             analogJoystick.isUserInteractionEnabled = true
         }
         
         if tutorial == true {
-            arrow.removeFromParent()
             rettangolo.removeFromParent()
             analogJoystick.isUserInteractionEnabled = true
             
@@ -371,7 +361,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 if updateeShotTime == 0 {
                     updateeShotTime = currentTime
                 }
-                if currentTime - updateeShotTime > firingInterval {
+                if currentTime - updateeShotTime > firingInterval{
                     fireEnemyBullet()
                     updateeShotTime = currentTime
                 }
@@ -457,13 +447,19 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
 //                    eShot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
 //                    eShot.physicsBody?.usesPreciseCollisionDetection = true
                     
+               let   Pos =  convert(hero.position, from: gameLayer)
+                    
+//                    childNode(withName: "Hero")?.removeFromParent()
+                    
                     
                     for enemy in enemies {
+                        let location = Pos
+                        if enemy.position.distance(point: location) < 700 {
                         let eShot = SKSpriteNode(imageNamed: "lasere")
                         eShot.name = "laser"
-                        eShot.position = enemy.position
+                            
+                            eShot.position = enemy.position
                         eShot.zPosition = enemy.zPosition - 1
-                        
                         eShot.physicsBody = SKPhysicsBody(rectangleOf: eShot.size)
                         eShot.physicsBody?.collisionBitMask = PhysicsCategory.None
                         eShot.physicsBody?.categoryBitMask = PhysicsCategory.eneShot
@@ -473,7 +469,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                         
                         guard isPlayerAlive else { return }
                         
-                        gameLayer.addChild(eShot)
+                            enemy.addChild(eShot)
                         
                         var angolo : CGFloat
                         
@@ -490,6 +486,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                         
                         eShot.run(SKAction.sequence(actions))
                     }
+                }
                 }
             }
         }
@@ -552,6 +549,66 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
+        
+        if collision == PhysicsCategory.enemy {
+            if collision2 == PhysicsCategory.Shot{
+                contact.bodyB.node?.removeFromParent()
+                
+                let emitter = SKEmitterNode(fileNamed: "asteroidsDestroyed.sks")
+                emitter?.targetNode = self
+                contact.bodyA.node?.addChild(emitter!)
+                
+                
+                contact.bodyA.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
+                
+                score = score + 5
+                scoreLabel.text = "\(Scor) : \(score)"
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    
+                    contact.bodyA.node?.removeFromParent()
+                }
+                if score > 100 {
+                    win!.scaleMode = scaleMode
+                    view?.presentScene(win!)
+                }
+            }
+        }else {
+            
+            if collision2 == PhysicsCategory.enemy {
+                if collision == PhysicsCategory.Shot{
+                    contact.bodyA.node?.removeFromParent()
+                    let emitter = SKEmitterNode(fileNamed: "asteroidsDestroyed.sks")
+                    emitter?.targetNode = self
+                    contact.bodyB.node?.addChild(emitter!)
+                    
+                    
+                    
+                    contact.bodyB.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
+                    score = score + 3
+                    scoreLabel.text = "\(Scor) : \(score)"
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        
+                        contact.bodyB.node?.removeFromParent()
+                    }
+                    
+                    if score > 100 {
+                        win!.scaleMode = scaleMode
+                        view?.presentScene(win!)
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
         if collision3 == PhysicsCategory.Asteroid {
             if collision4 == PhysicsCategory.Hero{
                 let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -681,13 +738,13 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         enemy.physicsBody = SKPhysicsBody(texture: enemy.texture!, size: enemy.size)
         
         
-//        enemy.physicsBody?.allowsRotation = false
-//        enemy.physicsBody?.mass = 100
-//        enemy.physicsBody?.categoryBitMask = PhysicsCategory.Hero
-//        enemy.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine
-//        enemy.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid
+        enemy.physicsBody?.allowsRotation = false
+        enemy.physicsBody?.mass = 100
+        enemy.physicsBody?.categoryBitMask = PhysicsCategory.enemy
+        enemy.physicsBody?.contactTestBitMask = PhysicsCategory.Shot
+        enemy.physicsBody?.collisionBitMask = PhysicsCategory.None
 
-        addChild(enemy)
+        gameLayer.addChild(enemy)
         enemies.append(enemy)
     }
     
@@ -725,12 +782,17 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     
     
     //MARK: FUNCTIONS
-    //    @IBAction func mainScreen() {
-    //        if let vc = storyboard?.instantiateViewController(withIdentifier: "HomeScreenViewController") as? HomeScreenViewController {
-    //            navigationController?.pushViewController(vc, animated: false)
-    //        }
-    //    }
-    //
+    func createplanets(name: String) {
+        let planet = SKSpriteNode(imageNamed: name)
+        planet.scaleTo(screenWidthPercentage: 1)
+        planet.position = CGPoint(x: 400  , y: 600)
+        planet.zPosition = 0
+        planet.physicsBody = SKPhysicsBody(texture: planet.texture!, size: planet.size)
+        planet.physicsBody?.isDynamic = false
+        planet.physicsBody?.categoryBitMask = PhysicsCategory.Planet
+        planet.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
+        gameLayer.addChild(planet)
+    }
     
     @objc func pauseGame() {
         isFiring = false
@@ -771,18 +833,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         pauseLeave.verticalAlignmentMode = .top
     }
     
-    func isAppAlreadyLaunchedOnce() -> Bool {
-        let defaults = UserDefaults.standard
-        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
-            print("App already launched")
-            return true
-        } else {
-            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
-            print("App launched first time")
-            return false
-        }
-    }
-    
+   
     
     
     let boxTUT = SKLabelNode(text: "Hello")
@@ -791,11 +842,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                     You better be, just a couple tips, \
                     you can explore the universe through your joystick right here. \
                     You can also shoot and destroy asteroids tapping on the screen.
-                    """
-    
-    let level1 =   """
-                     Good job cadet, keep training destroying more asteroids.
-                     Go over the limit of 100 points!
+                    
                     """
     
     
@@ -1004,3 +1051,4 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     
     
 }
+

@@ -14,5 +14,6 @@ struct PhysicsCategory {
     static let Planet: UInt32 = 0b100 //4
     static let Confine: UInt32 = 0b101 //5
     static let eneShot:  UInt32 = 0b1010 //5
+    static let enemy: UInt32 = 0b10101
 
 }

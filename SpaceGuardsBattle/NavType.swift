@@ -17,9 +17,9 @@ class NavType {
     var overallscore: Int = 0
     
     var Nav = "navicellarossa"
-    var type = "1"
+    var type = "5"
     var form = "q"
-    var color = "r"
+    var color = "viola"
     
     init () {
 
