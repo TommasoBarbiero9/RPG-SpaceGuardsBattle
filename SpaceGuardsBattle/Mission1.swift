@@ -296,7 +296,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
             rettangolo.removeFromParent()
             analogJoystick.isUserInteractionEnabled = true
             
-
+            
             
             
             tutorial = false }

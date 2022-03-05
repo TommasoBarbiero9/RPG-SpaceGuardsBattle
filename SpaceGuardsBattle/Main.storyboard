@@ -423,10 +423,13 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGl-iO-oxZ">
                                         <rect key="frame" x="29.5" y="279.5" width="229" height="59.5"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="LOCKED">
+                                        <buttonConfiguration key="configuration" style="filled" title="MISSION 3">
                                             <backgroundConfiguration key="background" cornerRadius="15"/>
                                             <color key="baseBackgroundColor" red="0.13333332540000001" green="0.15294116739999999" blue="0.18823529780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="Mission3play:" destination="TZH-4i-bEE" eventType="touchUpInside" id="UsO-Lu-zM2"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jg0-5Y-Tzy">
                                         <rect key="frame" x="29.5" y="350" width="229" height="59"/>
@@ -806,6 +809,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54F-Mi-cUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3706" y="370"/>
+        </scene>
+        <!--Mission3 View Controller-->
+        <scene sceneID="2dc-xU-dXk">
+            <objects>
+                <viewController storyboardIdentifier="Mission3ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qA3-mP-Emy" customClass="Mission3ViewController" customModule="SGB_SpaceGuardsBattle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Bim-sn-lw5" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="xUI-8V-Nzd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Q3-k9-vFv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2296" y="-1009"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

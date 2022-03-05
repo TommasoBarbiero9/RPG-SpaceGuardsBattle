@@ -2,7 +2,7 @@
 //  Mission3.swift
 //  SGB-SpaceGuardsBattle
 //
-//  Created by Luca Perrotti on 04/03/22.
+//  Created by Piero Chianese on 05/03/22.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ import NotificationCenter
 import UIKit
 
 
-class Mission2: SKScene, SKPhysicsContactDelegate {
+class Mission3: SKScene, SKPhysicsContactDelegate {
     let velocityMultiplier: CGFloat = 0.10
     var health: CGFloat = 1
     var isPlayerAlive = true
@@ -23,27 +23,29 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     var win = SKScene(fileNamed: "Win")
     var isFiring = false
     var updateTime: Double = 0
+    var conquistato = false
     var firingInterval: Double = 0.5
     var updateeShotTime : Double = 0
     var firingEnemyInterval : Double = 0.8
     var isGamePaused = false
+    var recupero = false
+    var inizioanimazione = false
     var star = SKEmitterNode(fileNamed: "Starfield")
     var star2 = SKEmitterNode(fileNamed: "Starfield")
-    var timer3: Int = 100
-    var timlab = SKLabelNode(text: "Time : 0")
     let Time = NSLocalizedString("Time", comment: "")
     let Scor = NSLocalizedString("Score", comment: "")
     let Playag = NSLocalizedString("PlayAgain", comment: "")
     let Pau = NSLocalizedString("Pause", comment: "")
     let Mainss = NSLocalizedString("MenPri", comment: "")
-    
+    var timer3 = 40
+    var timlab = SKLabelNode(text: "Time: ")
     var tim : Timer? = nil
     var tutorial = false
     let rettangolo = SKSpriteNode(imageNamed: "orangebox")
     var startmission = true
     var score: Int = 0
     let pauseButton = SKSpriteNode(imageNamed: "pause")
-    
+    let conquer = SKSpriteNode(imageNamed: "pause")
     let pauseBG = SKSpriteNode(imageNamed: "pauseBG")
     let pauseText = SKLabelNode(text: "")
     let pauseLeave = SKLabelNode(text: "")
@@ -58,7 +60,6 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     }
     
     var asteroidsTileMap : SKTileMapNode!
-    
     let gameLayer = SKNode()
     let pauseLayer = SKNode()
     let hudLayer = SKNode()
@@ -119,23 +120,6 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             
         }
         
-       
-        
-        
-        
-        
-        
-        
-//        let tlanet = SKSpriteNode(imageNamed: "1")
-//        tlanet.scaleTo(screenWidthPercentage: 0.60)
-//        tlanet.position = CGPoint(x: 400  , y: 600)
-//        tlanet.zPosition = 0
-//        tlanet.physicsBody = SKPhysicsBody(texture: tlanet.texture!, size: tlanet.size)
-//        tlanet.physicsBody?.isDynamic = false
-//        tlanet.physicsBody?.categoryBitMask = PhysicsCategory.Planet
-//        tlanet.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
-        
-//        gameLayer.addChild(tlanet)
         createplanets(name: "pianetaarancione")
         var g = scene!.calculateAccumulatedFrame()
         g.size.height = g.size.height - 2000
@@ -254,16 +238,6 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                     
                     analogJoystick.isUserInteractionEnabled = true
                     
-                    tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-                        timer3 = timer3 - 1
-                        timlab.text = "\(Time) : \(timer3)"
-                        if timer3 < 0 {
-                            timer3 = 30
-                            tim?.invalidate()
-                            self.over!.scaleMode = scaleMode
-                            view?.presentScene(over)
-                        }
-                    }
                 }
                 if pauseLeave.contains(location) {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -284,20 +258,21 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if conquer.contains(location) {
+                if recupero == false {
+                conquerplanet(tempo: timer3)
+                }
+                if recupero {
+                    inizioanimazione = true
+                }
+            }
+        
         isFiring = false
         
         if startmission == true && tutorial == false && isGamePaused == false {
-            tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-                //                  print("\(timer3)")
-                timer3 = timer3 - 1
-                timlab.text = "\(Time) : \(timer3)"
-                if timer3 < 0 {
-                    timer3 = 30
-                    tim?.invalidate()
-                    self.over!.scaleMode = scaleMode
-                    view?.presentScene(over)
-                }
-            }
             rettangolo.removeFromParent()
             startmission = false
             analogJoystick.isUserInteractionEnabled = true
@@ -307,27 +282,36 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             rettangolo.removeFromParent()
             analogJoystick.isUserInteractionEnabled = true
             
-            
-        
-            
-            
+           
             
             
             tutorial = false }
-        
-        
-        
-        
     }
-    
-    
-    
-    
+    }
     override func update(_ currentTime: TimeInterval) {
-        
+        sondabutton()
         let location = hero.position
         
-       
+        
+        
+        if inizioanimazione {
+            let dx = (location.x) -  (gameLayer.childNode(withName: "Sonda")?.position.x ?? 0)
+            let dy = (location.y) -  (gameLayer.childNode(withName: "Sonda")?.position.y ?? 0)
+            let angle = atan2(dy, dx)
+
+            gameLayer.childNode(withName: "Sonda")?.zRotation = angle - 3 * .pi/6
+
+               
+                //Seek
+                let velocityX =  cos(angle) * 5
+                let velocityY =  sin(angle) * 5
+
+            gameLayer.childNode(withName: "Sonda")?.position.x += velocityX
+            gameLayer.childNode(withName: "Sonda")?.position.y += velocityY
+            
+        }
+        
+        
         gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
             
             //Aim
@@ -385,9 +369,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         if pauseLayer.isHidden == true {
             if tutorial == false {
                 if action(forKey: "shooting") == nil {
-                    
-                    //                    let wait = SKAction.wait(forDuration: 0.1)
-                    //                    run(wait, withKey: "shooting")
+                
                     
                     let shot = SKSpriteNode(imageNamed: "laser")
                     shot.name = "laser"
@@ -540,7 +522,47 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        
+        if collision3 == PhysicsCategory.Asteroid {
+            if collision4 == PhysicsCategory.Hero{
+                let generator = UIImpactFeedbackGenerator(style: .soft)
+                generator.impactOccurred()
+                health = health - 0.002
+                progressBar.setXProgress(xProgress: health)
+                if health < 0.01 {
+                    
+                    tim?.invalidate()
+                    over!.scaleMode = scaleMode
+                    view?.presentScene(over!)
+                    
+                    hero.isHidden = false
+                    
+                    analogJoystick.removeFromParent()
+                }
+            }
+        }else {
+            
+            if collision4 == PhysicsCategory.Asteroid {
+                if collision3 == PhysicsCategory.Hero{
+                    let generator = UIImpactFeedbackGenerator(style: .soft)
+                    generator.impactOccurred()
+                    health = health - 0.002
+                    progressBar.setXProgress(xProgress: health)
+                    if health < 0.01 {
+                        
+                        tim?.invalidate()
+                        
+                        over!.scaleMode = scaleMode
+                        
+                        view?.presentScene(over!)
+                        //                        self.removeFromParent()
+                        hero.isHidden = false
+                        //                        isPlayerAlive = false
+                        analogJoystick.removeFromParent()
+                    }
+                }
+            }
+        }
+       
         if collision == PhysicsCategory.enemy {
             if collision2 == PhysicsCategory.Shot{
                 contact.bodyB.node?.removeFromParent()
@@ -594,54 +616,6 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         
         
         
-        
-        
-        
-        
-        
-        
-        if collision3 == PhysicsCategory.Asteroid {
-            if collision4 == PhysicsCategory.Hero{
-                let generator = UIImpactFeedbackGenerator(style: .soft)
-                generator.impactOccurred()
-                health = health - 0.002
-                progressBar.setXProgress(xProgress: health)
-                if health < 0.01 {
-                    
-                    tim?.invalidate()
-                    over!.scaleMode = scaleMode
-                    view?.presentScene(over!)
-                    
-                    hero.isHidden = false
-                    
-                    analogJoystick.removeFromParent()
-                }
-            }
-        }else {
-            
-            if collision4 == PhysicsCategory.Asteroid {
-                if collision3 == PhysicsCategory.Hero{
-                    let generator = UIImpactFeedbackGenerator(style: .soft)
-                    generator.impactOccurred()
-                    health = health - 0.002
-                    progressBar.setXProgress(xProgress: health)
-                    if health < 0.01 {
-                        
-                        tim?.invalidate()
-                        
-                        over!.scaleMode = scaleMode
-                        
-                        view?.presentScene(over!)
-                        //                        self.removeFromParent()
-                        hero.isHidden = false
-                        //                        isPlayerAlive = false
-                        analogJoystick.removeFromParent()
-                    }
-                }
-            }
-        }
-       
-        
         if collision3 == PhysicsCategory.eneShot {
             if collision4 == PhysicsCategory.Hero{
                 let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -684,19 +658,21 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        if inizioanimazione {
+        if collision == PhysicsCategory.Hero {
+            if collision2 == PhysicsCategory.Sonda{
+            inizioanimazione = false
+            contact.bodyB.node?.removeFromParent()
+        }
     }
+        else if collision2 == PhysicsCategory.Hero{
+            if collision == PhysicsCategory.Sonda {
+                inizioanimazione = false
+                contact.bodyA.node?.removeFromParent()
+            }
+        }
+    }
+}
     
     //MARK: VARIABLES
     lazy var hero: SKSpriteNode = {
@@ -713,7 +689,9 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         return sprite
     }()
     
-
+   
+    var planets : [SKSpriteNode] = []
+    
     
     func randomEnemy () {
         let enemy = SKSpriteNode(imageNamed: "enemyBig")
@@ -734,22 +712,6 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
 
     }
     
-//    lazy var enemy: SKSpriteNode = {
-//        var enemy = SKSpriteNode(imageNamed: Nav)
-//        enemy.position = CGPoint(x: Int.random(in: 1500...6500), y: Int.random(in: 1500...6500))
-//        enemy.zPosition = NodesZPosition.hero.rawValue
-//        enemy.scaleTo(screenWidthPercentage: 0.35)
-//        enemy.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
-//        enemy.physicsBody?.allowsRotation = false
-//        enemy.physicsBody?.mass = 100
-//        enemy.physicsBody?.categoryBitMask = PhysicsCategory.Hero
-//        enemy.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine
-//        enemy.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid
-//        return sprite
-//    }()
-    
-    
-    
     lazy var analogJoystick: AnalogJoystick = {
         let js = AnalogJoystick(diameter: 175, colors: nil, images: (substrate: #imageLiteral(resourceName: "jSubstrate"), stick: #imageLiteral(resourceName: "jStick")))
         if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
@@ -768,6 +730,63 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     
     
     //MARK: FUNCTIONS
+    func sondabutton() {
+        
+        for planet in planets {
+            if planet.position.distance(point: hero.position) < 550 {
+                conquer.isHidden = false
+                conquer.isUserInteractionEnabled = false
+            } else {
+                conquer.isHidden = true
+                conquer.isUserInteractionEnabled = true
+            }
+        }
+    }
+    func conquerplanet( tempo:  Int) {
+            var cooldown = 20
+            var palle = tempo
+            let sonda = SKSpriteNode(imageNamed: "ColorWheel")
+            sonda.position = hero.position
+            sonda.physicsBody?.categoryBitMask = PhysicsCategory.Sonda
+            sonda.physicsBody?.contactTestBitMask = PhysicsCategory.Planet
+            let Textures = (1...6).map { SKTexture(imageNamed: "\($0)qr") }
+        sonda.name = "Sonda"
+        
+        gameLayer.addChild(sonda)
+        timlab.text = "\(Time) : \(tempo)"
+        gameLayer.addChild(timlab)
+        
+        for planet in planets {
+            let landing = SKAction.move(to: planet.position, duration: 5)
+//            let conquista = SKAction.wait(forDuration: 10)
+            let ritiro = SKAction.animate(with: Textures, timePerFrame: 5)
+            let actions = [landing,ritiro]
+            sonda.run(SKAction.sequence(actions))
+            }
+        tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+            palle = palle - 1
+            timlab.text = "\(Time) : \(palle)"
+            if palle < 0 {
+                recupero = true
+                tim?.invalidate()
+                timlab.removeFromParent()
+                gameLayer.addChild(timlab)
+                tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                cooldown = cooldown - 1
+                timlab.text = "\(Time) : \(cooldown)"
+                }
+            }
+            if cooldown < 0 {
+                tim?.invalidate()
+                timlab.removeFromParent()
+                sonda.removeFromParent()
+                conquistato = false
+                recupero = false
+            }
+        }
+    }
+        
+    
     func createplanets(name: String) {
         let planet = SKSpriteNode(imageNamed: name)
         planet.scaleTo(screenWidthPercentage: 1)
@@ -776,8 +795,9 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         planet.physicsBody = SKPhysicsBody(texture: planet.texture!, size: planet.size)
         planet.physicsBody?.isDynamic = false
         planet.physicsBody?.categoryBitMask = PhysicsCategory.Planet
-        planet.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
+        planet.physicsBody?.contactTestBitMask = PhysicsCategory.Sonda
         gameLayer.addChild(planet)
+        planets.append(planet)
     }
     
     @objc func pauseGame() {
@@ -856,15 +876,14 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     
     
     func setupJoystick() {
-        
+        hudLayer.addChild(conquer)
         hudLayer.addChild(analogJoystick)
         hudLayer.addChild(progressBar)
         hudLayer.addChild(pauseButton)
         scoreLabel.text = "\(Scor): \(score)"
         hudLayer.addChild(scoreLabel)
         scoreLabel.zPosition = 3
-        timlab.text = "\(Time): \(timer3)"
-        hudLayer.addChild(timlab)
+//        hudLayer.addChild(timlab)
         
         gameLayer.addChild(star!)
         star?.zPosition = -0.1
@@ -926,6 +945,13 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 mySelf.pauseButton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.48)  , y: mySelf.hero.position.y + (ScreenSize.height * 0.68))
             }
             
+            if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
+                mySelf.conquer.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.63)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.75))
+            } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
+                mySelf.conquer.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.70)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.80))
+            } else {
+                mySelf.conquer.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.45)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.55))
+            }
             mySelf.star!.position = CGPoint(x: -mySelf.hero.position.x / 15 - (ScreenSize.width * 0.45)  , y: -mySelf.hero.position.y / 15 - (ScreenSize.height * 0.66))
             
             mySelf.star2!.position = CGPoint(x: -mySelf.hero.position.x / 7 - (ScreenSize.width * 0.45)  , y: -mySelf.hero.position.y / 7 - (ScreenSize.height * 0.66))
@@ -1024,9 +1050,6 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                     tileNode.physicsBody?.categoryBitMask = PhysicsCategory.Asteroid
                     tileNode.physicsBody?.collisionBitMask = PhysicsCategory.Hero | PhysicsCategory.Shot
                     tileNode.physicsBody?.contactTestBitMask = PhysicsCategory.Shot | PhysicsCategory.Hero
-                    
-                    
-                    
                     tileNode.position = CGPoint(x: tileNode.position.x + startingLocation.x, y: tileNode.position.y + startingLocation.y)
                     
                     gameLayer.addChild(tileNode)
@@ -1034,7 +1057,4 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-    
-    
 }
-

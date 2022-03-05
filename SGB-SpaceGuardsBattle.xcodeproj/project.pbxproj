@@ -15,6 +15,9 @@
 		0B56E7B227D0154200A30ADB /* NavType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7B127D0154200A30ADB /* NavType.swift */; };
 		0B56E7B427D16D7300A30ADB /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7B327D16D7300A30ADB /* PhysicsCategory.swift */; };
 		0B56E7B627D16DCC00A30ADB /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7B527D16DCC00A30ADB /* GeneralSettings.swift */; };
+		0B56E7B827D3EB3600A30ADB /* Mission3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7B727D3EB3600A30ADB /* Mission3.swift */; };
+		0B56E7BA27D3EBC800A30ADB /* Mission3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B56E7B927D3EBC800A30ADB /* Mission3.sks */; };
+		0B56E7BC27D3EC1F00A30ADB /* Mission3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7BB27D3EC1F00A30ADB /* Mission3ViewController.swift */; };
 		0B6E9B6827C3C560000FDB7D /* Over.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E9B6727C3C560000FDB7D /* Over.swift */; };
 		0B6E9B6C27C3D792000FDB7D /* PauseMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */; };
 		0B6E9B7227C4D1E4000FDB7D /* asteroidsDestroyed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */; };
@@ -81,6 +84,9 @@
 		0B56E7B127D0154200A30ADB /* NavType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavType.swift; sourceTree = "<group>"; };
 		0B56E7B327D16D7300A30ADB /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		0B56E7B527D16DCC00A30ADB /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
+		0B56E7B727D3EB3600A30ADB /* Mission3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission3.swift; sourceTree = "<group>"; };
+		0B56E7B927D3EBC800A30ADB /* Mission3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mission3.sks; sourceTree = "<group>"; };
+		0B56E7BB27D3EC1F00A30ADB /* Mission3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission3ViewController.swift; sourceTree = "<group>"; };
 		0B6E9B6727C3C560000FDB7D /* Over.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Over.swift; sourceTree = "<group>"; };
 		0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseMenu.sks; sourceTree = "<group>"; };
 		0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = asteroidsDestroyed.sks; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 				0B56E7B327D16D7300A30ADB /* PhysicsCategory.swift */,
 				0B56E7B527D16DCC00A30ADB /* GeneralSettings.swift */,
 				4B87B94A27D0CD490035A37D /* Mission2.swift */,
+				0B56E7B727D3EB3600A30ADB /* Mission3.swift */,
 				9115AFAC27CCCA8900558762 /* Mission1.swift */,
 				4B246E2A27CEBFB400172D65 /* Win.swift */,
 				0B6E9B6727C3C560000FDB7D /* Over.swift */,
@@ -251,6 +258,7 @@
 				6B18859B27CFE88400D35A6F /* TutorialViewController.swift */,
 				4B87B94C27D0CF6C0035A37D /* Mission1ViewController.swift */,
 				4B87B94E27D0CF950035A37D /* Mission2ViewController.swift */,
+				0B56E7BB27D3EC1F00A30ADB /* Mission3ViewController.swift */,
 				4B73B8DA27CFDA580072D797 /* GalaxySelectionViewController.swift */,
 				4B73B8DD27CFDA580072D797 /* HomeScreenViewController.swift */,
 				4B73B8DF27CFDA590072D797 /* MissionsViewController.swift */,
@@ -283,6 +291,7 @@
 			children = (
 				4B86F12627B2601C00805DB7 /* Tutorial.sks */,
 				4B73B8E627CFDB950072D797 /* Over.sks */,
+				0B56E7B927D3EBC800A30ADB /* Mission3.sks */,
 				4B87B95027D0D2480035A37D /* Mission2.sks */,
 				4B246E2427CEBE7300172D65 /* Win.sks */,
 				9115AFAE27CCD05800558762 /* Mission1.sks */,
@@ -410,6 +419,7 @@
 				0B3FF08527B6E2E2000F9C12 /* laserj.mp3 in Resources */,
 				0B068BC727CFCD4D00CE7427 /* Localizable.strings in Resources */,
 				9115AFAF27CCD05800558762 /* Mission1.sks in Resources */,
+				0B56E7BA27D3EBC800A30ADB /* Mission3.sks in Resources */,
 				91D26BF427C694ED000916C0 /* button_press.wav in Resources */,
 				4BF5C27C27BD40DF004F6845 /* playerTrail.sks in Resources */,
 				0B068BBC27CFC04200CE7427 /* Menu.wav in Resources */,
@@ -456,8 +466,10 @@
 				0B3FF07227B6DDAA000F9C12 /* SKTAudio.swift in Sources */,
 				4B73B8E127CFDA590072D797 /* MultiplayerViewController.swift in Sources */,
 				4B86F12527B2601C00805DB7 /* AppDelegate.swift in Sources */,
+				0B56E7B827D3EB3600A30ADB /* Mission3.swift in Sources */,
 				4B246E2B27CEBFB400172D65 /* Win.swift in Sources */,
 				0B56E7B427D16D7300A30ADB /* PhysicsCategory.swift in Sources */,
+				0B56E7BC27D3EC1F00A30ADB /* Mission3ViewController.swift in Sources */,
 				4B5582B927B2D67800FF5CBC /* Extension.swift in Sources */,
 				0B56E7B627D16DCC00A30ADB /* GeneralSettings.swift in Sources */,
 				0B56E7B227D0154200A30ADB /* NavType.swift in Sources */,
