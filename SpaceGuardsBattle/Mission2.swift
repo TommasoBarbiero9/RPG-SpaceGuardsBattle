@@ -307,18 +307,8 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             rettangolo.removeFromParent()
             analogJoystick.isUserInteractionEnabled = true
             
-            tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-                //                  print("\(timer3)")
-                timer3 = timer3 - 1
-                timlab.text = "\(Time) : \(timer3)"
-                if timer3 < 0 {
-                    timer3 = 30
-                    tim?.invalidate()
-                    self.over!.scaleMode = scaleMode
-                    view!.presentScene(over)
-                }
-            }
             
+        
             
             
             
@@ -337,7 +327,8 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         
         let location = hero.position
         
-        for enemy in enemies {
+       
+        gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
             
             //Aim
             let dx = (location.x) - enemy.position.x
@@ -358,12 +349,12 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 enemy.position.y += velocityY
             }
             if enemy.position.distance(point: location) < 700 {
-                if updateeShotTime == 0 {
-                    updateeShotTime = currentTime
+                if self.updateeShotTime == 0 {
+                    self.updateeShotTime = currentTime
                 }
-                if currentTime - updateeShotTime > firingInterval{
-                    fireEnemyBullet()
-                    updateeShotTime = currentTime
+                if currentTime - self.updateeShotTime > self.firingInterval{
+                    self.fireEnemyBullet()
+                    self.updateeShotTime = currentTime
                 }
             }
         }
@@ -447,13 +438,13 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
 //                    eShot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
 //                    eShot.physicsBody?.usesPreciseCollisionDetection = true
                     
-               let   Pos =  convert(hero.position, from: gameLayer)
+         
                     
-//                    childNode(withName: "Hero")?.removeFromParent()
+
                     
                     
-                    for enemy in enemies {
-                        let location = Pos
+                    gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
+                        let location = self.hero.position
                         if enemy.position.distance(point: location) < 700 {
                         let eShot = SKSpriteNode(imageNamed: "lasere")
                         eShot.name = "laser"
@@ -467,9 +458,9 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                         
                         eShot.zRotation = enemy.zRotation
                         
-                        guard isPlayerAlive else { return }
+                  
                         
-                            enemy.addChild(eShot)
+                            self.gameLayer.addChild(eShot)
                         
                         var angolo : CGFloat
                         
@@ -728,10 +719,11 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         return sprite
     }()
     
-    var enemies : [SKSpriteNode] = []
+
     
     func randomEnemy () {
         let enemy = SKSpriteNode(imageNamed: "enemyBig")
+        enemy.name = "1"
         enemy.position = CGPoint(x: Int.random(in: -6500...6500), y: Int.random(in: -6500...6500))
         enemy.zPosition = NodesZPosition.hero.rawValue
         enemy.scaleTo(screenWidthPercentage: 0.35)
@@ -745,7 +737,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         enemy.physicsBody?.collisionBitMask = PhysicsCategory.None
 
         gameLayer.addChild(enemy)
-        enemies.append(enemy)
+
     }
     
 //    lazy var enemy: SKSpriteNode = {
