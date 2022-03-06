@@ -197,22 +197,13 @@
 		4B86F12327B2601C00805DB7 /* SpaceGuardsBattle */ = {
 			isa = PBXGroup;
 			children = (
-				0B56E7B127D0154200A30ADB /* NavType.swift */,
 				4B86F12427B2601C00805DB7 /* AppDelegate.swift */,
-				0B068BC927CFCD4D00CE7427 /* Localizable.strings */,
-				4B86F12A27B2601C00805DB7 /* Tutorial.swift */,
-				0B56E7B327D16D7300A30ADB /* PhysicsCategory.swift */,
-				0B56E7B527D16DCC00A30ADB /* GeneralSettings.swift */,
-				0B56E7B727D3EB3600A30ADB /* Mission3.swift */,
-				4B87B94A27D0CD490035A37D /* Mission2.swift */,
-				9115AFAC27CCCA8900558762 /* Mission1.swift */,
-				4B246E2A27CEBFB400172D65 /* Win.swift */,
-				0B6E9B6727C3C560000FDB7D /* Over.swift */,
-				4B73B8D827CFD9F00072D797 /* Main.storyboard */,
-				9123499627C8FC31001208A7 /* LaunchScreen.storyboard */,
 				4B86F13127B2601D00805DB7 /* Assets.xcassets */,
-				0B068BBB27CFC04200CE7427 /* Menu.wav */,
-				0B068BBD27CFC05000CE7427 /* Tutorial.wav */,
+				91618E7C27D52071001FA894 /* Missions */,
+				0B068BC927CFCD4D00CE7427 /* Localizable.strings */,
+				91618E8027D520EF001FA894 /* Audios */,
+				91618E7E27D52092001FA894 /* EndLevelScreens */,
+				91618E7F27D520C9001FA894 /* StoryBoard */,
 				91D26BF927C6B89D000916C0 /* SKSsScenes */,
 				91D26BF727C6B83B000916C0 /* Component */,
 				91D26BF627C6B81D000916C0 /* Controllers */,
@@ -238,6 +229,44 @@
 				4B86F14A27B2601D00805DB7 /* SpaceGuardsBattleUITestsLaunchTests.swift */,
 			);
 			path = SpaceGuardsBattleUITests;
+			sourceTree = "<group>";
+		};
+		91618E7C27D52071001FA894 /* Missions */ = {
+			isa = PBXGroup;
+			children = (
+				4B86F12A27B2601C00805DB7 /* Tutorial.swift */,
+				9115AFAC27CCCA8900558762 /* Mission1.swift */,
+				4B87B94A27D0CD490035A37D /* Mission2.swift */,
+				0B56E7B727D3EB3600A30ADB /* Mission3.swift */,
+			);
+			path = Missions;
+			sourceTree = "<group>";
+		};
+		91618E7E27D52092001FA894 /* EndLevelScreens */ = {
+			isa = PBXGroup;
+			children = (
+				4B246E2A27CEBFB400172D65 /* Win.swift */,
+				0B6E9B6727C3C560000FDB7D /* Over.swift */,
+			);
+			path = EndLevelScreens;
+			sourceTree = "<group>";
+		};
+		91618E7F27D520C9001FA894 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				4B73B8D827CFD9F00072D797 /* Main.storyboard */,
+				9123499627C8FC31001208A7 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		91618E8027D520EF001FA894 /* Audios */ = {
+			isa = PBXGroup;
+			children = (
+				0B068BBD27CFC05000CE7427 /* Tutorial.wav */,
+				0B068BBB27CFC04200CE7427 /* Menu.wav */,
+			);
+			path = Audios;
 			sourceTree = "<group>";
 		};
 		91D26BF527C6B7D5000916C0 /* Particles */ = {
@@ -280,8 +309,11 @@
 		91D26BF827C6B86D000916C0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0B56E7B127D0154200A30ADB /* NavType.swift */,
+				0B56E7B327D16D7300A30ADB /* PhysicsCategory.swift */,
 				0B3FF07127B6DDAA000F9C12 /* SKTAudio.swift */,
 				4B5582B827B2D67800FF5CBC /* Extension.swift */,
+				0B56E7B527D16DCC00A30ADB /* GeneralSettings.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -646,7 +678,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F74CDVCN7J;
+				DEVELOPMENT_TEAM = VLX6GXY646;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceGuardsBattle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SGB;
@@ -678,7 +710,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F74CDVCN7J;
+				DEVELOPMENT_TEAM = VLX6GXY646;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceGuardsBattle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SGB;
