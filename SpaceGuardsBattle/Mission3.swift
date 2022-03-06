@@ -22,6 +22,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     var over = SKScene(fileNamed: "Over")
     var win = SKScene(fileNamed: "Win")
     var isFiring = false
+    var cooldown = 20
     var updateTime: Double = 0
     var conquistato = false
     var firingInterval: Double = 0.5
@@ -245,6 +246,9 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     hudLayer.isPaused = false
                     
                     analogJoystick.isUserInteractionEnabled = true
+                    if stoconqui || recupero {
+                        riprenditempo()
+                    }
                     
                 }
                 if pauseLeave.contains(location) {
@@ -271,7 +275,9 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             let location = touch.location(in: self)
             if conquer.contains(location) {
                 if recupero == false && stoconqui == false {
-                conquerplanet(tempo: timer3)
+                    timer3 = 40
+                    cooldown = 20
+                conquerplanet()
                 }
                 if recupero {
                     inizioanimazione = true
@@ -371,6 +377,38 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             updateTime = currentTime
         }
     }
+    
+    
+    func riprenditempo() {
+        tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+            timer3 = timer3 - 1
+            
+            timlab.text = "\(Conquista) : \(timer3)"
+            
+            if timer3 <= 0 {
+                recupero = true
+                tim?.invalidate()
+                timlab.removeFromParent()
+                gameLayer.addChild(timlab)
+                tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                cooldown = cooldown - 1
+                    timlab.fontColor = .red
+                timlab.text = "\(Recupera) : \(cooldown + 1)"
+                    stoconqui = false
+                    if cooldown < 0 {
+                        tim?.invalidate()
+                        timlab.removeFromParent()
+                        gameLayer.childNode(withName: "Sonda")?.removeFromParent()
+                        conquistato = false
+                        recupero = false
+                        stoconqui = false
+                    }
+                }
+            }
+            
+        }
+    }
+    
     
     
     func fireBullet() {
@@ -769,9 +807,8 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-    func conquerplanet( tempo:  Int) {
-            var cooldown = 20
-            var palle = tempo
+    func conquerplanet() {
+           
             let sonda = SKSpriteNode(imageNamed: "0sonda")
         sonda.scaleTo(screenWidthPercentage: 0.20)
         sonda.physicsBody = SKPhysicsBody(texture: sonda.texture!, size: sonda.size)
@@ -783,25 +820,23 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         sonda.name = "Sonda"
         
         gameLayer.addChild(sonda)
-//        timlab.text = "\(Time) : \(tempo)"
         
         stoconqui = true
         for planet in planets {
             let landing = SKAction.move(to: planet.position, duration: 5)
-//            let conquista = SKAction.wait(forDuration: 10)
             let ritiro = SKAction.animate(with: Textures, timePerFrame: 5)
             let actions = [landing,ritiro]
             sonda.run(SKAction.sequence(actions))
             }
-        timlab.text = "\(Conquista) : \(palle)"
+        timlab.text = "\(Conquista) : \(timer3)"
         timlab.fontColor = .yellow
         gameLayer.addChild(timlab)
         tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-            palle = palle - 1
+            timer3 = timer3 - 1
             
-            timlab.text = "\(Conquista) : \(palle)"
+            timlab.text = "\(Conquista) : \(timer3)"
             
-            if palle <= 0 {
+            if timer3 <= 0 {
                 recupero = true
                 tim?.invalidate()
                 timlab.removeFromParent()
@@ -847,8 +882,8 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         gameLayer.isPaused = true
         hudLayer.isPaused = true
         analogJoystick.isUserInteractionEnabled = false
-        
         tim?.invalidate()
+        
     }
     
     
