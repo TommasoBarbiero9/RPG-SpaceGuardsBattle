@@ -14,6 +14,7 @@ import UIKit
 
 
 class Mission3: SKScene, SKPhysicsContactDelegate {
+   
     let velocityMultiplier: CGFloat = 0.10
     var health: CGFloat = 1
     var isPlayerAlive = true
@@ -55,7 +56,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     let pauseLeave = SKLabelNode(text: "")
     let pauseCancel = SKSpriteNode(imageNamed: "pauseCancel")
     
-    let palle = 10
+    let palle = 15
     
     let cam = SKCameraNode()
     var canShoot = false
