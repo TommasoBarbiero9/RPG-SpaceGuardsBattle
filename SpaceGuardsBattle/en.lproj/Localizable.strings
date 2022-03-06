@@ -29,3 +29,22 @@
 "Recupera" = "Rescue";
 
 "Conquista" = "Conquer";
+
+"MexTutorial" = "
+                    Hello, cadet. Are you ready to start your new adventure? \
+                    You better be, just a couple tips, \
+                    you can explore the universe through your joystick right here. \
+                    You can also shoot and destroy asteroids tapping on the screen.
+                    ";
+
+"MexLv1" =  "
+                     Good job cadet, keep training destroying more asteroids.
+                     Go over the limit of 100 points!
+                    ";
+
+"MexLv2" = "You may have enemies... \ Kill them all";
+
+
+"MexLv3" = "Another of the tasks of a good cadet is knowing how to conquer a planet! Send the lander to the planet
+and don't get killed!";
+

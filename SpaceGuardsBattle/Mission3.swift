@@ -112,14 +112,14 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         
         rettangolo.position = CGPoint(x: 0, y: 0)
         rettangolo.zPosition = NodesZPosition.hero.rawValue + 1
-        boxTUT.text = ("\(textENG)")
-        boxTUT.fontSize = 30
+        boxTUT.text = ("\(textMex)")
+        boxTUT.fontSize = 35
         boxTUT.position = CGPoint(x: 0, y: 0)
         boxTUT.lineBreakMode = .byWordWrapping
         boxTUT.numberOfLines = 0
         boxTUT.preferredMaxLayoutWidth = 350
         boxTUT.verticalAlignmentMode = .center
-        boxTUT.fontColor = .white
+        boxTUT.fontColor = .black
         if tutorial == false {
             analogJoystick.isUserInteractionEnabled = false
             
@@ -917,13 +917,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     
     
     let boxTUT = SKLabelNode(text: "Hello")
-    let textENG =   """
-                    Hello, cadet. Are you ready to start your new adventure? \
-                    You better be, just a couple tips, \
-                    you can explore the universe through your joystick right here. \
-                    You can also shoot and destroy asteroids tapping on the screen.
-                    
-                    """
+    let textMex = NSLocalizedString("MexLv3", comment: "")
     
     
     

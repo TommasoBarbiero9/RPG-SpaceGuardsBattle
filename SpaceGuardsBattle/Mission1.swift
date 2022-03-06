@@ -92,7 +92,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         HomeScreenViewController.audioPlayer.play()
         
         }
-        func CBApplicationDidBecomeActive() {}
+       
         
         if isAppAlreadyLaunchedOnce() == false {
             setupTutorial()
@@ -111,17 +111,17 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         
         rettangolo.position = CGPoint(x: 0, y: 0)
         rettangolo.zPosition = NodesZPosition.hero.rawValue + 1
-        boxTUT.text = ("\(textENG)")
-        boxTUT.fontSize = 30
+        
+        boxTUT.fontSize = 35
         boxTUT.position = CGPoint(x: 0, y: 0)
         boxTUT.lineBreakMode = .byWordWrapping
         boxTUT.numberOfLines = 0
         boxTUT.preferredMaxLayoutWidth = 350
         boxTUT.verticalAlignmentMode = .center
-        boxTUT.fontColor = .white
+        boxTUT.fontColor = .black
         if tutorial == false {
             analogJoystick.isUserInteractionEnabled = false
-            boxTUT.text = ("\(level1)")
+            boxTUT.text = ("\(textMex)")
             
             addChild(rettangolo)
             rettangolo.addChild(boxTUT)
@@ -135,8 +135,8 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         
         
         
-        let tlanet = SKSpriteNode(imageNamed: "1")
-        tlanet.scaleTo(screenWidthPercentage: 0.60)
+        let tlanet = SKSpriteNode(imageNamed: "pianetaverde")
+        tlanet.scaleTo(screenWidthPercentage: 2.5)
         tlanet.position = CGPoint(x: 400  , y: 600)
         tlanet.zPosition = 0
         tlanet.physicsBody = SKPhysicsBody(texture: tlanet.texture!, size: tlanet.size)
@@ -245,7 +245,6 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
                         timer3 = timer3 - 1
                         timlab.text = "\(Time) : \(timer3)"
                         if timer3 < 0 {
-                            timer3 = 30
                             tim?.invalidate()
                             self.over!.scaleMode = scaleMode
                             view?.presentScene(over)
@@ -588,17 +587,9 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
     
     
     let boxTUT = SKLabelNode(text: "Hello")
-    let textENG =   """
-                    Hello, cadet. Are you ready to start your new adventure? \
-                    You better be, just a couple tips, \
-                    you can explore the universe through your joystick right here. \
-                    You can also shoot and destroy asteroids tapping on the screen.
-                    """
+   
     
-    let level1 =   """
-                     Good job cadet, keep training destroying more asteroids.
-                     Go over the limit of 100 points!
-                    """
+    let textMex = NSLocalizedString("MexLv1", comment: "")
     
     
     

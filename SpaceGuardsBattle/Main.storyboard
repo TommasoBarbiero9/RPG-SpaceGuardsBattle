@@ -803,7 +803,7 @@
         <scene sceneID="MDk-Na-1dx">
             <objects>
                 <viewController storyboardIdentifier="Mission1ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="laH-dU-6gV" customClass="Mission1ViewController" customModule="SGB_SpaceGuardsBattle" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ngo-Ld-6I7" customClass="SKView">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ngo-Ld-6I7" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="WyA-JN-Vqt"/>

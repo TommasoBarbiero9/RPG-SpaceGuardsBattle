@@ -29,3 +29,13 @@
 "Recupera" = "Recupera";
 
 "Conquista" = "Conquista";
+
+"MexTutorial" = "Salve, cadetto. Sei pronto per iniziare una nuova avventura? \Faresti meglio ad esserlo! Ecco un paio di consigli,\puoi esplorare l'universo muovendo la navicella con il joystick in basso.\Puoi anche sparare e distruggere asteroidi toccando lo schermo.";
+
+"MexLv1" =  "Bel lavoro cadetto, continua ad allenarti distruggendo gli asteroidi.\Supera il limite di 100 punti!";
+
+"MexLv2" = "Potresti avere dei nemici...Ammazzali tutti";
+
+
+"MexLv3" = "Un'altro dei compiti di un buon cadetto è saper conquistare un pianeta! Invia il lander sul pianeta
+e non farti uccidere!";
