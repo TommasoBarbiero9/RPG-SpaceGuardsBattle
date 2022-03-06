@@ -35,7 +35,10 @@ class HomeScreenViewController: UIViewController {
             
         }
         HomeScreenViewController.audioPlayer.numberOfLoops = -1
-        HomeScreenViewController.audioPlayer.play()
+        if GeneralSettings.sharedGameData.bgsound == true {
+            HomeScreenViewController.audioPlayer.play()
+            }
+       
     }
     
     
@@ -61,6 +64,10 @@ class HomeScreenViewController: UIViewController {
     @IBAction func audioonoff( sender: UIButton) {
         
         GeneralSettings.sharedGameData.bgsound.toggle()
+        if GeneralSettings.sharedGameData.bgsound == false {
+            stopmusic()} else {
+                HomeScreenViewController.audioPlayer.play()
+            }
     }
     
     
