@@ -75,6 +75,9 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
         
+//        Mission3ViewController.stop
+        
+        
         if GeneralSettings.sharedGameData.bgsound == true {
         
         let sound = Bundle.main.path(forResource: "Tutorial", ofType:
@@ -1012,7 +1015,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     
     
     override func didSimulatePhysics() {
-        self.camera!.position = hero.position
+        self.camera?.position = hero.position
     }
     
     
