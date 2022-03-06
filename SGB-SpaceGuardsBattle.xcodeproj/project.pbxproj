@@ -54,6 +54,7 @@
 		9115AFAD27CCCA8900558762 /* Mission1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9115AFAC27CCCA8900558762 /* Mission1.swift */; };
 		9115AFAF27CCD05800558762 /* Mission1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9115AFAE27CCD05800558762 /* Mission1.sks */; };
 		9123499727C8FC31001208A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9123499627C8FC31001208A7 /* LaunchScreen.storyboard */; };
+		91618E8327D52887001FA894 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91618E8527D52887001FA894 /* Main.strings */; };
 		91D26BF427C694ED000916C0 /* button_press.wav in Resources */ = {isa = PBXBuildFile; fileRef = 91D26BF327C694ED000916C0 /* button_press.wav */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +127,8 @@
 		9115AFAC27CCCA8900558762 /* Mission1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission1.swift; sourceTree = "<group>"; };
 		9115AFAE27CCD05800558762 /* Mission1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mission1.sks; sourceTree = "<group>"; };
 		9123499627C8FC31001208A7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		91618E8427D52887001FA894 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		91618E8727D5289F001FA894 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
 		91D26BF327C694ED000916C0 /* button_press.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button_press.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -255,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				4B73B8D827CFD9F00072D797 /* Main.storyboard */,
+				91618E8527D52887001FA894 /* Main.strings */,
 				9123499627C8FC31001208A7 /* LaunchScreen.storyboard */,
 			);
 			path = StoryBoard;
@@ -438,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B246E2527CEBE7400172D65 /* Win.sks in Resources */,
+				91618E8327D52887001FA894 /* Main.strings in Resources */,
 				0B6E9B7427C4D443000FDB7D /* Starfield.sks in Resources */,
 				0BCF756127BEAFD6003A31C0 /* explosion.mp3 in Resources */,
 				4B73B8E727CFDB950072D797 /* Over.sks in Resources */,
@@ -549,6 +554,16 @@
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
+		};
+		91618E8527D52887001FA894 /* Main.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91618E8427D52887001FA894 /* en */,
+				91618E8727D5289F001FA894 /* it */,
+			);
+			name = Main.strings;
+			path = SpaceGuardsBattle/StoryBoard;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 

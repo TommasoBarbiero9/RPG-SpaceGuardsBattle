@@ -129,7 +129,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        createplanets(name: "pianetaarancione")
+        createplanets(name: "pianetablu")
         var g = scene!.calculateAccumulatedFrame()
         g.size.height = g.size.height - 2000
         g.size.width = g.size.width - 2000
@@ -529,7 +529,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 
                 contact.bodyA.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
                 
-                score = score + 5
+//                score = score + 5
                 scoreLabel.text = "\(Scor) : \(score)"
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -553,7 +553,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     
                     
                     contact.bodyB.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
-                    score = score + 3
+//                    score = score + 3
                     scoreLabel.text = "\(Scor) : \(score)"
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -863,7 +863,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     
     func createplanets(name: String) {
         let planet = SKSpriteNode(imageNamed: name)
-        planet.scaleTo(screenWidthPercentage: 1)
+        planet.scaleTo(screenWidthPercentage: 2.5)
         planet.position = CGPoint(x: 400  , y: 600)
         planet.zPosition = 0
         planet.physicsBody = SKPhysicsBody(texture: planet.texture!, size: planet.size)
