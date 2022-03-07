@@ -71,8 +71,8 @@
                                     <action selector="backButtonPressed:" destination="clM-LZ-Ybb" eventType="touchUpInside" id="q3O-SJ-mZu"/>
                                 </connections>
                             </button>
-                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upc-uI-HfL">
-                                <rect key="frame" x="63" y="208" width="288" height="408"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upc-uI-HfL">
+                                <rect key="frame" x="63" y="208" width="288" height="343"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHb-WR-l40">
                                         <rect key="frame" x="30" y="25" width="229" height="59"/>
@@ -109,14 +109,18 @@
                                                 <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </backgroundConfiguration>
                                             <attributedString key="attributedTitle">
-                                                <fragment content="LOCKED">
+                                                <fragment content="MISSION 1">
                                                     <attributes>
                                                         <font key="NSFont" size="12" name="ArialRoundedMTBold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
                                             <color key="baseBackgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="mission1ButtonPressed:" destination="clM-LZ-Ybb" eventType="touchUpInside" id="ax6-SG-Lhs"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8t-bQ-GWh">
                                         <rect key="frame" x="30" y="178" width="229" height="59"/>
@@ -129,14 +133,18 @@
                                                 <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </backgroundConfiguration>
                                             <attributedString key="attributedTitle">
-                                                <fragment content="LOCKED">
+                                                <fragment content="MISSION 2">
                                                     <attributes>
                                                         <font key="NSFont" size="12" name="ArialRoundedMTBold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
                                             <color key="baseBackgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="mission2ButtonPressed:" destination="clM-LZ-Ybb" eventType="touchUpInside" id="VQa-C9-qDQ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qi5-qj-R5P">
                                         <rect key="frame" x="30" y="254" width="229" height="59.5"/>
@@ -149,34 +157,18 @@
                                                 <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </backgroundConfiguration>
                                             <attributedString key="attributedTitle">
-                                                <fragment content="LOCKED">
+                                                <fragment content="MISSION 3">
                                                     <attributes>
                                                         <font key="NSFont" size="12" name="ArialRoundedMTBold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
                                             <color key="baseBackgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yDq-6X-SYd">
-                                        <rect key="frame" x="30" y="324" width="229" height="59"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="59" id="FAC-oX-nhj"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled">
-                                            <backgroundConfiguration key="background" cornerRadius="15">
-                                                <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </backgroundConfiguration>
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="LOCKED">
-                                                    <attributes>
-                                                        <font key="NSFont" size="12" name="ArialRoundedMTBold"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <color key="baseBackgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="mission3ButtonPressed:" destination="clM-LZ-Ybb" eventType="touchUpInside" id="hkT-JU-UeA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -184,14 +176,11 @@
                                     <constraint firstItem="v8t-bQ-GWh" firstAttribute="trailing" secondItem="WQm-ES-Lc1" secondAttribute="trailing" id="HIF-AQ-PK8"/>
                                     <constraint firstItem="v8t-bQ-GWh" firstAttribute="top" secondItem="WQm-ES-Lc1" secondAttribute="bottom" constant="18.5" id="IcA-xW-25R"/>
                                     <constraint firstItem="JHb-WR-l40" firstAttribute="leading" secondItem="upc-uI-HfL" secondAttribute="leading" constant="30" id="JyJ-7d-oc3"/>
-                                    <constraint firstItem="yDq-6X-SYd" firstAttribute="leading" secondItem="Qi5-qj-R5P" secondAttribute="leading" id="Lmf-WH-kw5"/>
                                     <constraint firstItem="WQm-ES-Lc1" firstAttribute="top" secondItem="JHb-WR-l40" secondAttribute="bottom" constant="17" id="O8W-iV-ELW"/>
-                                    <constraint firstAttribute="height" constant="408" id="TrY-qv-kAo"/>
+                                    <constraint firstAttribute="height" constant="343" id="TrY-qv-kAo"/>
                                     <constraint firstItem="Qi5-qj-R5P" firstAttribute="trailing" secondItem="v8t-bQ-GWh" secondAttribute="trailing" id="W1H-ES-ZoA"/>
                                     <constraint firstItem="v8t-bQ-GWh" firstAttribute="leading" secondItem="WQm-ES-Lc1" secondAttribute="leading" id="ZbX-Xw-ARM"/>
-                                    <constraint firstItem="yDq-6X-SYd" firstAttribute="trailing" secondItem="Qi5-qj-R5P" secondAttribute="trailing" id="bEK-JE-Ei4"/>
                                     <constraint firstItem="WQm-ES-Lc1" firstAttribute="trailing" secondItem="JHb-WR-l40" secondAttribute="trailing" id="dzZ-Zz-etJ"/>
-                                    <constraint firstItem="yDq-6X-SYd" firstAttribute="top" secondItem="Qi5-qj-R5P" secondAttribute="bottom" constant="10.5" id="epy-bJ-tLM"/>
                                     <constraint firstItem="WQm-ES-Lc1" firstAttribute="leading" secondItem="JHb-WR-l40" secondAttribute="leading" id="exE-qr-f8h"/>
                                     <constraint firstAttribute="trailing" secondItem="JHb-WR-l40" secondAttribute="trailing" constant="29" id="jvf-gw-RGN"/>
                                     <constraint firstItem="JHb-WR-l40" firstAttribute="top" secondItem="upc-uI-HfL" secondAttribute="top" constant="25" id="oYL-tf-e3k"/>
@@ -204,7 +193,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MISSIONS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uf4-fi-3rf">
                                 <rect key="frame" x="135" y="164" width="144" height="60"/>
-                                <color key="backgroundColor" red="0.96611279250000004" green="0.30102029730000002" blue="0.086932066289999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.090196078431372548" green="0.50196078431372548" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Zga-JN-zbP"/>
                                     <constraint firstAttribute="width" constant="144" id="k1d-rl-fzu"/>
@@ -239,6 +228,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0Q-KM-q79" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="634.78260869565224" y="-319.41964285714283"/>
+        </scene>
+        <!--Mission1 View Controller-->
+        <scene sceneID="gBk-dh-Lhi">
+            <objects>
+                <viewController storyboardIdentifier="Mission1ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X7G-D6-ZaU" customClass="Mission1ViewController" customModule="SGB_SpaceGuardsBattle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Tc3-96-GWA" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qDu-X7-JyO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Sd-Da-SV4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="164" y="582"/>
         </scene>
         <!--Home Screen View Controller-->
         <scene sceneID="hBc-tC-SO8">
@@ -457,7 +461,7 @@
                                 <rect key="frame" x="20" y="302" width="351" height="212"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJ6-HZ-6Bd">
-                                        <rect key="frame" x="0.0" y="0.0" width="555" height="212"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="785" height="212"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0E-Du-Uja">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="212"/>
@@ -490,10 +494,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ku7-bJ-sW2">
-                                                <rect key="frame" x="280" y="0.0" width="275" height="212"/>
+                                                <rect key="frame" x="280" y="0.0" width="230" height="212"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    GOLD    " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bI7-Xa-IWe">
-                                                        <rect key="frame" x="81" y="24.5" width="103.5" height="24.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   PINKY   " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bI7-Xa-IWe">
+                                                        <rect key="frame" x="84.5" y="24.5" width="96.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="21"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="highlightedColor" red="0.95558230310000003" green="1" blue="0.9929830664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -505,7 +509,7 @@
                                                             <constraint firstAttribute="width" constant="204" id="ywz-NR-GtS"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="galaxyMilk1"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="galaxy2"/>
                                                         <connections>
                                                             <action selector="goldGalaxySelected:" destination="hXW-Pv-OgB" eventType="touchUpInside" id="cfK-94-zWT"/>
                                                         </connections>
@@ -513,13 +517,45 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="bI7-Xa-IWe" firstAttribute="centerX" secondItem="tni-Nd-bjF" secondAttribute="centerX" id="V6G-Jh-LAq"/>
-                                                    <constraint firstAttribute="width" constant="275" id="agg-uH-Le9"/>
+                                                    <constraint firstAttribute="width" constant="230" id="agg-uH-Le9"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fP-wU-d3x">
+                                                <rect key="frame" x="510" y="0.0" width="275" height="212"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   GREEN    " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyj-jM-KPn">
+                                                        <rect key="frame" x="92.5" y="24.5" width="96.5" height="24.5"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="21"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="highlightedColor" red="0.95558230310000003" green="1" blue="0.9929830664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3co-S2-nX8">
+                                                        <rect key="frame" x="38.5" y="75.5" width="204" height="136"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="204" id="Ii3-M1-3fh"/>
+                                                            <constraint firstAttribute="height" constant="136" id="WR0-7D-bAO"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="galaxy3"/>
+                                                        <connections>
+                                                            <action selector="goldGalaxySelected:" destination="hXW-Pv-OgB" eventType="touchUpInside" id="7Wp-zN-g7N"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="275" id="DfU-eV-D8J"/>
+                                                    <constraint firstItem="Qyj-jM-KPn" firstAttribute="centerX" secondItem="3co-S2-nX8" secondAttribute="centerX" id="z1m-9M-S2p"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="Qyj-jM-KPn" firstAttribute="width" secondItem="bI7-Xa-IWe" secondAttribute="width" id="Ag6-y3-hi4"/>
                                             <constraint firstItem="bI7-Xa-IWe" firstAttribute="centerY" secondItem="UBT-JN-5YQ" secondAttribute="centerY" id="LVS-gF-Tza"/>
+                                            <constraint firstItem="3co-S2-nX8" firstAttribute="top" secondItem="tni-Nd-bjF" secondAttribute="top" id="OFK-lY-Zsn"/>
+                                            <constraint firstItem="3co-S2-nX8" firstAttribute="leading" secondItem="tni-Nd-bjF" secondAttribute="trailing" constant="34" id="PZs-ok-817"/>
+                                            <constraint firstItem="Qyj-jM-KPn" firstAttribute="top" secondItem="bI7-Xa-IWe" secondAttribute="top" id="XVe-NR-BfY"/>
                                             <constraint firstItem="tni-Nd-bjF" firstAttribute="centerY" secondItem="QSJ-W2-glz" secondAttribute="centerY" id="qlz-yO-ePC"/>
+                                            <constraint firstItem="Qyj-jM-KPn" firstAttribute="leading" secondItem="bI7-Xa-IWe" secondAttribute="trailing" constant="141.5" id="rgJ-sS-3N3"/>
                                             <constraint firstItem="tni-Nd-bjF" firstAttribute="leading" secondItem="QSJ-W2-glz" secondAttribute="trailing" constant="34.5" id="tDL-nm-Es9"/>
                                         </constraints>
                                     </stackView>
@@ -575,6 +611,8 @@
                         <outlet property="choosegalaxyLabel" destination="tyM-ie-pko" id="OY0-oE-gfD"/>
                         <outlet property="goldGalaxy" destination="bI7-Xa-IWe" id="Kfh-nQ-ggg"/>
                         <outlet property="goldGalaxyButton" destination="tni-Nd-bjF" id="DoS-P6-Tkg"/>
+                        <outlet property="greenGalaxy" destination="Qyj-jM-KPn" id="yIb-uv-t9f"/>
+                        <outlet property="greenGalaxyButton" destination="3co-S2-nX8" id="CGh-Om-4Ht"/>
                         <outlet property="milkGalaxy" destination="UBT-JN-5YQ" id="nYD-X0-pTV"/>
                         <outlet property="milkGalaxyButton" destination="QSJ-W2-glz" id="NNa-Fq-xlE"/>
                         <outlet property="planets2" destination="2sA-Gu-8R2" id="Tv6-rz-aIG"/>
@@ -977,9 +1015,39 @@
             </objects>
             <point key="canvasLocation" x="1993" y="-413"/>
         </scene>
+        <!--Mission2 View Controller-->
+        <scene sceneID="bJi-vQ-ZP6">
+            <objects>
+                <viewController storyboardIdentifier="Mission2ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fcs-VM-N4E" customClass="Mission2ViewController" customModule="SGB_SpaceGuardsBattle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="aPG-2H-Nae" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Hra-g7-kF7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jpp-AK-TNn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="912" y="582"/>
+        </scene>
+        <!--Mission3 View Controller-->
+        <scene sceneID="nAq-pO-8w9">
+            <objects>
+                <viewController storyboardIdentifier="Mission3ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xT9-5X-loz" customClass="Mission3ViewController" customModule="SGB_SpaceGuardsBattle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ePi-eL-mN1" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="khX-UI-oBi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dqp-ez-uxa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1733" y="592"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fth-SR-uPy"/>
+        <segue reference="EbC-Ar-Gw8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1qr" width="1164" height="1074"/>
@@ -989,6 +1057,8 @@
         <image name="background768" width="1170" height="768"/>
         <image name="blue" width="100" height="100"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
+        <image name="galaxy2" width="200" height="135"/>
+        <image name="galaxy3" width="200" height="135"/>
         <image name="galaxyMilk1" width="200" height="135"/>
         <image name="green" width="100" height="100"/>
         <image name="linguetta" width="49" height="67"/>

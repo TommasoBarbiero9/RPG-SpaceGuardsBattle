@@ -26,7 +26,9 @@ class GalaxySelectionViewController : UIViewController{
 
     @IBOutlet weak var goldGalaxyButton: UIButton!
 
+    @IBOutlet weak var greenGalaxy: UILabel!
     
+    @IBOutlet weak var greenGalaxyButton: UIButton!
     @IBOutlet weak var planets2: UIImageView!
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -65,6 +67,23 @@ class GalaxySelectionViewController : UIViewController{
 
         goldGalaxy.layer.masksToBounds = true
         goldGalaxy.clipsToBounds = false
+        
+        
+        greenGalaxyButton.layer.borderWidth = 1.0
+        greenGalaxyButton.layer.cornerRadius = 15
+
+        greenGalaxyButton.layer.borderColor = UIColor.init(red: 255/255, green: 197/255, blue: 85/255, alpha: 1).cgColor;
+
+        greenGalaxyButton.layer.masksToBounds = true
+        greenGalaxyButton.clipsToBounds = false
+
+
+        greenGalaxy.layer.borderWidth = 1.0
+        greenGalaxy.layer.cornerRadius = 8
+        greenGalaxy.layer.borderColor = UIColor.init(red: 46/255, green: 176/255, blue: 205/255, alpha: 1).cgColor;
+
+       greenGalaxy.layer.masksToBounds = true
+       greenGalaxy.clipsToBounds = false
 
         choosegalaxyLabel.layer.borderWidth = 1.0
         choosegalaxyLabel.layer.cornerRadius = 8
