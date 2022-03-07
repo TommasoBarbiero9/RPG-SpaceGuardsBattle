@@ -9,9 +9,7 @@
 
 
 import SpriteKit
-import GameplayKit
 import AVKit
-import NotificationCenter
 import UIKit
 
 
@@ -136,7 +134,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         
         
         let tlanet = SKSpriteNode(imageNamed: "pianetaverde")
-        tlanet.scaleTo(screenWidthPercentage: 2.5)
+        tlanet.scaleTo(screenWidthPercentage: 2)
         tlanet.position = CGPoint(x: 400  , y: 600)
         tlanet.zPosition = 0
         tlanet.physicsBody = SKPhysicsBody(texture: tlanet.texture!, size: tlanet.size)

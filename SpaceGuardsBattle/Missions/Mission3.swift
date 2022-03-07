@@ -7,9 +7,7 @@
 
 import Foundation
 import SpriteKit
-import GameplayKit
 import AVKit
-import NotificationCenter
 import UIKit
 
 
@@ -811,7 +809,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     func conquerplanet() {
            
             let sonda = SKSpriteNode(imageNamed: "0sonda")
-        sonda.scaleTo(screenWidthPercentage: 0.20)
+        sonda.scaleTo(screenWidthPercentage: 0.25)
         sonda.physicsBody = SKPhysicsBody(texture: sonda.texture!, size: sonda.size)
             sonda.position = hero.position
         sonda.physicsBody?.collisionBitMask = PhysicsCategory.None
@@ -864,7 +862,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     
     func createplanets(name: String) {
         let planet = SKSpriteNode(imageNamed: name)
-        planet.scaleTo(screenWidthPercentage: 2.5)
+        planet.scaleTo(screenWidthPercentage: 2)
         planet.position = CGPoint(x: 400  , y: 600)
         planet.zPosition = 0
         planet.physicsBody = SKPhysicsBody(texture: planet.texture!, size: planet.size)

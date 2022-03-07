@@ -7,9 +7,7 @@
 
 import Foundation
 import SpriteKit
-import GameplayKit
 import AVKit
-import NotificationCenter
 import UIKit
 
 
@@ -769,7 +767,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     //MARK: FUNCTIONS
     func createplanets(name: String) {
         let planet = SKSpriteNode(imageNamed: name)
-        planet.scaleTo(screenWidthPercentage: 2.5)
+        planet.scaleTo(screenWidthPercentage: 2)
         planet.position = CGPoint(x: 400  , y: 600)
         planet.zPosition = 0
         planet.physicsBody = SKPhysicsBody(texture: planet.texture!, size: planet.size)

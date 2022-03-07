@@ -15,6 +15,7 @@ class GeneralSettings {
     var mission1Unlocked: Bool = false
     var mission2Unlocked: Bool = false
     var selectedMission: Int = 1
+    var livello = Mission1ViewController()
     var bgsound : Bool = true
     
     
