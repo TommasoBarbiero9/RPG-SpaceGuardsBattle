@@ -35,7 +35,7 @@ class GalaxySelectionViewController : UIViewController{
     override func viewDidLoad() {
 
         planets2.rotate()
-//        scrollView.contentInset = UIEdgeInsets
+        scrollView.contentInset = UIEdgeInsets()
         
 
         milkGalaxyButton.layer.borderWidth = 1.0
@@ -113,13 +113,13 @@ class GalaxySelectionViewController : UIViewController{
         }
     }
 
-    @IBAction func goldGalaxySelected(_ sender: UIButton) {
-        self.navigationController?.isNavigationBarHidden = true
-        if let back = storyboard?.instantiateViewController(withIdentifier: "StartAnimationViewController") as? StartAnimationViewController {
-            navigationController?.pushViewController(back, animated: false)
-        }
-        
-    }
+//    @IBAction func goldGalaxySelected(_ sender: UIButton) {
+//        self.navigationController?.isNavigationBarHidden = true
+//        if let back = storyboard?.instantiateViewController(withIdentifier: "StartAnimationViewController") as? StartAnimationViewController {
+//            navigationController?.pushViewController(back, animated: false)
+//        }
+//        
+//    }
     override var prefersStatusBarHidden: Bool {
         return true
     }

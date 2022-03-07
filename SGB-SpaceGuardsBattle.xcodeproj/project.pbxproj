@@ -15,11 +15,9 @@
 		0B56E7B227D0154200A30ADB /* NavType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7B127D0154200A30ADB /* NavType.swift */; };
 		0B56E7B427D16D7300A30ADB /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7B327D16D7300A30ADB /* PhysicsCategory.swift */; };
 		0B56E7B627D16DCC00A30ADB /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7B527D16DCC00A30ADB /* GeneralSettings.swift */; };
-		0B56E7B827D3EB3600A30ADB /* Mission3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7B727D3EB3600A30ADB /* Mission3.swift */; };
 		0B56E7BA27D3EBC800A30ADB /* Mission3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B56E7B927D3EBC800A30ADB /* Mission3.sks */; };
 		0B56E7BC27D3EC1F00A30ADB /* Mission3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7BB27D3EC1F00A30ADB /* Mission3ViewController.swift */; };
 		0B56E7CE27D61FDC00A30ADB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B56E7CD27D61FDC00A30ADB /* Main.storyboard */; };
-		0B56E7D927D6211200A30ADB /* StartAnimationViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7D327D6211200A30ADB /* StartAnimationViewcontroller.swift */; };
 		0B6E9B6827C3C560000FDB7D /* Over.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E9B6727C3C560000FDB7D /* Over.swift */; };
 		0B6E9B6C27C3D792000FDB7D /* PauseMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */; };
 		0B6E9B7227C4D1E4000FDB7D /* asteroidsDestroyed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */; };
@@ -37,12 +35,10 @@
 		4B73B8E727CFDB950072D797 /* Over.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B73B8E627CFDB950072D797 /* Over.sks */; };
 		4B86F12527B2601C00805DB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B86F12427B2601C00805DB7 /* AppDelegate.swift */; };
 		4B86F12727B2601C00805DB7 /* Tutorial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B86F12627B2601C00805DB7 /* Tutorial.sks */; };
-		4B86F12B27B2601C00805DB7 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B86F12A27B2601C00805DB7 /* Tutorial.swift */; };
 		4B86F13227B2601D00805DB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B86F13127B2601D00805DB7 /* Assets.xcassets */; };
 		4B86F13F27B2601D00805DB7 /* SpaceGuardsBattleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B86F13E27B2601D00805DB7 /* SpaceGuardsBattleTests.swift */; };
 		4B86F14927B2601D00805DB7 /* SpaceGuardsBattleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B86F14827B2601D00805DB7 /* SpaceGuardsBattleUITests.swift */; };
 		4B86F14B27B2601D00805DB7 /* SpaceGuardsBattleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B86F14A27B2601D00805DB7 /* SpaceGuardsBattleUITestsLaunchTests.swift */; };
-		4B87B94B27D0CD490035A37D /* Mission2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B87B94A27D0CD490035A37D /* Mission2.swift */; };
 		4B87B94D27D0CF6C0035A37D /* Mission1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B87B94C27D0CF6C0035A37D /* Mission1ViewController.swift */; };
 		4B87B94F27D0CF950035A37D /* Mission2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B87B94E27D0CF950035A37D /* Mission2ViewController.swift */; };
 		4B87B95127D0D2480035A37D /* Mission2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B87B95027D0D2480035A37D /* Mission2.sks */; };
@@ -52,7 +48,11 @@
 		6BC1061127D625170038D8E2 /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1060D27D625170038D8E2 /* MissionsViewController.swift */; };
 		6BC1061227D625170038D8E2 /* SpaceshipCusomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1060E27D625170038D8E2 /* SpaceshipCusomizationViewController.swift */; };
 		6BC1061327D625170038D8E2 /* GalaxySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1060F27D625170038D8E2 /* GalaxySelectionViewController.swift */; };
-		9115AFAD27CCCA8900558762 /* Mission1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9115AFAC27CCCA8900558762 /* Mission1.swift */; };
+		6BC1061727D6799E0038D8E2 /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1061627D6799E0038D8E2 /* PauseViewController.swift */; };
+		6BC1062227D6B1D40038D8E2 /* Mission2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1061E27D6B1D40038D8E2 /* Mission2.swift */; };
+		6BC1062327D6B1D40038D8E2 /* Mission3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1061F27D6B1D40038D8E2 /* Mission3.swift */; };
+		6BC1062427D6B1D40038D8E2 /* Mission1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1062027D6B1D40038D8E2 /* Mission1.swift */; };
+		6BC1062527D6B1D40038D8E2 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1062127D6B1D40038D8E2 /* Tutorial.swift */; };
 		9115AFAF27CCD05800558762 /* Mission1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9115AFAE27CCD05800558762 /* Mission1.sks */; };
 		9123499727C8FC31001208A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9123499627C8FC31001208A7 /* LaunchScreen.storyboard */; };
 		91D26BF427C694ED000916C0 /* button_press.wav in Resources */ = {isa = PBXBuildFile; fileRef = 91D26BF327C694ED000916C0 /* button_press.wav */; };
@@ -85,11 +85,9 @@
 		0B56E7B127D0154200A30ADB /* NavType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavType.swift; sourceTree = "<group>"; };
 		0B56E7B327D16D7300A30ADB /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		0B56E7B527D16DCC00A30ADB /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
-		0B56E7B727D3EB3600A30ADB /* Mission3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission3.swift; sourceTree = "<group>"; };
 		0B56E7B927D3EBC800A30ADB /* Mission3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mission3.sks; sourceTree = "<group>"; };
 		0B56E7BB27D3EC1F00A30ADB /* Mission3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission3ViewController.swift; sourceTree = "<group>"; };
 		0B56E7CD27D61FDC00A30ADB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		0B56E7D327D6211200A30ADB /* StartAnimationViewcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAnimationViewcontroller.swift; sourceTree = "<group>"; };
 		0B6E9B6727C3C560000FDB7D /* Over.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Over.swift; sourceTree = "<group>"; };
 		0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseMenu.sks; sourceTree = "<group>"; };
 		0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = asteroidsDestroyed.sks; sourceTree = "<group>"; };
@@ -108,14 +106,12 @@
 		4B86F12127B2601C00805DB7 /* SGB-SpaceGuardsBattle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SGB-SpaceGuardsBattle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B86F12427B2601C00805DB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B86F12627B2601C00805DB7 /* Tutorial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tutorial.sks; sourceTree = "<group>"; };
-		4B86F12A27B2601C00805DB7 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		4B86F13127B2601D00805DB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B86F13A27B2601D00805DB7 /* SGB-SpaceGuardsBattleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SGB-SpaceGuardsBattleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B86F13E27B2601D00805DB7 /* SpaceGuardsBattleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceGuardsBattleTests.swift; sourceTree = "<group>"; };
 		4B86F14427B2601D00805DB7 /* SGB-SpaceGuardsBattleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SGB-SpaceGuardsBattleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B86F14827B2601D00805DB7 /* SpaceGuardsBattleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceGuardsBattleUITests.swift; sourceTree = "<group>"; };
 		4B86F14A27B2601D00805DB7 /* SpaceGuardsBattleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceGuardsBattleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4B87B94A27D0CD490035A37D /* Mission2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission2.swift; sourceTree = "<group>"; };
 		4B87B94C27D0CF6C0035A37D /* Mission1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission1ViewController.swift; sourceTree = "<group>"; };
 		4B87B94E27D0CF950035A37D /* Mission2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission2ViewController.swift; sourceTree = "<group>"; };
 		4B87B95027D0D2480035A37D /* Mission2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mission2.sks; sourceTree = "<group>"; };
@@ -125,7 +121,11 @@
 		6BC1060D27D625170038D8E2 /* MissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
 		6BC1060E27D625170038D8E2 /* SpaceshipCusomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceshipCusomizationViewController.swift; sourceTree = "<group>"; };
 		6BC1060F27D625170038D8E2 /* GalaxySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalaxySelectionViewController.swift; sourceTree = "<group>"; };
-		9115AFAC27CCCA8900558762 /* Mission1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission1.swift; sourceTree = "<group>"; };
+		6BC1061627D6799E0038D8E2 /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
+		6BC1061E27D6B1D40038D8E2 /* Mission2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mission2.swift; sourceTree = "<group>"; };
+		6BC1061F27D6B1D40038D8E2 /* Mission3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mission3.swift; sourceTree = "<group>"; };
+		6BC1062027D6B1D40038D8E2 /* Mission1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mission1.swift; sourceTree = "<group>"; };
+		6BC1062127D6B1D40038D8E2 /* Tutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		9115AFAE27CCD05800558762 /* Mission1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mission1.sks; sourceTree = "<group>"; };
 		9123499627C8FC31001208A7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91D26BF327C694ED000916C0 /* button_press.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button_press.wav; sourceTree = "<group>"; };
@@ -200,8 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				4B86F12427B2601C00805DB7 /* AppDelegate.swift */,
+				6BC1062627D6B1DC0038D8E2 /* Missions */,
 				4B86F13127B2601D00805DB7 /* Assets.xcassets */,
-				91618E7C27D52071001FA894 /* Missions */,
 				0B068BC927CFCD4D00CE7427 /* Localizable.strings */,
 				91618E8027D520EF001FA894 /* Audios */,
 				91618E7E27D52092001FA894 /* EndLevelScreens */,
@@ -233,13 +233,13 @@
 			path = SpaceGuardsBattleUITests;
 			sourceTree = "<group>";
 		};
-		91618E7C27D52071001FA894 /* Missions */ = {
+		6BC1062627D6B1DC0038D8E2 /* Missions */ = {
 			isa = PBXGroup;
 			children = (
-				4B86F12A27B2601C00805DB7 /* Tutorial.swift */,
-				9115AFAC27CCCA8900558762 /* Mission1.swift */,
-				4B87B94A27D0CD490035A37D /* Mission2.swift */,
-				0B56E7B727D3EB3600A30ADB /* Mission3.swift */,
+				6BC1062127D6B1D40038D8E2 /* Tutorial.swift */,
+				6BC1062027D6B1D40038D8E2 /* Mission1.swift */,
+				6BC1061E27D6B1D40038D8E2 /* Mission2.swift */,
+				6BC1061F27D6B1D40038D8E2 /* Mission3.swift */,
 			);
 			path = Missions;
 			sourceTree = "<group>";
@@ -291,8 +291,8 @@
 				6BC1060C27D625170038D8E2 /* HomeScreenViewController.swift */,
 				6BC1060D27D625170038D8E2 /* MissionsViewController.swift */,
 				6BC1060E27D625170038D8E2 /* SpaceshipCusomizationViewController.swift */,
-				0B56E7D327D6211200A30ADB /* StartAnimationViewcontroller.swift */,
 				6B18859B27CFE88400D35A6F /* TutorialViewController.swift */,
+				6BC1061627D6799E0038D8E2 /* PauseViewController.swift */,
 				4B87B94C27D0CF6C0035A37D /* Mission1ViewController.swift */,
 				4B87B94E27D0CF950035A37D /* Mission2ViewController.swift */,
 				0B56E7BB27D3EC1F00A30ADB /* Mission3ViewController.swift */,
@@ -486,10 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B86F12B27B2601C00805DB7 /* Tutorial.swift in Sources */,
-				9115AFAD27CCCA8900558762 /* Mission1.swift in Sources */,
 				6BC1061227D625170038D8E2 /* SpaceshipCusomizationViewController.swift in Sources */,
-				4B87B94B27D0CD490035A37D /* Mission2.swift in Sources */,
 				0B6E9B6827C3C560000FDB7D /* Over.swift in Sources */,
 				4B87B94D27D0CF6C0035A37D /* Mission1ViewController.swift in Sources */,
 				6B18859C27CFE88400D35A6F /* TutorialViewController.swift in Sources */,
@@ -497,16 +494,19 @@
 				0BCF756327BEC0A9003A31C0 /* IMProgressBar.swift in Sources */,
 				4B28939727B40BD9009556A2 /* Joystick.swift in Sources */,
 				6BC1061027D625170038D8E2 /* HomeScreenViewController.swift in Sources */,
-				0B56E7D927D6211200A30ADB /* StartAnimationViewcontroller.swift in Sources */,
 				0B3FF07227B6DDAA000F9C12 /* SKTAudio.swift in Sources */,
 				4B86F12527B2601C00805DB7 /* AppDelegate.swift in Sources */,
-				0B56E7B827D3EB3600A30ADB /* Mission3.swift in Sources */,
+				6BC1062427D6B1D40038D8E2 /* Mission1.swift in Sources */,
 				6BC1061327D625170038D8E2 /* GalaxySelectionViewController.swift in Sources */,
 				4B246E2B27CEBFB400172D65 /* Win.swift in Sources */,
+				6BC1061727D6799E0038D8E2 /* PauseViewController.swift in Sources */,
 				0B56E7B427D16D7300A30ADB /* PhysicsCategory.swift in Sources */,
 				0B56E7BC27D3EC1F00A30ADB /* Mission3ViewController.swift in Sources */,
+				6BC1062327D6B1D40038D8E2 /* Mission3.swift in Sources */,
 				4B5582B927B2D67800FF5CBC /* Extension.swift in Sources */,
+				6BC1062527D6B1D40038D8E2 /* Tutorial.swift in Sources */,
 				6BC1061127D625170038D8E2 /* MissionsViewController.swift in Sources */,
+				6BC1062227D6B1D40038D8E2 /* Mission2.swift in Sources */,
 				0B56E7B627D16DCC00A30ADB /* GeneralSettings.swift in Sources */,
 				0B56E7B227D0154200A30ADB /* NavType.swift in Sources */,
 			);
@@ -682,7 +682,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VLX6GXY646;
+				DEVELOPMENT_TEAM = Z6L7DM8C9X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceGuardsBattle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SGB;
@@ -714,7 +714,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VLX6GXY646;
+				DEVELOPMENT_TEAM = Z6L7DM8C9X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceGuardsBattle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SGB;

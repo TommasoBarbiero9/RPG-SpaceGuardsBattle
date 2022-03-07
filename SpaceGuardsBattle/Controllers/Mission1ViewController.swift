@@ -39,6 +39,7 @@ class Mission1ViewController: UIViewController{
         
         
        activityView.startAnimating()
+        
         UIView.animate(withDuration: 10.0) {
             navicella.frame = CGRect(x: 100, y: -100, width: 200, height: 100)}
         
