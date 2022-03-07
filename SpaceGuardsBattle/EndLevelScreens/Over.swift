@@ -48,9 +48,23 @@ class Over: SKScene {
             if button.contains(location) {
                 print("tapped!")
                         
-                        let repl = SKScene(fileNamed: "Tutorial")
-                        repl!.scaleMode = scaleMode
-                        view?.presentScene(repl!)
+//                        let repl = SKScene(fileNamed: "Tutorial")
+//                        repl!.scaleMode = scaleMode
+//                        view?.presentScene(GeneralSettings.sharedGameData.levelSelected)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                let vc = storyboard.instantiateViewController(withIdentifier:GeneralSettings.sharedGameData.levelSelected)
+                
+                vc.view.frame = (self.view?.frame)!
+                vc.view.layoutIfNeeded()
+                
+                UIView.transition(with: self.view!, duration: 0, animations: {
+                    self.view?.window?.rootViewController = vc
+                }, completion: { completed in
+                })
+
+              
             }
             if mainScreenText.contains(location) {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)

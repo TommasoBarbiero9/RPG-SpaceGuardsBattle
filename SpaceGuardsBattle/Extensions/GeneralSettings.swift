@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import SpriteKit
 class GeneralSettings {
 
     static let sharedGameData = GeneralSettings()
@@ -14,10 +16,10 @@ class GeneralSettings {
     var positionJoy: Int = 1
     var mission1Unlocked: Bool = false
     var mission2Unlocked: Bool = false
+    var mission3Unlocked: Bool = false
     var selectedMission: Int = 1
-    var livello = Mission1ViewController()
+    var levelSelected = ""
     var bgsound : Bool = true
-    
     
    
     

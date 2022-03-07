@@ -36,6 +36,7 @@ class MissionsViewController : UIViewController{
     
     @IBAction func playGameButtonPressed(_ sender: UIButton) {
         self.navigationController?.isNavigationBarHidden = true
+        GeneralSettings.sharedGameData.levelSelected = "TutorialViewController"
         if let play = storyboard?.instantiateViewController(withIdentifier: "TutorialViewController") as? TutorialViewController {
             navigationController?.pushViewController(play, animated: false)
         }
@@ -43,18 +44,20 @@ class MissionsViewController : UIViewController{
     
     @IBAction func mission1ButtonPressed(_ sender: Any) {
         self.navigationController?.isNavigationBarHidden = true
+        GeneralSettings.sharedGameData.levelSelected = "Mission1ViewController"
         if let play = storyboard?.instantiateViewController(withIdentifier: "Mission1ViewController") as? Mission1ViewController {
             navigationController?.pushViewController(play, animated: false)
         }
     }
     @IBAction func mission2ButtonPressed(_ sender: Any) {
         self.navigationController?.isNavigationBarHidden = true
+        GeneralSettings.sharedGameData.levelSelected = "Mission2ViewController"
         if let play = storyboard?.instantiateViewController(withIdentifier: "Mission2ViewController") as? Mission2ViewController{
             navigationController?.pushViewController(play, animated: false)
         }
     }
     @IBAction func mission3ButtonPressed(_ sender: Any) {
-        
+        GeneralSettings.sharedGameData.levelSelected = "Mission3ViewController"
         self.navigationController?.isNavigationBarHidden = true
         if let play = storyboard?.instantiateViewController(withIdentifier: "Mission3ViewController") as? Mission3ViewController{
             navigationController?.pushViewController(play, animated: false)

@@ -238,7 +238,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                             timer3 = 30
                             tim?.invalidate()
                             self.win!.scaleMode = scaleMode
-                            view?.presentScene(over)
+                            view?.presentScene(win)
                         }
                     }
                 }
@@ -272,7 +272,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                           timer3 = 30
                           tim?.invalidate()
                       self.win!.scaleMode = scaleMode
-                          view?.presentScene(over)
+                          view?.presentScene(win)
                       }
                   }
             arrow.removeFromParent()
@@ -294,7 +294,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                           timer3 = 30
                           tim?.invalidate()
                       self.win!.scaleMode = scaleMode
-                          view!.presentScene(over)
+                          view!.presentScene(win)
                       }
             }
             
