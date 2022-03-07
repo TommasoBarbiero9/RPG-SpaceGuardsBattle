@@ -19,11 +19,7 @@
 		0B56E7BA27D3EBC800A30ADB /* Mission3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B56E7B927D3EBC800A30ADB /* Mission3.sks */; };
 		0B56E7BC27D3EC1F00A30ADB /* Mission3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7BB27D3EC1F00A30ADB /* Mission3ViewController.swift */; };
 		0B56E7CE27D61FDC00A30ADB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B56E7CD27D61FDC00A30ADB /* Main.storyboard */; };
-		0B56E7D527D6211200A30ADB /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7CF27D6211100A30ADB /* HomeScreenViewController.swift */; };
-		0B56E7D627D6211200A30ADB /* GalaxySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7D027D6211100A30ADB /* GalaxySelectionViewController.swift */; };
-		0B56E7D827D6211200A30ADB /* SpaceshipCusomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7D227D6211200A30ADB /* SpaceshipCusomizationViewController.swift */; };
 		0B56E7D927D6211200A30ADB /* StartAnimationViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7D327D6211200A30ADB /* StartAnimationViewcontroller.swift */; };
-		0B56E7DA27D6211200A30ADB /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7D427D6211200A30ADB /* MissionsViewController.swift */; };
 		0B6E9B6827C3C560000FDB7D /* Over.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E9B6727C3C560000FDB7D /* Over.swift */; };
 		0B6E9B6C27C3D792000FDB7D /* PauseMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */; };
 		0B6E9B7227C4D1E4000FDB7D /* asteroidsDestroyed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */; };
@@ -52,6 +48,10 @@
 		4B87B95127D0D2480035A37D /* Mission2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B87B95027D0D2480035A37D /* Mission2.sks */; };
 		4BF5C27C27BD40DF004F6845 /* playerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4BF5C27B27BD40DF004F6845 /* playerTrail.sks */; };
 		6B18859C27CFE88400D35A6F /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18859B27CFE88400D35A6F /* TutorialViewController.swift */; };
+		6BC1061027D625170038D8E2 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1060C27D625170038D8E2 /* HomeScreenViewController.swift */; };
+		6BC1061127D625170038D8E2 /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1060D27D625170038D8E2 /* MissionsViewController.swift */; };
+		6BC1061227D625170038D8E2 /* SpaceshipCusomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1060E27D625170038D8E2 /* SpaceshipCusomizationViewController.swift */; };
+		6BC1061327D625170038D8E2 /* GalaxySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1060F27D625170038D8E2 /* GalaxySelectionViewController.swift */; };
 		9115AFAD27CCCA8900558762 /* Mission1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9115AFAC27CCCA8900558762 /* Mission1.swift */; };
 		9115AFAF27CCD05800558762 /* Mission1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9115AFAE27CCD05800558762 /* Mission1.sks */; };
 		9123499727C8FC31001208A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9123499627C8FC31001208A7 /* LaunchScreen.storyboard */; };
@@ -89,11 +89,7 @@
 		0B56E7B927D3EBC800A30ADB /* Mission3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mission3.sks; sourceTree = "<group>"; };
 		0B56E7BB27D3EC1F00A30ADB /* Mission3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission3ViewController.swift; sourceTree = "<group>"; };
 		0B56E7CD27D61FDC00A30ADB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		0B56E7CF27D6211100A30ADB /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenViewController.swift; path = "../../../../../../Downloads/SGB-SpaceGuardsBattle 2/SpaceGuardsBattle/Controllers/HomeScreenViewController.swift"; sourceTree = "<group>"; };
-		0B56E7D027D6211100A30ADB /* GalaxySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalaxySelectionViewController.swift; path = "../../../../../../Downloads/SGB-SpaceGuardsBattle 2/SpaceGuardsBattle/Controllers/GalaxySelectionViewController.swift"; sourceTree = "<group>"; };
-		0B56E7D227D6211200A30ADB /* SpaceshipCusomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpaceshipCusomizationViewController.swift; path = "../../../../../../Downloads/SGB-SpaceGuardsBattle 2/SpaceGuardsBattle/Controllers/SpaceshipCusomizationViewController.swift"; sourceTree = "<group>"; };
 		0B56E7D327D6211200A30ADB /* StartAnimationViewcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAnimationViewcontroller.swift; sourceTree = "<group>"; };
-		0B56E7D427D6211200A30ADB /* MissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MissionsViewController.swift; path = "../../../../../../Downloads/SGB-SpaceGuardsBattle 2/SpaceGuardsBattle/Controllers/MissionsViewController.swift"; sourceTree = "<group>"; };
 		0B6E9B6727C3C560000FDB7D /* Over.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Over.swift; sourceTree = "<group>"; };
 		0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseMenu.sks; sourceTree = "<group>"; };
 		0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = asteroidsDestroyed.sks; sourceTree = "<group>"; };
@@ -125,6 +121,10 @@
 		4B87B95027D0D2480035A37D /* Mission2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mission2.sks; sourceTree = "<group>"; };
 		4BF5C27B27BD40DF004F6845 /* playerTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = playerTrail.sks; sourceTree = "<group>"; };
 		6B18859B27CFE88400D35A6F /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		6BC1060C27D625170038D8E2 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		6BC1060D27D625170038D8E2 /* MissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
+		6BC1060E27D625170038D8E2 /* SpaceshipCusomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceshipCusomizationViewController.swift; sourceTree = "<group>"; };
+		6BC1060F27D625170038D8E2 /* GalaxySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalaxySelectionViewController.swift; sourceTree = "<group>"; };
 		9115AFAC27CCCA8900558762 /* Mission1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission1.swift; sourceTree = "<group>"; };
 		9115AFAE27CCD05800558762 /* Mission1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mission1.sks; sourceTree = "<group>"; };
 		9123499627C8FC31001208A7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -287,10 +287,10 @@
 		91D26BF627C6B81D000916C0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0B56E7D027D6211100A30ADB /* GalaxySelectionViewController.swift */,
-				0B56E7CF27D6211100A30ADB /* HomeScreenViewController.swift */,
-				0B56E7D427D6211200A30ADB /* MissionsViewController.swift */,
-				0B56E7D227D6211200A30ADB /* SpaceshipCusomizationViewController.swift */,
+				6BC1060F27D625170038D8E2 /* GalaxySelectionViewController.swift */,
+				6BC1060C27D625170038D8E2 /* HomeScreenViewController.swift */,
+				6BC1060D27D625170038D8E2 /* MissionsViewController.swift */,
+				6BC1060E27D625170038D8E2 /* SpaceshipCusomizationViewController.swift */,
 				0B56E7D327D6211200A30ADB /* StartAnimationViewcontroller.swift */,
 				6B18859B27CFE88400D35A6F /* TutorialViewController.swift */,
 				4B87B94C27D0CF6C0035A37D /* Mission1ViewController.swift */,
@@ -488,26 +488,26 @@
 			files = (
 				4B86F12B27B2601C00805DB7 /* Tutorial.swift in Sources */,
 				9115AFAD27CCCA8900558762 /* Mission1.swift in Sources */,
+				6BC1061227D625170038D8E2 /* SpaceshipCusomizationViewController.swift in Sources */,
 				4B87B94B27D0CD490035A37D /* Mission2.swift in Sources */,
 				0B6E9B6827C3C560000FDB7D /* Over.swift in Sources */,
 				4B87B94D27D0CF6C0035A37D /* Mission1ViewController.swift in Sources */,
-				0B56E7D627D6211200A30ADB /* GalaxySelectionViewController.swift in Sources */,
 				6B18859C27CFE88400D35A6F /* TutorialViewController.swift in Sources */,
 				4B87B94F27D0CF950035A37D /* Mission2ViewController.swift in Sources */,
 				0BCF756327BEC0A9003A31C0 /* IMProgressBar.swift in Sources */,
 				4B28939727B40BD9009556A2 /* Joystick.swift in Sources */,
+				6BC1061027D625170038D8E2 /* HomeScreenViewController.swift in Sources */,
 				0B56E7D927D6211200A30ADB /* StartAnimationViewcontroller.swift in Sources */,
 				0B3FF07227B6DDAA000F9C12 /* SKTAudio.swift in Sources */,
 				4B86F12527B2601C00805DB7 /* AppDelegate.swift in Sources */,
 				0B56E7B827D3EB3600A30ADB /* Mission3.swift in Sources */,
-				0B56E7D527D6211200A30ADB /* HomeScreenViewController.swift in Sources */,
+				6BC1061327D625170038D8E2 /* GalaxySelectionViewController.swift in Sources */,
 				4B246E2B27CEBFB400172D65 /* Win.swift in Sources */,
 				0B56E7B427D16D7300A30ADB /* PhysicsCategory.swift in Sources */,
 				0B56E7BC27D3EC1F00A30ADB /* Mission3ViewController.swift in Sources */,
 				4B5582B927B2D67800FF5CBC /* Extension.swift in Sources */,
-				0B56E7D827D6211200A30ADB /* SpaceshipCusomizationViewController.swift in Sources */,
+				6BC1061127D625170038D8E2 /* MissionsViewController.swift in Sources */,
 				0B56E7B627D16DCC00A30ADB /* GeneralSettings.swift in Sources */,
-				0B56E7DA27D6211200A30ADB /* MissionsViewController.swift in Sources */,
 				0B56E7B227D0154200A30ADB /* NavType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
