@@ -26,9 +26,8 @@ class Mission3ViewController: UIViewController{
            self.view.insertSubview(backgroundImage, at: 0)
        self.view.addSubview(activityView)
         
-        
-        
        activityView.startAnimating()
+        
         if let view = self.view as! SKView? {
             DispatchQueue.global(qos: .background).async{
             // Load the SKScene from 'GameScene.sks'
