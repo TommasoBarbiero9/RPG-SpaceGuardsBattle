@@ -51,3 +51,36 @@ extension CGPoint {
         return abs(CGFloat(hypotf(Float(point.x - x), Float(point.y - y))))
     }
 }
+
+extension UIView {
+    func shake() {
+        self.transform = CGAffineTransform(translationX: 0, y: 30)
+        UIView.animate(withDuration: 20, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 20, options: .curveEaseInOut, animations: {
+            self.transform = CGAffineTransform.identity
+        }, completion: nil)
+    }
+}
+extension UIButton {
+    func setBackgroundColor(color: UIColor, forState: UIControl.State) {
+        self.clipsToBounds = true  // add this to maintain corner radius
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        if let context = UIGraphicsGetCurrentContext() {
+            context.setFillColor(color.cgColor)
+            context.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+            let colorImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            self.setBackgroundImage(colorImage, for: forState)
+        }
+    }
+}
+extension UIView{
+    func rotate() {
+        let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = NSNumber(value: Double.pi * -2)
+        rotation.duration = 15
+        rotation.isCumulative = true
+        rotation.repeatCount = Float.greatestFiniteMagnitude
+        self.layer.add(rotation, forKey: "rotationAnimation")
+    }
+}
+
