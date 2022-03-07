@@ -48,7 +48,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     var startmission = true
     var score: Int = 0
     let pauseButton = SKSpriteNode(imageNamed: "pause")
-    let conquer = SKSpriteNode(imageNamed: "ufo")
+    let conquer = SKSpriteNode(imageNamed: "0pulsantegrigio")
     let pauseBG = SKSpriteNode(imageNamed: "pauseBG")
     let pauseText = SKLabelNode(text: "")
     let pauseLeave = SKLabelNode(text: "")
@@ -302,6 +302,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     }
     }
     override func update(_ currentTime: TimeInterval) {
+        
         sondabutton()
         let location = hero.position
         
@@ -426,7 +427,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     shot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
                     shot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
                     shot.physicsBody?.usesPreciseCollisionDetection = true
-                    
+                    shot.physicsBody?.mass = 0.1
                     
                     guard isPlayerAlive else { return }
                     
@@ -795,14 +796,18 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     
     //MARK: FUNCTIONS
     func sondabutton() {
-        
+        conquer.isUserInteractionEnabled = true
         for planet in planets {
-            if planet.position.distance(point: hero.position) < 550 &&  stoconqui == false {
-                conquer.isHidden = false
-                    conquer.isUserInteractionEnabled = false
+            if planet.position.distance(point: hero.position) < 550 && stoconqui == false {
+                let Textures = (0...1).map { SKTexture(imageNamed: "\($0)ufo") }
+                let pulsante = SKAction.animate(with: Textures, timePerFrame: 0.1)
+                conquer.run(pulsante)
+                self.conquer.isUserInteractionEnabled = false
             } else {
-                conquer.isHidden = true
-                conquer.isUserInteractionEnabled = true
+                let palla = (0...1).map { SKTexture(imageNamed: "\($0)pulsantegrigio") }
+                let pulsante = SKAction.animate(with: palla, timePerFrame: 0.1)
+                conquer.run(pulsante)
+                self.conquer.isUserInteractionEnabled = true
             }
         }
     }
@@ -817,7 +822,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         sonda.physicsBody?.contactTestBitMask = PhysicsCategory.Planet | PhysicsCategory.Hero
             let Textures = (1...6).map { SKTexture(imageNamed: "\($0)sonda") }
         sonda.name = "Sonda"
-        
+        sonda.physicsBody?.mass = 0.1
         gameLayer.addChild(sonda)
         
         stoconqui = true
