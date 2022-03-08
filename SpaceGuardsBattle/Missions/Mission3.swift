@@ -477,7 +477,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     guard isPlayerAlive else { return }
                     
                     gameLayer.addChild(shot)
-                    
+                    print(hero.position)
                     var angolo : CGFloat
                     
                     if shot.zRotation + (3.14 / 2 ) >= 0 {
@@ -928,7 +928,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         planet.scaleTo(screenWidthPercentage: 2)
         planet.position = CGPoint(x: 400  , y: 600)
         planet.zPosition = 0
-        planet.physicsBody = SKPhysicsBody(texture: planet.texture!, size: planet.size)
+        planet.physicsBody = SKPhysicsBody(circleOfRadius: planet.size.width/2)
         planet.physicsBody?.isDynamic = false
         planet.physicsBody?.categoryBitMask = PhysicsCategory.Planet
         planet.physicsBody?.contactTestBitMask = PhysicsCategory.Sonda
