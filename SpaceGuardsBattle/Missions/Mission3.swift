@@ -783,7 +783,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         enemy.position = CGPoint(x: Int.random(in: -6500...6500), y: Int.random(in: -6500...6500))
         enemy.zPosition = NodesZPosition.hero.rawValue
         enemy.scaleTo(screenWidthPercentage: 0.35)
-        enemy.physicsBody = SKPhysicsBody(texture: enemy.texture!, size: enemy.size)
+        enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.frame.size)
         
         
         enemy.physicsBody?.allowsRotation = false
