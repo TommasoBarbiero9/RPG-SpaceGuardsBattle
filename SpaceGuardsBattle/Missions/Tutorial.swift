@@ -137,7 +137,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         tlanet.scaleTo(screenWidthPercentage: 2)
         tlanet.position = CGPoint(x: 400  , y: 600)
         tlanet.zPosition = 0
-        tlanet.physicsBody = SKPhysicsBody(texture: tlanet.texture!, size: tlanet.size)
+        tlanet.physicsBody = SKPhysicsBody(circleOfRadius: tlanet.size.width/2)
         tlanet.physicsBody?.isDynamic = false
         tlanet.physicsBody?.categoryBitMask = PhysicsCategory.Planet
         tlanet.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
