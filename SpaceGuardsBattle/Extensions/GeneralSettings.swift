@@ -22,6 +22,7 @@ class GeneralSettings {
     var bgsound : Bool = true
     var segmentBody : Bool = true
     var JoyPos : Bool = true
+    var shotyn : Bool = true
    
     
     init () {

@@ -17,6 +17,7 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var  selectedNav: UIImageView!
     @IBOutlet weak var linguetta: UIImageView!
     
+    @IBOutlet weak var shotbutton: UISegmentedControl!
     
     @IBOutlet weak var Soundon0ff: UISegmentedControl!
     
@@ -41,6 +42,15 @@ class HomeScreenViewController: UIViewController {
     {
         JoysticPos.selectedSegmentIndex = 1
     }
+        
+        
+        if GeneralSettings.sharedGameData.shotyn{
+        shotbutton.selectedSegmentIndex = 0
+    } else
+    {
+        shotbutton.selectedSegmentIndex = 1
+    }
+        
         
         if GeneralSettings.sharedGameData.bgsound{
         Soundon0ff.selectedSegmentIndex = 0
@@ -124,6 +134,24 @@ class HomeScreenViewController: UIViewController {
         case 1 :
             GeneralSettings.sharedGameData.bgsound = false
             HomeScreenViewController.audioPlayer.stop()
+        default:
+            break
+        }}
+    
+    @IBAction func Shotbutt(_ sender: UISegmentedControl) {
+    
+   
+        
+        switch sender.selectedSegmentIndex {
+     
+        case 0 :
+            GeneralSettings.sharedGameData.shotyn = true
+           
+            
+            
+        case 1 :
+            GeneralSettings.sharedGameData.shotyn = false
+          
         default:
             break
         }}

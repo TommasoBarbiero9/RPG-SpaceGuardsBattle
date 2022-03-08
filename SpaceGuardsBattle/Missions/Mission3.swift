@@ -266,9 +266,11 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             if pauseLayer.isHidden == false {
                 if shoton.contains(location){
                     shotbutton.isHidden = true
+                    GeneralSettings.sharedGameData.shotyn = false
                 }
                 if shotoff.contains(location){
                     shotbutton.isHidden = false
+                    GeneralSettings.sharedGameData.shotyn = true
                 }
                 if pauseCancel.contains(location) {
                     
@@ -1008,6 +1010,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     
     
     func setupJoystick() {
+        shotbutton.isHidden = !GeneralSettings.sharedGameData.shotyn
         hudLayer.addChild(shotbutton)
         hudLayer.addChild(conquer)
         hudLayer.addChild(analogJoystick)

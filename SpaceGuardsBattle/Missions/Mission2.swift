@@ -262,9 +262,11 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             if pauseLayer.isHidden == false {
                 if shoton.contains(location){
                     shotbutton.isHidden = true
+                    GeneralSettings.sharedGameData.shotyn = false
                 }
                 if shotoff.contains(location){
                     shotbutton.isHidden = false
+                    GeneralSettings.sharedGameData.shotyn = true
                 }
                 if pauseCancel.contains(location) {
                     
@@ -900,6 +902,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         hudLayer.addChild(analogJoystick)
         hudLayer.addChild(progressBar)
         hudLayer.addChild(pauseButton)
+        shotbutton.isHidden = !GeneralSettings.sharedGameData.shotyn
         hudLayer.addChild(shotbutton)
         scoreLabel.text = "\(Scor): \(score)"
         hudLayer.addChild(scoreLabel)
