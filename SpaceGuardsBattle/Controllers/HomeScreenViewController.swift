@@ -121,22 +121,25 @@ class HomeScreenViewController: UIViewController {
     
     
     @IBAction func Soundon0ff(_ sender: UISegmentedControl) {
-    
-   
         
-        switch sender.selectedSegmentIndex {
-     
-        case 0 :
-            GeneralSettings.sharedGameData.bgsound = true
-            HomeScreenViewController.audioPlayer.play()
+       
             
-            
-        case 1 :
-            GeneralSettings.sharedGameData.bgsound = false
-            HomeScreenViewController.audioPlayer.stop()
-        default:
-            break
-        }}
+            switch sender.selectedSegmentIndex {
+         
+            case 0 :
+                GeneralSettings.sharedGameData.bgsound = true
+                GeneralSettings.sharedGameData.defaults.set(true, forKey: "bgSound")
+                HomeScreenViewController.audioPlayer.play()
+                
+                
+                
+            case 1 :
+                GeneralSettings.sharedGameData.bgsound = false
+                GeneralSettings.sharedGameData.defaults.set(false, forKey: "bgSound")
+                HomeScreenViewController.audioPlayer.stop()
+            default:
+                break
+            }}
     
     @IBAction func Shotbutt(_ sender: UISegmentedControl) {
     

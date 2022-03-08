@@ -11,6 +11,13 @@ import SwiftUI
 class SpaceshipCustomizationViewController: UIViewController {
     @IBAction func dismissPopup(_ sender: UIButton) {
         
+        GeneralSettings.sharedGameData.defaults.set(NavType.sharedGameData.form, forKey: "form")
+        
+                GeneralSettings.sharedGameData.defaults.set(NavType.sharedGameData.color, forKey: "color")
+        
+                GeneralSettings.sharedGameData.defaults.set(NavType.sharedGameData.type, forKey: "type")
+        
+                dismiss(animated: true, completion: nil)
         
         dismiss(animated: true, completion: nil)
         

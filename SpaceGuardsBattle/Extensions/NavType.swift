@@ -17,9 +17,9 @@ class NavType {
     var overallscore: Int = 0
     
     var Nav = "navicellarossa"
-    var type = "5"
-    var form = "q"
-    var color = "viola"
+        var type: String = GeneralSettings.sharedGameData.defaults.string(forKey: "type") ?? "5"
+        var form: String = GeneralSettings.sharedGameData.defaults.string(forKey: "form") ?? "q"
+        var color: String = GeneralSettings.sharedGameData.defaults.string(forKey: "color") ?? "viola"
     
     init () {
 
