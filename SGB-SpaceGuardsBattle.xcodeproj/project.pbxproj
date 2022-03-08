@@ -17,13 +17,13 @@
 		0B56E7B627D16DCC00A30ADB /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7B527D16DCC00A30ADB /* GeneralSettings.swift */; };
 		0B56E7BA27D3EBC800A30ADB /* Mission3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B56E7B927D3EBC800A30ADB /* Mission3.sks */; };
 		0B56E7BC27D3EC1F00A30ADB /* Mission3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56E7BB27D3EC1F00A30ADB /* Mission3ViewController.swift */; };
-		0B56E7CE27D61FDC00A30ADB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B56E7CD27D61FDC00A30ADB /* Main.storyboard */; };
 		0B6E9B6827C3C560000FDB7D /* Over.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E9B6727C3C560000FDB7D /* Over.swift */; };
 		0B6E9B6C27C3D792000FDB7D /* PauseMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */; };
 		0B6E9B7227C4D1E4000FDB7D /* asteroidsDestroyed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */; };
 		0B6E9B7427C4D443000FDB7D /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B7327C4D443000FDB7D /* Starfield.sks */; };
 		0BB4D1F227D79DC6009C74EB /* Gamescene audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BB4D1F127D79DC6009C74EB /* Gamescene audio.mp3 */; };
 		0BB4D1F627D79E5C009C74EB /* MenuGame.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BB4D1F527D79E5B009C74EB /* MenuGame.mp3 */; };
+		0BB4D1F727D7B2D5009C74EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BB4D1F927D7B2D5009C74EB /* Main.storyboard */; };
 		0BCF756127BEAFD6003A31C0 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BCF756027BEAFD6003A31C0 /* explosion.mp3 */; };
 		0BCF756327BEC0A9003A31C0 /* IMProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCF756227BEC0A9003A31C0 /* IMProgressBar.swift */; };
 		4B246E2527CEBE7400172D65 /* Win.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B246E2427CEBE7300172D65 /* Win.sks */; };
@@ -89,13 +89,14 @@
 		0B56E7B527D16DCC00A30ADB /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
 		0B56E7B927D3EBC800A30ADB /* Mission3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mission3.sks; sourceTree = "<group>"; };
 		0B56E7BB27D3EC1F00A30ADB /* Mission3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission3ViewController.swift; sourceTree = "<group>"; };
-		0B56E7CD27D61FDC00A30ADB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0B6E9B6727C3C560000FDB7D /* Over.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Over.swift; sourceTree = "<group>"; };
 		0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseMenu.sks; sourceTree = "<group>"; };
 		0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = asteroidsDestroyed.sks; sourceTree = "<group>"; };
 		0B6E9B7327C4D443000FDB7D /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 		0BB4D1F127D79DC6009C74EB /* Gamescene audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Gamescene audio.mp3"; sourceTree = "<group>"; };
 		0BB4D1F527D79E5B009C74EB /* MenuGame.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MenuGame.mp3; sourceTree = "<group>"; };
+		0BB4D1F827D7B2D5009C74EB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0BB4D1FB27D7B316009C74EB /* it */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = it; path = it.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BCF756027BEAFD6003A31C0 /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosion.mp3; sourceTree = "<group>"; };
 		0BCF756227BEC0A9003A31C0 /* IMProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMProgressBar.swift; sourceTree = "<group>"; };
 		4B246E2427CEBE7300172D65 /* Win.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Win.sks; sourceTree = "<group>"; };
@@ -260,7 +261,7 @@
 		91618E7F27D520C9001FA894 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				0B56E7CD27D61FDC00A30ADB /* Main.storyboard */,
+				0BB4D1F927D7B2D5009C74EB /* Main.storyboard */,
 				9123499627C8FC31001208A7 /* LaunchScreen.storyboard */,
 			);
 			path = StoryBoard;
@@ -452,7 +453,7 @@
 				0BCF756127BEAFD6003A31C0 /* explosion.mp3 in Resources */,
 				4B73B8E727CFDB950072D797 /* Over.sks in Resources */,
 				0B068BBE27CFC05000CE7427 /* Tutorial.wav in Resources */,
-				0B56E7CE27D61FDC00A30ADB /* Main.storyboard in Resources */,
+				0BB4D1F727D7B2D5009C74EB /* Main.storyboard in Resources */,
 				4BFBC0EB27D76D3300C3E8A7 /* enemyDestroyed.sks in Resources */,
 				4B86F12727B2601C00805DB7 /* Tutorial.sks in Resources */,
 				4B86F13227B2601D00805DB7 /* Assets.xcassets in Resources */,
@@ -560,6 +561,15 @@
 				0B068BCB27CFD0DB00CE7427 /* it */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		0BB4D1F927D7B2D5009C74EB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0BB4D1F827D7B2D5009C74EB /* en */,
+				0BB4D1FB27D7B316009C74EB /* it */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
