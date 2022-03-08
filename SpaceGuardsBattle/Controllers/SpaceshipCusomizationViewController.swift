@@ -29,7 +29,15 @@ class SpaceshipCustomizationViewController: UIViewController {
 
     override func viewDidLoad() {
         
-    
+        if GeneralSettings.sharedGameData.segmentBody {
+            segmentedBodies.selectedSegmentIndex = 0
+        } else {
+            segmentedBodies.selectedSegmentIndex = 1
+        }
+        
+
+        
+        
         
         chooseyourshipLabel.layer.borderWidth = 1.0
         chooseyourshipLabel.layer.cornerRadius = 8
@@ -65,6 +73,22 @@ class SpaceshipCustomizationViewController: UIViewController {
         button6.layer.cornerRadius = 10
 
         
+        if NavType.sharedGameData.color == "r" {
+            orangeButton(Any.self)
+        }
+        
+        if NavType.sharedGameData.color == "v" {
+            greenButton(Any.self)
+        }
+        
+        if NavType.sharedGameData.color == "viola" {
+            violetButton(Any.self)
+        }
+         
+        if NavType.sharedGameData.color == "b" {
+            blueButton(
+                Any.self)
+        }
     
     }
        
@@ -131,6 +155,9 @@ class SpaceshipCustomizationViewController: UIViewController {
     let imagec5b = UIImage(named: "5cb")
     let imagec6b = UIImage(named: "6cb")
     
+    
+    
+    
    
     @IBOutlet weak var segmentedBodies: UISegmentedControl!
     @IBOutlet weak var done: UIButton!
@@ -185,7 +212,7 @@ class SpaceshipCustomizationViewController: UIViewController {
         
         switch sender.selectedSegmentIndex{
         case 0 :
-            
+            GeneralSettings.sharedGameData.segmentBody = true
             NavType.sharedGameData.form = "q"
             
             ship1.setImage(imageq1r, for: .normal)
@@ -205,6 +232,7 @@ class SpaceshipCustomizationViewController: UIViewController {
             shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
            
         case 1 :
+            GeneralSettings.sharedGameData.segmentBody = false
             NavType.sharedGameData.form = "c"
             ship1.setImage(imagec1r, for: .normal)
             ship2.setImage(imagec2r, for: .normal)

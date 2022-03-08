@@ -20,7 +20,7 @@ class GeneralSettings {
     var selectedMission: Int = 1
     var levelSelected = ""
     var bgsound : Bool = true
-    
+    var segmentBody : Bool = true
    
     
     init () {

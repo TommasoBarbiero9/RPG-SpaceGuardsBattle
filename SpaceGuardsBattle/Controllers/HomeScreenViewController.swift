@@ -16,6 +16,12 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet var SettingsMenu: UIView!
     @IBOutlet weak var  selectedNav: UIImageView!
     @IBOutlet weak var linguetta: UIImageView!
+    
+    
+    @IBOutlet weak var Soundon0ff: UISegmentedControl!
+    
+    
+    
 //    @IBOutlet weak var swipeShip: UIImageView!
     @IBOutlet weak var planets: UIImageView!
     
@@ -29,7 +35,12 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         
     
-
+        if GeneralSettings.sharedGameData.bgsound{
+        Soundon0ff.selectedSegmentIndex = 0
+    } else
+    {
+        Soundon0ff.selectedSegmentIndex = 1
+    }
         SettingsMenu.layer.cornerRadius = 15
         settingsLabel.layer.cornerRadius = 15
         settingsLabel.layer.masksToBounds = true
@@ -42,20 +53,22 @@ class HomeScreenViewController: UIViewController {
         selectedNav.shake()
 //      swipeShip.shake()
         planets.rotate()
-        // Do any additional setup after loading the view, typically from a nib.
-        // sound file.
-//        let sound = Bundle.main.path(forResource: "Menu", ofType:
-//                                        "wav")
-//        do {
-//            // We try to get the initialize it with the URL we created above.
-//            HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
-//        }
-//        catch{
-//            print(error)
-//            
-//        }
+//         Do any additional setup after loading the view, typically from a nib.
+//         sound file.
+        let sound = Bundle.main.path(forResource: "MenuGame", ofType:
+                                        "mp3")
+        do {
+            // We try to get the initialize it with the URL we created above.
+            HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
+        }
+        catch{
+            print(error)
+            
+        }
         HomeScreenViewController.audioPlayer.numberOfLoops = -1
-        HomeScreenViewController.audioPlayer.play()
+        HomeScreenViewController.audioPlayer.volume = 0.3
+        if GeneralSettings.sharedGameData.bgsound == true {
+            HomeScreenViewController.audioPlayer.play()}
     }
     
     func animateIn(){
@@ -88,6 +101,25 @@ class HomeScreenViewController: UIViewController {
     @IBAction func xButtonPressed(_ sender: Any) {
         animateOut()
     }
+    
+    
+    @IBAction func Soundon0ff(_ sender: UISegmentedControl) {
+    
+   
+        
+        switch sender.selectedSegmentIndex {
+     
+        case 0 :
+            GeneralSettings.sharedGameData.bgsound = true
+            HomeScreenViewController.audioPlayer.play()
+            
+            
+        case 1 :
+            GeneralSettings.sharedGameData.bgsound = false
+            HomeScreenViewController.audioPlayer.stop()
+        default:
+            break
+        }}
     
     
     func stopmusic(){

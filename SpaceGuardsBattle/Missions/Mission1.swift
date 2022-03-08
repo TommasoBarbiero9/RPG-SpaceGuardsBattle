@@ -78,8 +78,8 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
         if GeneralSettings.sharedGameData.bgsound == true {
-        let sound = Bundle.main.path(forResource: "Tutorial", ofType:
-                                        "wav")
+        let sound = Bundle.main.path(forResource: "Gamescene audio", ofType:
+                                        "mp3")
         do {
             // We try to get the initialize it with the URL we created above.
             HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
@@ -89,7 +89,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
             
         }
         HomeScreenViewController.audioPlayer.numberOfLoops = -1
-        HomeScreenViewController.audioPlayer.volume = 0.05
+        HomeScreenViewController.audioPlayer.volume = 0.2
         HomeScreenViewController.audioPlayer.play()
         
         }
