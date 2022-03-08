@@ -21,6 +21,7 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var Soundon0ff: UISegmentedControl!
     
     
+    @IBOutlet weak var JoysticPos: UISegmentedControl!
     
 //    @IBOutlet weak var swipeShip: UIImageView!
     @IBOutlet weak var planets: UIImageView!
@@ -34,7 +35,13 @@ class HomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         
-    
+        if GeneralSettings.sharedGameData.JoyPos{
+        JoysticPos.selectedSegmentIndex = 0
+    } else
+    {
+        JoysticPos.selectedSegmentIndex = 1
+    }
+        
         if GeneralSettings.sharedGameData.bgsound{
         Soundon0ff.selectedSegmentIndex = 0
     } else
@@ -120,6 +127,27 @@ class HomeScreenViewController: UIViewController {
         default:
             break
         }}
+    
+    
+    @IBAction func JoyPos(_ sender: UISegmentedControl) {
+    
+   
+        
+        switch sender.selectedSegmentIndex {
+     
+        case 0 :
+            GeneralSettings.sharedGameData.JoyPos = true
+            
+            
+            
+        case 1 :
+            GeneralSettings.sharedGameData.JoyPos = false
+            
+        default:
+            break
+        }}
+    
+    
     
     
     func stopmusic(){
