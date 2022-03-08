@@ -10,6 +10,8 @@ import UIKit
 import SwiftUI
 class SpaceshipCustomizationViewController: UIViewController {
     @IBAction func dismissPopup(_ sender: UIButton) {
+        
+        
         dismiss(animated: true, completion: nil)
         
         

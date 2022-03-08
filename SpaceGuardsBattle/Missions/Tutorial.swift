@@ -526,6 +526,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     
     lazy var analogJoystick: AnalogJoystick = {
         let js = AnalogJoystick(diameter: 175, colors: nil, images: (substrate: #imageLiteral(resourceName: "jSubstrate"), stick: #imageLiteral(resourceName: "jStick")))
+        if GeneralSettings.sharedGameData.JoyPos{
         if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
             js.position = CGPoint(x: -ScreenSize.width * 0.63, y: -ScreenSize.height * 0.75)
         } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
@@ -534,6 +535,16 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             js.position = CGPoint(x: -ScreenSize.width * 0.45, y: -ScreenSize.height * 0.55)
         }
         js.zPosition = NodesZPosition.joystick.rawValue
+        } else { if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
+            js.position = CGPoint(x: ScreenSize.width * 0.63, y: -ScreenSize.height * 0.75)
+        } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
+            js.position = CGPoint(x: ScreenSize.width * 0.70, y: -ScreenSize.height * 0.80)
+        } else {
+            js.position = CGPoint(x: ScreenSize.width * 0.45, y: -ScreenSize.height * 0.55)
+        }
+        js.zPosition = NodesZPosition.joystick.rawValue
+            
+        }
         
         return js
         
@@ -653,7 +664,13 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             mySelf.hero.zRotation = data.angular
             
             if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
-                mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.63) , y: mySelf.hero.position.y - (ScreenSize.height * 0.75))
+                if GeneralSettings.sharedGameData.JoyPos {
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.63) , y: mySelf.hero.position.y - (ScreenSize.height * 0.75))
+                    
+                } else {
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.63) , y: mySelf.hero.position.y - (ScreenSize.height * 0.75))
+                    
+                }
                 
                 mySelf.progressBar.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.68)  , y: mySelf.hero.position.y + (ScreenSize.height * 0.85))
                 
@@ -667,7 +684,12 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                 
                 
             } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
-                mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.70) , y: mySelf.hero.position.y - (ScreenSize.height * 0.80))
+                
+                if GeneralSettings.sharedGameData.JoyPos{
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.70) , y: mySelf.hero.position.y - (ScreenSize.height * 0.80))}
+                else {
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.70) , y: mySelf.hero.position.y - (ScreenSize.height * 0.80))
+                }
                 
                 mySelf.progressBar.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.80)  , y: mySelf.hero.position.y + (ScreenSize.height * 0.90))
                 
@@ -681,7 +703,14 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                 
                 
             } else {
-                mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.45) , y: mySelf.hero.position.y - (ScreenSize.height * 0.55))
+                
+                if GeneralSettings.sharedGameData.JoyPos {
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.45) , y: mySelf.hero.position.y - (ScreenSize.height * 0.55))
+                    
+                } else{
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.45) , y: mySelf.hero.position.y - (ScreenSize.height * 0.55))
+                }
+                
                 
                 mySelf.progressBar.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.45)  , y: mySelf.hero.position.y + (ScreenSize.height * 0.66))
                 

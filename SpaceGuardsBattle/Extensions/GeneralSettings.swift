@@ -21,6 +21,7 @@ class GeneralSettings {
     var levelSelected = ""
     var bgsound : Bool = true
     var segmentBody : Bool = true
+    var JoyPos : Bool = false
    
     
     init () {
