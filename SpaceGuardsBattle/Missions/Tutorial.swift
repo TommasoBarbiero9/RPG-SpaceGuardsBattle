@@ -24,6 +24,9 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     let scoreLabel = SKLabelNode(text: "Score : 0")
     var over = SKScene(fileNamed: "Over")
     var win = SKScene(fileNamed: "Win")
+    let shotbutton = SKSpriteNode(imageNamed: "1shotter")
+    let shoton = SKSpriteNode(imageNamed: "green")
+    let shotoff = SKSpriteNode(imageNamed: "blue")
     var isFiring = false
     var updateTime: Double = 0
     var firingInterval: Double = 0.5
@@ -51,7 +54,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     let pauseLeave = SKLabelNode(text: "")
     let pauseCancel = SKSpriteNode(imageNamed: "pauseCancel")
     
-    let palle = 18
+    let palle = 20
     
     let cam = SKCameraNode()
     var canShoot = false
@@ -211,20 +214,35 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     //MARK: TOUCHES FUNCTION
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            if shotbutton.isHidden == false {
+            if shotbutton.contains(location) {
         if pauseLayer.isHidden == true {
             isFiring = true
         }
-        
+    }
+            }
+            else {
+                isFiring = true
+            }
+}
         for touch in touches {
             let location = touch.location(in: self)
             if pauseButton.contains(location) {
                 pauseGame()
             }
             if pauseLayer.isHidden == false {
+                if shoton.contains(location){
+                    shotbutton.isHidden = true
+                }
+                if shotoff.contains(location){
+                    shotbutton.isHidden = false
+                }
                 if pauseCancel.contains(location) {
                     
                     isGamePaused = false
-                    
+                    isFiring = false
                     pauseLayer.isHidden = true
                     gameLayer.isPaused = false
                     hudLayer.isPaused = false
@@ -261,7 +279,17 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        isFiring = false
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if shotbutton.isHidden == false {
+            if shotbutton.contains(location) {
+    isFiring = false
+}
+            } else {
+                isFiring = false
+            }
+
         
         if startmission == true && tutorial == false && isGamePaused == false {
             tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
@@ -306,7 +334,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
        
         
         
-      
+        }
     }
     
 
@@ -353,7 +381,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                     shot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
                     shot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
                     shot.physicsBody?.usesPreciseCollisionDetection = true
-                    shot.physicsBody?.mass = 0.1
+                    
                     
                     guard isPlayerAlive else { return }
                     
@@ -555,7 +583,11 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         
         pauseCancel.position = CGPoint(x: -ScreenSize.width * 0.285, y: ScreenSize.height * 0.15)
             pauseCancel.zPosition = 11
-        
+        shoton.position = CGPoint(x: +(ScreenSize.width * 0.200), y:  (-ScreenSize.height * 0.02))
+        shoton.zPosition = 11
+        shotoff.position = CGPoint(x:  -(ScreenSize.width * 0.230), y:  (-ScreenSize.height * 0.02))
+        shotoff.zPosition = 11
+        shotbutton.position = CGPoint(x: (ScreenSize.width * 0.45)  , y:   (-ScreenSize.height * 0.55))
         pauseText.text = Pau
         pauseText.position = CGPoint(x: 0, y: 100)
             pauseText.zPosition = 11
@@ -597,7 +629,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         addChild(gameLayer)
         addChild(hudLayer)
         addChild(pauseLayer)
-     
+        
     
     }
     
@@ -609,6 +641,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         hudLayer.addChild(analogJoystick)
         hudLayer.addChild(progressBar)
         hudLayer.addChild(pauseButton)
+        hudLayer.addChild(shotbutton)
         scoreLabel.text = "\(Scor): \(score)"
         hudLayer.addChild(scoreLabel)
             scoreLabel.zPosition = 3
@@ -624,6 +657,8 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         pauseLayer.addChild(pauseCancel)
         pauseLayer.addChild(pauseText)
         pauseLayer.addChild(pauseLeave)
+        pauseLayer.addChild(shoton)
+        pauseLayer.addChild(shotoff)
         
         analogJoystick.trackingHandler = { [weak self] data in
             guard let mySelf = self else { return }
@@ -675,6 +710,14 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                 mySelf.pauseButton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.48)  , y: mySelf.hero.position.y + (ScreenSize.height * 0.68))
             }
             
+            if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
+                mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.63)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.75))
+            } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
+                mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.70)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.80))
+            } else {
+                mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.45)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.55))
+            }
+            
             mySelf.star!.position = CGPoint(x: -mySelf.hero.position.x / 15 - (ScreenSize.width * 0.45)  , y: -mySelf.hero.position.y / 15 - (ScreenSize.height * 0.66))
             
             mySelf.star2!.position = CGPoint(x: -mySelf.hero.position.x / 7 - (ScreenSize.width * 0.45)  , y: -mySelf.hero.position.y / 7 - (ScreenSize.height * 0.66))
@@ -685,6 +728,10 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             mySelf.pauseBG.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y)
             
             mySelf.pauseCancel.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.285), y: mySelf.hero.position.y + (ScreenSize.height * 0.15))
+            
+            mySelf.shoton.position = CGPoint(x: mySelf.hero.position.x  + (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
+            
+            mySelf.shotoff.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.230), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
             
             mySelf.pauseText.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y + (ScreenSize.height * 0.1))
             
