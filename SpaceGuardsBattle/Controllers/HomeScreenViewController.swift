@@ -149,11 +149,12 @@ class HomeScreenViewController: UIViewController {
      
         case 0 :
             GeneralSettings.sharedGameData.shotyn = true
-           
+            GeneralSettings.sharedGameData.defaults.set(true, forKey: "shotyn")
             
             
         case 1 :
             GeneralSettings.sharedGameData.shotyn = false
+            GeneralSettings.sharedGameData.defaults.set(false, forKey: "shotyn")
           
         default:
             break
@@ -168,11 +169,12 @@ class HomeScreenViewController: UIViewController {
      
         case 0 :
             GeneralSettings.sharedGameData.JoyPos = true
-            
+            GeneralSettings.sharedGameData.defaults.set(true, forKey: "JoyPos")
             
             
         case 1 :
             GeneralSettings.sharedGameData.JoyPos = false
+            GeneralSettings.sharedGameData.defaults.set(false, forKey: "JoyPos")
             
         default:
             break
