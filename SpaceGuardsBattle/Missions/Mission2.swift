@@ -72,26 +72,26 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
         if GeneralSettings.sharedGameData.bgsound == true {
-        let sound = Bundle.main.path(forResource: "Gamescene audio", ofType:
-                                        "mp3")
-        do {
-            // We try to get the initialize it with the URL we created above.
-            HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
-        }
-        catch{
-            print(error)
+            let sound = Bundle.main.path(forResource: "Gamescene audio", ofType:
+                                            "mp3")
+            do {
+                // We try to get the initialize it with the URL we created above.
+                HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
+            }
+            catch{
+                print(error)
+                
+            }
+            HomeScreenViewController.audioPlayer.numberOfLoops = -1
+            HomeScreenViewController.audioPlayer.volume = 0.2
+            HomeScreenViewController.audioPlayer.play()
             
         }
-        HomeScreenViewController.audioPlayer.numberOfLoops = -1
-        HomeScreenViewController.audioPlayer.volume = 0.2
-        HomeScreenViewController.audioPlayer.play()
         
-        }
-       
-            setupTutorial()
-            addChild(rettangolo)
-            rettangolo.addChild(boxTUT)
-      
+        setupTutorial()
+        addChild(rettangolo)
+        rettangolo.addChild(boxTUT)
+        
         setupPauseMenu()
         setupNodes()
         let emitter = SKEmitterNode(fileNamed: "playerTrail.sks")
@@ -120,23 +120,23 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             
         }
         
-       
         
         
         
         
         
         
-//        let tlanet = SKSpriteNode(imageNamed: "1")
-//        tlanet.scaleTo(screenWidthPercentage: 0.60)
-//        tlanet.position = CGPoint(x: 400  , y: 600)
-//        tlanet.zPosition = 0
-//        tlanet.physicsBody = SKPhysicsBody(texture: tlanet.texture!, size: tlanet.size)
-//        tlanet.physicsBody?.isDynamic = false
-//        tlanet.physicsBody?.categoryBitMask = PhysicsCategory.Planet
-//        tlanet.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
         
-//        gameLayer.addChild(tlanet)
+        //        let tlanet = SKSpriteNode(imageNamed: "1")
+        //        tlanet.scaleTo(screenWidthPercentage: 0.60)
+        //        tlanet.position = CGPoint(x: 400  , y: 600)
+        //        tlanet.zPosition = 0
+        //        tlanet.physicsBody = SKPhysicsBody(texture: tlanet.texture!, size: tlanet.size)
+        //        tlanet.physicsBody?.isDynamic = false
+        //        tlanet.physicsBody?.categoryBitMask = PhysicsCategory.Planet
+        //        tlanet.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
+        
+        //        gameLayer.addChild(tlanet)
         createplanets(name: "pianetaarancione")
         var g = scene!.calculateAccumulatedFrame()
         g.size.height = g.size.height - 2000
@@ -160,21 +160,38 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             scoreLabel.position = CGPoint(x: ScreenSize.width * 0.68  , y: ScreenSize.height * 0.75)
             pauseButton.position = CGPoint(x: ScreenSize.width * 0.70  , y: ScreenSize.height * 0.85)
             progressBar.position = CGPoint(x: -ScreenSize.width * 0.68  , y: ScreenSize.height * 0.85)
-            shotbutton.position = CGPoint(x: (ScreenSize.width * 0.68)  , y:   (-ScreenSize.height * 0.80))
+            if GeneralSettings.sharedGameData.JoyPos {
+                shotbutton.position = CGPoint(x: (ScreenSize.width * 0.68)  , y:   (-ScreenSize.height * 0.80))
+            }
+            else {
+                shotbutton.position = CGPoint(x: (-ScreenSize.width * 0.68)  , y:   (-ScreenSize.height * 0.80))
+            }
+            
             
         } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
             timlab.position = CGPoint(x: -ScreenSize.width * 0.75 , y: ScreenSize.height * 0.80)
             scoreLabel.position = CGPoint(x: ScreenSize.width * 0.75  , y: ScreenSize.height * 0.80)
             pauseButton.position = CGPoint(x: ScreenSize.width * 0.80  , y: ScreenSize.height * 0.90)
             progressBar.position = CGPoint(x: -ScreenSize.width * 0.80, y: ScreenSize.height * 0.90)
-            shotbutton.position = CGPoint(x: (ScreenSize.width * 0.80)  , y:   (-ScreenSize.height * 0.85))
+            
+            if GeneralSettings.sharedGameData.JoyPos {
+                shotbutton.position = CGPoint(x: (ScreenSize.width * 0.80)  , y:   (-ScreenSize.height * 0.85))
+            } else {
+                shotbutton.position = CGPoint(x: (-ScreenSize.width * 0.80)  , y:   (-ScreenSize.height * 0.85))
+            }
+            
             
         } else {
             timlab.position = CGPoint(x: -ScreenSize.width * 0.45 , y: ScreenSize.height * 0.60)
             progressBar.position = CGPoint(x: -ScreenSize.width * 0.45  , y: ScreenSize.height * 0.66)
             pauseButton.position = CGPoint(x: ScreenSize.width * 0.48  , y: ScreenSize.height * 0.68)
             scoreLabel.position = CGPoint(x: ScreenSize.width * 0.45  , y: ScreenSize.height * 0.60)
-            shotbutton.position = CGPoint(x: (ScreenSize.width * 0.45)  , y:   (-ScreenSize.height * 0.55))
+            
+            if GeneralSettings.sharedGameData.JoyPos {
+                shotbutton.position = CGPoint(x: (ScreenSize.width * 0.45)  , y:   (-ScreenSize.height * 0.55))
+            } else {
+                shotbutton.position = CGPoint(x: (-ScreenSize.width * 0.45)  , y:   (-ScreenSize.height * 0.55))
+            }
             
         }
         
@@ -226,16 +243,16 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             if shotbutton.isHidden == false {
-            if shotbutton.contains(location) {
-        if pauseLayer.isHidden == true {
-            isFiring = true
-        }
-    }
+                if shotbutton.contains(location) {
+                    if pauseLayer.isHidden == true {
+                        isFiring = true
+                    }
+                }
             }
             else {
                 isFiring = true
             }
-}
+        }
         
         for touch in touches {
             let location = touch.location(in: self)
@@ -291,44 +308,44 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             if shotbutton.isHidden == false {
-            if shotbutton.contains(location) {
-    isFiring = false
-}
+                if shotbutton.contains(location) {
+                    isFiring = false
+                }
             } else {
                 isFiring = false
             }
-
-        if startmission == true && tutorial == false && isGamePaused == false {
-            tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-                //                  print("\(timer3)")
-                timer3 = timer3 - 1
-                timlab.text = "\(Time) : \(timer3)"
-                if timer3 < 0 {
-                    timer3 = 30
-                    tim?.invalidate()
-                    self.over!.scaleMode = scaleMode
-                    view?.presentScene(over)
+            
+            if startmission == true && tutorial == false && isGamePaused == false {
+                tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                    //                  print("\(timer3)")
+                    timer3 = timer3 - 1
+                    timlab.text = "\(Time) : \(timer3)"
+                    if timer3 < 0 {
+                        timer3 = 30
+                        tim?.invalidate()
+                        self.over!.scaleMode = scaleMode
+                        view?.presentScene(over)
+                    }
                 }
+                rettangolo.removeFromParent()
+                startmission = false
+                analogJoystick.isUserInteractionEnabled = true
             }
-            rettangolo.removeFromParent()
-            startmission = false
-            analogJoystick.isUserInteractionEnabled = true
+            
+            if tutorial == true {
+                rettangolo.removeFromParent()
+                analogJoystick.isUserInteractionEnabled = true
+                
+                
+                
+                
+                
+                
+                
+                tutorial = false }
+            
         }
         
-        if tutorial == true {
-            rettangolo.removeFromParent()
-            analogJoystick.isUserInteractionEnabled = true
-            
-            
-        
-            
-            
-           
-            
-            tutorial = false }
-        
-        }
-    
         
     }
     
@@ -339,24 +356,24 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         
         let location = hero.position
         
-       
+        
         gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
             
             //Aim
             let dx = (location.x) - enemy.position.x
             let dy = (location.y) - enemy.position.y
             let angle = atan2(dy, dx)
-
+            
             enemy.zRotation = angle - 3 * .pi/6
-
+            
             
             
             if enemy.position.distance(point: location) < 1000 && enemy.position.distance(point: location) > 450 {
-               
+                
                 //Seek
                 let velocityX =  cos(angle) * 5
                 let velocityY =  sin(angle) * 5
-
+                
                 enemy.position.x += velocityX
                 enemy.position.y += velocityY
             }
@@ -370,7 +387,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-
+        
         
         guard !isGamePaused else {
             gameLayer.isPaused = true
@@ -411,7 +428,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                     shot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
                     shot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
                     shot.physicsBody?.usesPreciseCollisionDetection = true
-                   
+                    
                     
                     guard isPlayerAlive else { return }
                     
@@ -444,52 +461,52 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             if tutorial == false {
                 if action(forKey: "shooting") == nil {
                     
-//                    eShot.physicsBody = SKPhysicsBody(rectangleOf: eShot.size)
-//                    eShot.physicsBody?.collisionBitMask = PhysicsCategory.None
-//                    eShot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
-//                    eShot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
-//                    eShot.physicsBody?.usesPreciseCollisionDetection = true
+                    //                    eShot.physicsBody = SKPhysicsBody(rectangleOf: eShot.size)
+                    //                    eShot.physicsBody?.collisionBitMask = PhysicsCategory.None
+                    //                    eShot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
+                    //                    eShot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
+                    //                    eShot.physicsBody?.usesPreciseCollisionDetection = true
                     
-         
                     
-
+                    
+                    
                     
                     
                     gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
                         let location = self.hero.position
                         if enemy.position.distance(point: location) < 700 {
-                        let eShot = SKSpriteNode(imageNamed: "lasere")
-                        eShot.name = "laser"
+                            let eShot = SKSpriteNode(imageNamed: "lasere")
+                            eShot.name = "laser"
                             
                             eShot.position = enemy.position
-                        eShot.zPosition = enemy.zPosition - 1
-                        eShot.physicsBody = SKPhysicsBody(rectangleOf: eShot.size)
-                        eShot.physicsBody?.collisionBitMask = PhysicsCategory.None
-                        eShot.physicsBody?.categoryBitMask = PhysicsCategory.eneShot
-                        eShot.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
-                        
-                        eShot.zRotation = enemy.zRotation
-                        
-                  
-                        
+                            eShot.zPosition = enemy.zPosition - 1
+                            eShot.physicsBody = SKPhysicsBody(rectangleOf: eShot.size)
+                            eShot.physicsBody?.collisionBitMask = PhysicsCategory.None
+                            eShot.physicsBody?.categoryBitMask = PhysicsCategory.eneShot
+                            eShot.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
+                            
+                            eShot.zRotation = enemy.zRotation
+                            
+                            
+                            
                             self.gameLayer.addChild(eShot)
-                        
-                        var angolo : CGFloat
-                        
-                        if eShot.zRotation + (3.14 / 2 ) >= 0 {
-                            angolo = (((eShot.zRotation * 180) / Double.pi ) + 90)
-                        } else {
-                            angolo = ( (360 + ((eShot.zRotation * 180) / Double.pi ))  + 90)
+                            
+                            var angolo : CGFloat
+                            
+                            if eShot.zRotation + (3.14 / 2 ) >= 0 {
+                                angolo = (((eShot.zRotation * 180) / Double.pi ) + 90)
+                            } else {
+                                angolo = ( (360 + ((eShot.zRotation * 180) / Double.pi ))  + 90)
+                            }
+                            
+                            let movement = SKAction.move(to: CGPoint(x: (1000 * cos(((angolo) * Double.pi) / 180)) + enemy.position.x, y: (1000 * cos(((180 - 90 - angolo ) * Double.pi) / 180 )) + enemy.position.y), duration: 0.6)
+                            let sound = SKAction.playSoundFileNamed("laserj", waitForCompletion: false)
+                            let removeFromParent = SKAction.removeFromParent()
+                            let actions = [sound, movement, removeFromParent]
+                            
+                            eShot.run(SKAction.sequence(actions))
                         }
-                        
-                        let movement = SKAction.move(to: CGPoint(x: (1000 * cos(((angolo) * Double.pi) / 180)) + enemy.position.x, y: (1000 * cos(((180 - 90 - angolo ) * Double.pi) / 180 )) + enemy.position.y), duration: 0.6)
-                        let sound = SKAction.playSoundFileNamed("laserj", waitForCompletion: false)
-                        let removeFromParent = SKAction.removeFromParent()
-                        let actions = [sound, movement, removeFromParent]
-                        
-                        eShot.run(SKAction.sequence(actions))
                     }
-                }
                 }
             }
         }
@@ -513,7 +530,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 
                 contact.bodyA.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
                 
-//                score = score + 5
+                //                score = score + 5
                 scoreLabel.text = "\(Scor) : \(score)"
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -537,7 +554,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                     
                     
                     contact.bodyB.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
-//                    score = score + 3
+                    //                    score = score + 3
                     scoreLabel.text = "\(Scor) : \(score)"
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -652,7 +669,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-       
+        
         
         if collision3 == PhysicsCategory.eneShot {
             if collision4 == PhysicsCategory.Hero{
@@ -725,7 +742,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         return sprite
     }()
     
-
+    
     
     func randomEnemy () {
         let enemy = SKSpriteNode(imageNamed: "enemyBig")
@@ -742,35 +759,47 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         enemy.physicsBody?.categoryBitMask = PhysicsCategory.enemy
         enemy.physicsBody?.contactTestBitMask = PhysicsCategory.Shot
         enemy.physicsBody?.collisionBitMask = PhysicsCategory.None
-
+        
         gameLayer.addChild(enemy)
-
+        
     }
     
-//    lazy var enemy: SKSpriteNode = {
-//        var enemy = SKSpriteNode(imageNamed: Nav)
-//        enemy.position = CGPoint(x: Int.random(in: 1500...6500), y: Int.random(in: 1500...6500))
-//        enemy.zPosition = NodesZPosition.hero.rawValue
-//        enemy.scaleTo(screenWidthPercentage: 0.35)
-//        enemy.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
-//        enemy.physicsBody?.allowsRotation = false
-//        enemy.physicsBody?.mass = 100
-//        enemy.physicsBody?.categoryBitMask = PhysicsCategory.Hero
-//        enemy.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine
-//        enemy.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid
-//        return sprite
-//    }()
+    //    lazy var enemy: SKSpriteNode = {
+    //        var enemy = SKSpriteNode(imageNamed: Nav)
+    //        enemy.position = CGPoint(x: Int.random(in: 1500...6500), y: Int.random(in: 1500...6500))
+    //        enemy.zPosition = NodesZPosition.hero.rawValue
+    //        enemy.scaleTo(screenWidthPercentage: 0.35)
+    //        enemy.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+    //        enemy.physicsBody?.allowsRotation = false
+    //        enemy.physicsBody?.mass = 100
+    //        enemy.physicsBody?.categoryBitMask = PhysicsCategory.Hero
+    //        enemy.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine
+    //        enemy.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid
+    //        return sprite
+    //    }()
     
     
     
     lazy var analogJoystick: AnalogJoystick = {
         let js = AnalogJoystick(diameter: 175, colors: nil, images: (substrate: #imageLiteral(resourceName: "jSubstrate"), stick: #imageLiteral(resourceName: "jStick")))
-        if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
-            js.position = CGPoint(x: -ScreenSize.width * 0.63, y: -ScreenSize.height * 0.75)
+        if GeneralSettings.sharedGameData.JoyPos{
+            if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
+                js.position = CGPoint(x: -ScreenSize.width * 0.63, y: -ScreenSize.height * 0.75)
+            } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
+                js.position = CGPoint(x: -ScreenSize.width * 0.70, y: -ScreenSize.height * 0.80)
+            } else {
+                js.position = CGPoint(x: -ScreenSize.width * 0.45, y: -ScreenSize.height * 0.55)
+            }
+            js.zPosition = NodesZPosition.joystick.rawValue
+        } else { if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
+            js.position = CGPoint(x: ScreenSize.width * 0.63, y: -ScreenSize.height * 0.75)
         } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
-            js.position = CGPoint(x: -ScreenSize.width * 0.70, y: -ScreenSize.height * 0.80)
+            js.position = CGPoint(x: ScreenSize.width * 0.70, y: -ScreenSize.height * 0.80)
         } else {
-            js.position = CGPoint(x: -ScreenSize.width * 0.45, y: -ScreenSize.height * 0.55)
+            js.position = CGPoint(x: ScreenSize.width * 0.45, y: -ScreenSize.height * 0.55)
+        }
+            js.zPosition = NodesZPosition.joystick.rawValue
+            
         }
         js.zPosition = NodesZPosition.joystick.rawValue
         
@@ -818,7 +847,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         shoton.zPosition = 11
         shotoff.position = CGPoint(x:  -(ScreenSize.width * 0.230), y:  (-ScreenSize.height * 0.02))
         shotoff.zPosition = 11
-//        shotbutton.position = CGPoint(x: (ScreenSize.width * 0.45)  , y:   (-ScreenSize.height * 0.55))
+        //        shotbutton.position = CGPoint(x: (ScreenSize.width * 0.45)  , y:   (-ScreenSize.height * 0.55))
         pauseText.text = Pau
         pauseText.position = CGPoint(x: 0, y: 100)
         pauseText.zPosition = 11
@@ -836,7 +865,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         pauseLeave.verticalAlignmentMode = .top
     }
     
-   
+    
     
     
     let boxTUT = SKLabelNode(text: "Hello")
@@ -855,7 +884,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         gameLayer.addChild(hero)
-//        gameLayer.addChild(enemy)
+        //        gameLayer.addChild(enemy)
         addChild(gameLayer)
         addChild(hudLayer)
         addChild(pauseLayer)
@@ -896,7 +925,18 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             mySelf.hero.zRotation = data.angular
             
             if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
-                mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.63) , y: mySelf.hero.position.y - (ScreenSize.height * 0.75))
+                if GeneralSettings.sharedGameData.JoyPos {
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.63) , y: mySelf.hero.position.y - (ScreenSize.height * 0.75))
+                    mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.68)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.80))
+                    
+                } else {
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.63) , y: mySelf.hero.position.y - (ScreenSize.height * 0.75))
+                    
+                    mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.68)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.80))
+                    
+                }
+                
+                
                 
                 mySelf.progressBar.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.68)  , y: mySelf.hero.position.y + (ScreenSize.height * 0.85))
                 
@@ -906,11 +946,20 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 
                 mySelf.timlab.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.68)  , y: mySelf.hero.position.y + (ScreenSize.height * 0.75))
                 
-                mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.68)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.80))
+                
                 
                 
             } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
-                mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.70) , y: mySelf.hero.position.y - (ScreenSize.height * 0.80))
+                
+                if GeneralSettings.sharedGameData.JoyPos{
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.70) , y: mySelf.hero.position.y - (ScreenSize.height * 0.80))
+                    
+                    mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.80)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.85))
+                } else {
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.70) , y: mySelf.hero.position.y - (ScreenSize.height * 0.80))
+                    
+                    mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.80)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.85))
+                }
                 
                 mySelf.progressBar.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.80)  , y: mySelf.hero.position.y + (ScreenSize.height * 0.90))
                 
@@ -920,11 +969,21 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 
                 mySelf.pauseButton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.80)  , y: mySelf.hero.position.y + (ScreenSize.height * 0.90))
                 
-                mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.80)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.85))
                 
                 
             } else {
-                mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.45) , y: mySelf.hero.position.y - (ScreenSize.height * 0.55))
+                
+                if GeneralSettings.sharedGameData.JoyPos {
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.45) , y: mySelf.hero.position.y - (ScreenSize.height * 0.55))
+                    
+                    mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.45)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.55))
+                    
+                } else{
+                    mySelf.analogJoystick.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.45) , y: mySelf.hero.position.y - (ScreenSize.height * 0.55))
+                    
+                    mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.45)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.55))
+                }
+                
                 
                 mySelf.progressBar.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.45)  , y: mySelf.hero.position.y + (ScreenSize.height * 0.66))
                 
@@ -934,7 +993,6 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 
                 mySelf.pauseButton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.48)  , y: mySelf.hero.position.y + (ScreenSize.height * 0.68))
                 
-                mySelf.shotbutton.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.45)  , y: mySelf.hero.position.y + (-ScreenSize.height * 0.55))
                 
             }
             
@@ -942,7 +1000,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             
             mySelf.star2!.position = CGPoint(x: -mySelf.hero.position.x / 7 - (ScreenSize.width * 0.45)  , y: -mySelf.hero.position.y / 7 - (ScreenSize.height * 0.66))
             
-
+            
             
             mySelf.star!.position = CGPoint(x: -mySelf.hero.position.x / 15 - (ScreenSize.width * 0.45)  , y: -mySelf.hero.position.y / 15 - (ScreenSize.height * 0.66))
             
