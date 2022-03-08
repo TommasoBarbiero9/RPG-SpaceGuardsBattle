@@ -31,7 +31,6 @@
 		4B28939B27B57606009556A2 /* Space.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B28939A27B57606009556A2 /* Space.sks */; };
 		4B5582B927B2D67800FF5CBC /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5582B827B2D67800FF5CBC /* Extension.swift */; };
 		4B60382B27CF6B3700A05906 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B60382A27CF6B3700A05906 /* GameKit.framework */; };
-		4B73B8D927CFD9F00072D797 /* Mainvecchio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B73B8D827CFD9F00072D797 /* Mainvecchio.storyboard */; };
 		4B73B8E727CFDB950072D797 /* Over.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B73B8E627CFDB950072D797 /* Over.sks */; };
 		4B86F12527B2601C00805DB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B86F12427B2601C00805DB7 /* AppDelegate.swift */; };
 		4B86F12727B2601C00805DB7 /* Tutorial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B86F12627B2601C00805DB7 /* Tutorial.sks */; };
@@ -43,6 +42,7 @@
 		4B87B94F27D0CF950035A37D /* Mission2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B87B94E27D0CF950035A37D /* Mission2ViewController.swift */; };
 		4B87B95127D0D2480035A37D /* Mission2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B87B95027D0D2480035A37D /* Mission2.sks */; };
 		4BF5C27C27BD40DF004F6845 /* playerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4BF5C27B27BD40DF004F6845 /* playerTrail.sks */; };
+		4BFBC0EB27D76D3300C3E8A7 /* enemyDestroyed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4BFBC0EA27D76D3300C3E8A7 /* enemyDestroyed.sks */; };
 		6B18859C27CFE88400D35A6F /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18859B27CFE88400D35A6F /* TutorialViewController.swift */; };
 		6BC1061027D625170038D8E2 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1060C27D625170038D8E2 /* HomeScreenViewController.swift */; };
 		6BC1061127D625170038D8E2 /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1060D27D625170038D8E2 /* MissionsViewController.swift */; };
@@ -101,7 +101,6 @@
 		4B28939A27B57606009556A2 /* Space.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Space.sks; sourceTree = "<group>"; };
 		4B5582B827B2D67800FF5CBC /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		4B60382A27CF6B3700A05906 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		4B73B8D827CFD9F00072D797 /* Mainvecchio.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mainvecchio.storyboard; sourceTree = "<group>"; };
 		4B73B8E627CFDB950072D797 /* Over.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Over.sks; sourceTree = "<group>"; };
 		4B86F12127B2601C00805DB7 /* SGB-SpaceGuardsBattle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SGB-SpaceGuardsBattle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B86F12427B2601C00805DB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		4B87B94E27D0CF950035A37D /* Mission2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission2ViewController.swift; sourceTree = "<group>"; };
 		4B87B95027D0D2480035A37D /* Mission2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mission2.sks; sourceTree = "<group>"; };
 		4BF5C27B27BD40DF004F6845 /* playerTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = playerTrail.sks; sourceTree = "<group>"; };
+		4BFBC0EA27D76D3300C3E8A7 /* enemyDestroyed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = enemyDestroyed.sks; sourceTree = "<group>"; };
 		6B18859B27CFE88400D35A6F /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		6BC1060C27D625170038D8E2 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		6BC1060D27D625170038D8E2 /* MissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
@@ -257,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				0B56E7CD27D61FDC00A30ADB /* Main.storyboard */,
-				4B73B8D827CFD9F00072D797 /* Mainvecchio.storyboard */,
 				9123499627C8FC31001208A7 /* LaunchScreen.storyboard */,
 			);
 			path = StoryBoard;
@@ -276,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				4B246E2627CEBF1700172D65 /* fireworks.sks */,
+				4BFBC0EA27D76D3300C3E8A7 /* enemyDestroyed.sks */,
 				4B28939A27B57606009556A2 /* Space.sks */,
 				4BF5C27B27BD40DF004F6845 /* playerTrail.sks */,
 				0B6E9B7327C4D443000FDB7D /* Starfield.sks */,
@@ -446,6 +446,7 @@
 				4B73B8E727CFDB950072D797 /* Over.sks in Resources */,
 				0B068BBE27CFC05000CE7427 /* Tutorial.wav in Resources */,
 				0B56E7CE27D61FDC00A30ADB /* Main.storyboard in Resources */,
+				4BFBC0EB27D76D3300C3E8A7 /* enemyDestroyed.sks in Resources */,
 				4B86F12727B2601C00805DB7 /* Tutorial.sks in Resources */,
 				4B86F13227B2601D00805DB7 /* Assets.xcassets in Resources */,
 				0B6E9B7227C4D1E4000FDB7D /* asteroidsDestroyed.sks in Resources */,
@@ -460,7 +461,6 @@
 				4BF5C27C27BD40DF004F6845 /* playerTrail.sks in Resources */,
 				0B068BBC27CFC04200CE7427 /* Menu.wav in Resources */,
 				0B6E9B6C27C3D792000FDB7D /* PauseMenu.sks in Resources */,
-				4B73B8D927CFD9F00072D797 /* Mainvecchio.storyboard in Resources */,
 				4B87B95127D0D2480035A37D /* Mission2.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,10 +682,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z6L7DM8C9X;
+				DEVELOPMENT_TEAM = 4W9R99S9G2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceGuardsBattle/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SGB;
+				INFOPLIST_KEY_CFBundleDisplayName = "The Outer Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.strategy-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -714,10 +714,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z6L7DM8C9X;
+				DEVELOPMENT_TEAM = 4W9R99S9G2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceGuardsBattle/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SGB;
+				INFOPLIST_KEY_CFBundleDisplayName = "The Outer Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.strategy-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

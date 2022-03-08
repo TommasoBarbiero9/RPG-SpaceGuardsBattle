@@ -44,16 +44,16 @@ class HomeScreenViewController: UIViewController {
         planets.rotate()
         // Do any additional setup after loading the view, typically from a nib.
         // sound file.
-        let sound = Bundle.main.path(forResource: "Menu", ofType:
-                                        "wav")
-        do {
-            // We try to get the initialize it with the URL we created above.
-            HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
-        }
-        catch{
-            print(error)
-            
-        }
+//        let sound = Bundle.main.path(forResource: "Menu", ofType:
+//                                        "wav")
+//        do {
+//            // We try to get the initialize it with the URL we created above.
+//            HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
+//        }
+//        catch{
+//            print(error)
+//            
+//        }
         HomeScreenViewController.audioPlayer.numberOfLoops = -1
         HomeScreenViewController.audioPlayer.play()
     }
