@@ -20,9 +20,9 @@ class Mission2ViewController: UIViewController{
         
         self.shipLeaving.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
         self.navigationController?.isNavigationBarHidden = true
-        self.view.insertSubview(backgroundView, at: 2)
-            self.view.insertSubview(pistaView, at: 0)
-            self.view.insertSubview(shipLeaving, at: 1)
+//        self.view.insertSubview(backgroundView, at: 2)
+            self.view.insertSubview(pistaView, at: 1)
+            self.view.insertSubview(shipLeaving, at: 0)
 //            pistaView.center = self.view.center
     //        SettingsMenu.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
             pistaView.alpha = 1
