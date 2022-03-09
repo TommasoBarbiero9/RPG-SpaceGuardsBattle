@@ -603,7 +603,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         pauseBG.position = CGPoint(x: hero.position.x, y: hero.position.y)
             pauseBG.zPosition = 10
         
-        pauseCancel.position = CGPoint(x: -ScreenSize.width * 0.285, y: ScreenSize.height * 0.15)
+        pauseCancel.position =  CGPoint(x: ScreenSize.width * 0.380, y: ScreenSize.height * 0.1926)
             pauseCancel.zPosition = 11
         shoton.position = CGPoint(x: +(ScreenSize.width * 0.200), y:  (-ScreenSize.height * 0.02))
         shoton.zPosition = 11
@@ -776,8 +776,8 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             
             mySelf.pauseBG.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y)
             
-            mySelf.pauseCancel.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.285), y: mySelf.hero.position.y + (ScreenSize.height * 0.15))
-            
+            mySelf.pauseCancel.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.380), y: mySelf.hero.position.y + (ScreenSize.height * 0.1926))
+           
             mySelf.shoton.position = CGPoint(x: mySelf.hero.position.x  + (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
             
             mySelf.shotoff.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.230), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
