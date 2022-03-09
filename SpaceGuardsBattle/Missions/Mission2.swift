@@ -122,21 +122,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         
         
         
-        
-        
-        
-        
-        
-        //        let tlanet = SKSpriteNode(imageNamed: "1")
-        //        tlanet.scaleTo(screenWidthPercentage: 0.60)
-        //        tlanet.position = CGPoint(x: 400  , y: 600)
-        //        tlanet.zPosition = 0
-        //        tlanet.physicsBody = SKPhysicsBody(texture: tlanet.texture!, size: tlanet.size)
-        //        tlanet.physicsBody?.isDynamic = false
-        //        tlanet.physicsBody?.categoryBitMask = PhysicsCategory.Planet
-        //        tlanet.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
-        
-        //        gameLayer.addChild(tlanet)
+    
         createplanets(name: "pianetaarancione")
         var g = scene!.calculateAccumulatedFrame()
         g.size.height = g.size.height - 2000
@@ -429,7 +415,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                     shot.physicsBody?.collisionBitMask = PhysicsCategory.None
                     shot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
                     shot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
-                    shot.physicsBody?.usesPreciseCollisionDetection = true
+
                     
                     
                     guard isPlayerAlive else { return }
@@ -463,16 +449,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             if tutorial == false {
                 if action(forKey: "shooting") == nil {
                     
-                    //                    eShot.physicsBody = SKPhysicsBody(rectangleOf: eShot.size)
-                    //                    eShot.physicsBody?.collisionBitMask = PhysicsCategory.None
-                    //                    eShot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
-                    //                    eShot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
-                    //                    eShot.physicsBody?.usesPreciseCollisionDetection = true
-                    
-                    
-                    
-                    
-                    
+
                     
                     gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
                         let location = self.hero.position
@@ -765,20 +742,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         gameLayer.addChild(enemy)
         
     }
-    
-    //    lazy var enemy: SKSpriteNode = {
-    //        var enemy = SKSpriteNode(imageNamed: Nav)
-    //        enemy.position = CGPoint(x: Int.random(in: 1500...6500), y: Int.random(in: 1500...6500))
-    //        enemy.zPosition = NodesZPosition.hero.rawValue
-    //        enemy.scaleTo(screenWidthPercentage: 0.35)
-    //        enemy.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
-    //        enemy.physicsBody?.allowsRotation = false
-    //        enemy.physicsBody?.mass = 100
-    //        enemy.physicsBody?.categoryBitMask = PhysicsCategory.Hero
-    //        enemy.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid | PhysicsCategory.Planet | PhysicsCategory.Confine
-    //        enemy.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid
-    //        return sprite
-    //    }()
+
     
     
     

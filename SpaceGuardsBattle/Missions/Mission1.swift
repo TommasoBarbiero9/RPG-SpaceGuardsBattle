@@ -382,7 +382,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
                     shot.physicsBody?.collisionBitMask = PhysicsCategory.None
                     shot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
                     shot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
-                    shot.physicsBody?.usesPreciseCollisionDetection = true
+
                    
                     
                     guard isPlayerAlive else { return }

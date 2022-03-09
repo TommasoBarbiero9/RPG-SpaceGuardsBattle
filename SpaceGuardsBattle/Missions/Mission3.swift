@@ -497,9 +497,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     shot.physicsBody?.collisionBitMask = PhysicsCategory.None
                     shot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
                     shot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
-                    shot.physicsBody?.usesPreciseCollisionDetection = true
-                    //                    shot.physicsBody?.mass = 0.1
-                    
+
                     guard isPlayerAlive else { return }
                     
                     gameLayer.addChild(shot)
@@ -531,11 +529,6 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             if tutorial == false {
                 if action(forKey: "shooting") == nil {
                     
-                    //                    eShot.physicsBody = SKPhysicsBody(rectangleOf: eShot.size)
-                    //                    eShot.physicsBody?.collisionBitMask = PhysicsCategory.None
-                    //                    eShot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
-                    //                    eShot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
-                    //                    eShot.physicsBody?.usesPreciseCollisionDetection = true
                     
                     
                     
@@ -941,7 +934,6 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             
             if collision4 == PhysicsCategory.Sonda {
                 if collision3 == PhysicsCategory.Hero{
-                    
                     
                     
                     if inizioanimazione == true {
