@@ -49,13 +49,13 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     var score: Int = 0
     let pauseButton = SKSpriteNode(imageNamed: "pause")
     let conquer = SKSpriteNode(imageNamed: "0pulsantegrigio")
-    let shotbutton = SKSpriteNode(imageNamed: "1shotter")
+    let shotbutton = SKSpriteNode(imageNamed: "sparoon")
     let pauseBG = SKSpriteNode(imageNamed: "pauseBG")
     let pauseText = SKLabelNode(text: "")
     let pauseLeave = SKLabelNode(text: "")
     let pauseCancel = SKSpriteNode(imageNamed: "pauseCancel")
-    let shoton = SKSpriteNode(imageNamed: "green")
-    let shotoff = SKSpriteNode(imageNamed: "blue")
+    let shoton = SKSpriteNode(imageNamed: "sparooff")
+    let shotoff = SKSpriteNode(imageNamed: "sparoon")
     let palle = 21
     
     let cam = SKCameraNode()
@@ -1012,6 +1012,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     func setupJoystick() {
         shotbutton.isHidden = !GeneralSettings.sharedGameData.shotyn
         hudLayer.addChild(shotbutton)
+        shotbutton.scaleTo(screenWidthPercentage: 0.35)
         hudLayer.addChild(conquer)
         hudLayer.addChild(analogJoystick)
         hudLayer.addChild(progressBar)

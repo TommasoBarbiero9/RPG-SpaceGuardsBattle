@@ -24,9 +24,9 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     let scoreLabel = SKLabelNode(text: "Score : 0")
     var over = SKScene(fileNamed: "Over")
     var win = SKScene(fileNamed: "Win")
-    let shotbutton = SKSpriteNode(imageNamed: "1shotter")
-    let shoton = SKSpriteNode(imageNamed: "green")
-    let shotoff = SKSpriteNode(imageNamed: "blue")
+    let shotbutton = SKSpriteNode(imageNamed: "sparoon")
+    let shoton = SKSpriteNode(imageNamed: "sparooff")
+    let shotoff = SKSpriteNode(imageNamed: "sparoon")
     var isFiring = false
     var updateTime: Double = 0
     var firingInterval: Double = 0.5
@@ -664,6 +664,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         hudLayer.addChild(pauseButton)
         shotbutton.isHidden = !GeneralSettings.sharedGameData.shotyn
         hudLayer.addChild(shotbutton)
+        shotbutton.scaleTo(screenWidthPercentage: 0.35)
         scoreLabel.text = "\(Scor): \(score)"
         hudLayer.addChild(scoreLabel)
             scoreLabel.zPosition = 3

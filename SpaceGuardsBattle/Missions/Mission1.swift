@@ -32,9 +32,9 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
     var isGamePaused = false
     var star = SKEmitterNode(fileNamed: "Starfield")
     var star2 = SKEmitterNode(fileNamed: "Starfield")
-    let shotbutton = SKSpriteNode(imageNamed: "1shotter")
-    let shoton = SKSpriteNode(imageNamed: "green")
-    let shotoff = SKSpriteNode(imageNamed: "blue")
+    let shotbutton = SKSpriteNode(imageNamed: "sparoon")
+    let shoton = SKSpriteNode(imageNamed: "sparooff")
+    let shotoff = SKSpriteNode(imageNamed: "sparoon")
     var timer3: Int = 100
     var timlab = SKLabelNode(text: "Time : 0")
     let Time = NSLocalizedString("Time", comment: "")
@@ -662,6 +662,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         hudLayer.addChild(pauseButton)
         shotbutton.isHidden = !GeneralSettings.sharedGameData.shotyn
         hudLayer.addChild(shotbutton)
+        shotbutton.scaleTo(screenWidthPercentage: 0.35)
         scoreLabel.text = "\(Scor): \(score)"
         hudLayer.addChild(scoreLabel)
         scoreLabel.zPosition = 3
