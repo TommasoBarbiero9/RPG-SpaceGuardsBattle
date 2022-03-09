@@ -34,7 +34,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
     var star2 = SKEmitterNode(fileNamed: "Starfield")
     let shotbutton = SKSpriteNode(imageNamed: "sparoon")
     let shoton = SKSpriteNode(imageNamed: "sparooff")
-    let shotoff = SKSpriteNode(imageNamed: "sparoon")
+    let pauserow = SKSpriteNode(imageNamed: "pauserow2")
     var timer3: Int = 100
     var timlab = SKLabelNode(text: "Time : 0")
     let Time = NSLocalizedString("Time", comment: "")
@@ -76,24 +76,30 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
     //MARK: DIDMOVE FUNCTION
     override func didMove(to view: SKView) {
         
+        if GeneralSettings.sharedGameData.shotyn{
+            shoton.texture = SKTexture(imageNamed: "sparoon")
+        }else{
+            shoton.texture = SKTexture(imageNamed: "sparooff")
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
         if GeneralSettings.sharedGameData.bgsound == true {
-        let sound = Bundle.main.path(forResource: "Gamescene audio", ofType:
-                                        "mp3")
-        do {
-            // We try to get the initialize it with the URL we created above.
-            HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
-        }
-        catch{
-            print(error)
+            let sound = Bundle.main.path(forResource: "Gamescene audio", ofType:
+                                            "mp3")
+            do {
+                // We try to get the initialize it with the URL we created above.
+                HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
+            }
+            catch{
+                print(error)
+                
+            }
+            HomeScreenViewController.audioPlayer.numberOfLoops = -1
+            HomeScreenViewController.audioPlayer.volume = 0.2
+            HomeScreenViewController.audioPlayer.play()
             
         }
-        HomeScreenViewController.audioPlayer.numberOfLoops = -1
-        HomeScreenViewController.audioPlayer.volume = 0.2
-        HomeScreenViewController.audioPlayer.play()
         
-        }
-       
         
         
         setupPauseMenu()
@@ -229,16 +235,16 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             if shotbutton.isHidden == false {
-            if shotbutton.contains(location) {
-        if pauseLayer.isHidden == true {
-            isFiring = true
-        }
-    }
+                if shotbutton.contains(location) {
+                    if pauseLayer.isHidden == true {
+                        isFiring = true
+                    }
+                }
             }
             else {
                 isFiring = true
             }
-}
+        }
         
         for touch in touches {
             let location = touch.location(in: self)
@@ -247,12 +253,15 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
             }
             if pauseLayer.isHidden == false {
                 if shoton.contains(location){
-                    shotbutton.isHidden = true
-                    GeneralSettings.sharedGameData.shotyn = false
-                }
-                if shotoff.contains(location){
-                    shotbutton.isHidden = false
-                    GeneralSettings.sharedGameData.shotyn = true
+                    if !GeneralSettings.sharedGameData.shotyn {
+                        shoton.texture = SKTexture(imageNamed: "sparoon")
+                        shotbutton.isHidden = false
+                        GeneralSettings.sharedGameData.shotyn = true
+                    }else {
+                        shoton.texture = SKTexture(imageNamed: "sparooff")
+                        shotbutton.isHidden = true
+                        GeneralSettings.sharedGameData.shotyn = false
+                    }
                 }
                 if pauseCancel.contains(location) {
                     
@@ -297,45 +306,45 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             if shotbutton.isHidden == false {
-            if shotbutton.contains(location) {
-    isFiring = false
-}
+                if shotbutton.contains(location) {
+                    isFiring = false
+                }
             } else {
                 isFiring = false
             }
-
-        
-        
-        if startmission == true && tutorial == false && isGamePaused == false {
-            tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-                //                  print("\(timer3)")
-                timer3 = timer3 - 1
-                timlab.text = "\(Time) : \(timer3)"
-                if timer3 < 0 {
-                    timer3 = 30
-                    tim?.invalidate()
-                    self.over!.scaleMode = scaleMode
-                    view?.presentScene(over)
+            
+            
+            
+            if startmission == true && tutorial == false && isGamePaused == false {
+                tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                    //                  print("\(timer3)")
+                    timer3 = timer3 - 1
+                    timlab.text = "\(Time) : \(timer3)"
+                    if timer3 < 0 {
+                        timer3 = 30
+                        tim?.invalidate()
+                        self.over!.scaleMode = scaleMode
+                        view?.presentScene(over)
+                    }
                 }
+                arrow.removeFromParent()
+                rettangolo.removeFromParent()
+                startmission = false
+                analogJoystick.isUserInteractionEnabled = true
             }
-            arrow.removeFromParent()
-            rettangolo.removeFromParent()
-            startmission = false
-            analogJoystick.isUserInteractionEnabled = true
-        }
-        
-        if tutorial == true {
-            arrow.removeFromParent()
-            rettangolo.removeFromParent()
-            analogJoystick.isUserInteractionEnabled = true
+            
+            if tutorial == true {
+                arrow.removeFromParent()
+                rettangolo.removeFromParent()
+                analogJoystick.isUserInteractionEnabled = true
+                
+                
+                
+                
+                tutorial = false }
             
             
             
-            
-            tutorial = false }
-        
-        
-        
         }
     }
     
@@ -382,8 +391,8 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
                     shot.physicsBody?.collisionBitMask = PhysicsCategory.None
                     shot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
                     shot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
-
-                   
+                    
+                    
                     
                     guard isPlayerAlive else { return }
                     
@@ -514,7 +523,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         }
         else if collision2 == PhysicsCategory.Planet{
             if collision == PhysicsCategory.Hero{
-            
+                
                 print("Conquista")}
         }
         
@@ -598,15 +607,18 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         pauseBG.position = CGPoint(x: hero.position.x, y: hero.position.y)
         pauseBG.zPosition = 10
         
-        pauseCancel.position =  CGPoint(x: ScreenSize.width * 0.380, y: ScreenSize.height * 0.1926)
+        pauseCancel.position = CGPoint(x: ScreenSize.width * 0.380, y: ScreenSize.height * 0.1926)
         pauseCancel.zPosition = 11
+        pauserow.position = CGPoint(x: 0, y: ScreenSize.height * 0.195)
+        pauserow.zPosition = 10
+        pauserow.scaleTo(screenWidthPercentage: pauseText.xScale/2)
         shoton.position = CGPoint(x: +(ScreenSize.width * 0.200), y:  (-ScreenSize.height * 0.02))
         shoton.zPosition = 11
-        shotoff.position = CGPoint(x:  -(ScreenSize.width * 0.230), y:  (-ScreenSize.height * 0.02))
-        shotoff.zPosition = 11
+      
         shotbutton.position = CGPoint(x: (ScreenSize.width * 0.45)  , y:   (-ScreenSize.height * 0.55))
         pauseText.text = Pau
-        pauseText.position = CGPoint(x: 0, y: 100)
+        pauseText.position = CGPoint(x: 0, y: ScreenSize.height * 0.220)
+        pauseText.fontName = "SemiBold"
         pauseText.zPosition = 11
         pauseText.lineBreakMode = .byWordWrapping
         pauseText.numberOfLines = 2
@@ -622,12 +634,12 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         pauseLeave.verticalAlignmentMode = .top
     }
     
-  
+    
     
     
     
     let boxTUT = SKLabelNode(text: "Hello")
-   
+    
     
     let textMex = NSLocalizedString("MexLv1", comment: "")
     
@@ -679,7 +691,8 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         pauseLayer.addChild(pauseText)
         pauseLayer.addChild(pauseLeave)
         pauseLayer.addChild(shoton)
-        pauseLayer.addChild(shotoff)
+        pauseLayer.addChild(pauserow)
+      
         analogJoystick.trackingHandler = { [weak self] data in
             guard let mySelf = self else { return }
             mySelf.hero.position = CGPoint(x: mySelf.hero.position.x + (data.velocity.x * mySelf.velocityMultiplier),
@@ -772,18 +785,17 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
             mySelf.pauseBG.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y)
             
             mySelf.pauseCancel.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.380), y: mySelf.hero.position.y + (ScreenSize.height * 0.1926))
-           
-            mySelf.pauseText.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y + (ScreenSize.height * 0.1))
+            
+            mySelf.pauserow.position = CGPoint(x: mySelf.hero.position.x , y: mySelf.hero.position.y + (ScreenSize.height * 0.195))
+            
+            mySelf.pauseText.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y + (ScreenSize.height * 0.220))
             
             mySelf.pauseLeave.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y - (ScreenSize.height * 0.1))
             
             mySelf.shoton.position = CGPoint(x: mySelf.hero.position.x  + (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
             
-            mySelf.shotoff.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.230), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
+            
         }
-        
-        
-        
     }
     
     
@@ -874,6 +886,4 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-    
-    
 }

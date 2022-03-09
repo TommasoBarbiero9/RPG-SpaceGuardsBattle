@@ -26,7 +26,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     var win = SKScene(fileNamed: "Win")
     let shotbutton = SKSpriteNode(imageNamed: "sparoon")
     let shoton = SKSpriteNode(imageNamed: "sparooff")
-    let shotoff = SKSpriteNode(imageNamed: "sparoon")
+    let pauserow = SKSpriteNode(imageNamed: "pauserow2")
     var isFiring = false
     var updateTime: Double = 0
     var firingInterval: Double = 0.6
@@ -69,29 +69,35 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     let hudLayer = SKNode()
     var Nav = NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color
     
-//    var palle : TransitionDelegate?
+    //    var palle : TransitionDelegate?
     
     //MARK: DIDMOVE FUNCTION
     override func didMove(to view: SKView) {
-          
-          NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
-        if GeneralSettings.sharedGameData.bgsound == true {
-        let sound = Bundle.main.path(forResource: "Gamescene audio", ofType:
-                                        "mp3")
-        do {
-            // We try to get the initialize it with the URL we created above.
-            HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
-        }
-        catch{
-            print(error)
-            
-        }
-        HomeScreenViewController.audioPlayer.numberOfLoops = -1
-            HomeScreenViewController.audioPlayer.volume = 0.2
-        HomeScreenViewController.audioPlayer.play()
+        
+        if GeneralSettings.sharedGameData.shotyn{
+            shoton.texture = SKTexture(imageNamed: "sparoon")
+        }else{
+            shoton.texture = SKTexture(imageNamed: "sparooff")
         }
         
-       func CBApplicationDidBecomeActive() {}
+        NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
+        if GeneralSettings.sharedGameData.bgsound == true {
+            let sound = Bundle.main.path(forResource: "Gamescene audio", ofType:
+                                            "mp3")
+            do {
+                // We try to get the initialize it with the URL we created above.
+                HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
+            }
+            catch{
+                print(error)
+                
+            }
+            HomeScreenViewController.audioPlayer.numberOfLoops = -1
+            HomeScreenViewController.audioPlayer.volume = 0.2
+            HomeScreenViewController.audioPlayer.play()
+        }
+        
+        func CBApplicationDidBecomeActive() {}
         
         
         setupPauseMenu()
@@ -113,11 +119,11 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         boxTUT.preferredMaxLayoutWidth = 350
         boxTUT.verticalAlignmentMode = .center
         boxTUT.fontColor = .black
-       
-            analogJoystick.isUserInteractionEnabled = false
-            
-            addChild(rettangolo)
-            rettangolo.addChild(boxTUT)
+        
+        analogJoystick.isUserInteractionEnabled = false
+        
+        addChild(rettangolo)
+        rettangolo.addChild(boxTUT)
         addChild(arrow)
         
         arrow.position = CGPoint(x: 0, y: -ScreenSize.height + (ScreenSize.height * 0.45))
@@ -129,7 +135,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         
         
         
-    
+        
         
         
         
@@ -150,7 +156,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         g.origin.x = g.origin.x + 1000
         g.origin.y = g.origin.y + 1000
         scene!.physicsBody = SKPhysicsBody(edgeLoopFrom: g)
-       
+        
         
         
         
@@ -216,26 +222,26 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             campo.removeFromParent()
         }
         
-
+        
         self.camera = cam
     }
     
     //MARK: TOUCHES FUNCTION
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
             if shotbutton.isHidden == false {
-            if shotbutton.contains(location) {
-        if pauseLayer.isHidden == true {
-            isFiring = true
-        }
-    }
+                if shotbutton.contains(location) {
+                    if pauseLayer.isHidden == true {
+                        isFiring = true
+                    }
+                }
             }
             else {
                 isFiring = true
             }
-}
+        }
         for touch in touches {
             let location = touch.location(in: self)
             if pauseButton.contains(location) {
@@ -243,12 +249,15 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             }
             if pauseLayer.isHidden == false {
                 if shoton.contains(location){
-                    shotbutton.isHidden = true
-                    GeneralSettings.sharedGameData.shotyn = false
-                }
-                if shotoff.contains(location){
-                    shotbutton.isHidden = false
-                    GeneralSettings.sharedGameData.shotyn = true
+                    if !GeneralSettings.sharedGameData.shotyn {
+                        shoton.texture = SKTexture(imageNamed: "sparoon")
+                        shotbutton.isHidden = false
+                        GeneralSettings.sharedGameData.shotyn = true
+                    }else {
+                        shoton.texture = SKTexture(imageNamed: "sparooff")
+                        shotbutton.isHidden = true
+                        GeneralSettings.sharedGameData.shotyn = false
+                    }
                 }
                 if pauseCancel.contains(location) {
                     
@@ -288,67 +297,67 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch in touches {
             let location = touch.location(in: self)
             if shotbutton.isHidden == false {
-            if shotbutton.contains(location) {
-    isFiring = false
-}
+                if shotbutton.contains(location) {
+                    isFiring = false
+                }
             } else {
                 isFiring = false
             }
-
-        
-        if startmission == true && tutorial == false && isGamePaused == false {
-            tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-    //                  print("\(timer3)")
-                      timer3 = timer3 - 1
-                      timlab.text = "\(Time) : \(timer3)"
-                      if timer3 < 0 {
-                          timer3 = 30
-                          tim?.invalidate()
-                      self.win!.scaleMode = scaleMode
-                          view?.presentScene(win)
-                      }
-                  }
-            arrow.removeFromParent()
-            rettangolo.removeFromParent()
-            startmission = false
-            analogJoystick.isUserInteractionEnabled = true
-        }
-        
-        if tutorial == true {
-        arrow.removeFromParent()
-        rettangolo.removeFromParent()
-            analogJoystick.isUserInteractionEnabled = true
             
-            tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-    //                  print("\(timer3)")
-                      timer3 = timer3 - 1
-                      timlab.text = "\(Time) : \(timer3)"
-                      if timer3 < 0 {
-                          timer3 = 30
-                          tim?.invalidate()
-                      self.win!.scaleMode = scaleMode
-                          view!.presentScene(win)
-                      }
+            
+            if startmission == true && tutorial == false && isGamePaused == false {
+                tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                    //                  print("\(timer3)")
+                    timer3 = timer3 - 1
+                    timlab.text = "\(Time) : \(timer3)"
+                    if timer3 < 0 {
+                        timer3 = 30
+                        tim?.invalidate()
+                        self.win!.scaleMode = scaleMode
+                        view?.presentScene(win)
+                    }
+                }
+                arrow.removeFromParent()
+                rettangolo.removeFromParent()
+                startmission = false
+                analogJoystick.isUserInteractionEnabled = true
             }
             
+            if tutorial == true {
+                arrow.removeFromParent()
+                rettangolo.removeFromParent()
+                analogJoystick.isUserInteractionEnabled = true
+                
+                tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                    //                  print("\(timer3)")
+                    timer3 = timer3 - 1
+                    timlab.text = "\(Time) : \(timer3)"
+                    if timer3 < 0 {
+                        timer3 = 30
+                        tim?.invalidate()
+                        self.win!.scaleMode = scaleMode
+                        view!.presentScene(win)
+                    }
+                }
+                
+                
+                
+                
+                
+                tutorial = false }
             
             
             
-            
-            tutorial = false }
-       
-        
-        
         }
     }
     
-
+    
     
     
     override func update(_ currentTime: TimeInterval) {
@@ -359,14 +368,14 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             pauseLayer.isHidden = false
             return
         }
-
+        
         //check if we should be firing if not get outta here
         guard isFiring else { return }
-
+        
         if updateTime == 0 {
             updateTime = currentTime
         }
-
+        
         if currentTime - updateTime > firingInterval {
             self.fireBullet()
             updateTime = currentTime
@@ -379,8 +388,8 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             if tutorial == false {
                 if action(forKey: "shooting") == nil {
                     
-//                    let wait = SKAction.wait(forDuration: 0.1)
-//                    run(wait, withKey: "shooting")
+                    //                    let wait = SKAction.wait(forDuration: 0.1)
+                    //                    run(wait, withKey: "shooting")
                     
                     let shot = SKSpriteNode(imageNamed: "laser")
                     shot.name = "laser"
@@ -391,7 +400,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                     shot.physicsBody?.collisionBitMask = PhysicsCategory.None
                     shot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
                     shot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
-
+                    
                     
                     
                     guard isPlayerAlive else { return }
@@ -418,7 +427,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-}
+    }
     
     //MARK: DIDBEGIN FUNCTION
     func didBegin(_ contact: SKPhysicsContact) {
@@ -436,12 +445,12 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                 
                 
                 contact.bodyA.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
-
+                
                 score = score + 5
                 scoreLabel.text = "\(Scor) : \(score)"
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                 
+                    
                     contact.bodyA.node?.removeFromParent()
                 }
                 if score > 1000 {
@@ -457,15 +466,15 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                     let emitter = SKEmitterNode(fileNamed: "asteroidsDestroyed.sks")
                     emitter?.targetNode = self
                     contact.bodyB.node?.addChild(emitter!)
-                 
-                  
+                    
+                    
                     
                     contact.bodyB.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
                     score = score + 3
                     scoreLabel.text = "\(Scor) : \(score)"
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                       
+                        
                         contact.bodyB.node?.removeFromParent()
                     }
                     
@@ -483,18 +492,18 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                 health = health - 0.002
                 progressBar.setXProgress(xProgress: health)
                 if health < 0.01 {
-                
+                    
                     tim?.invalidate()
                     over!.scaleMode = scaleMode
                     view?.presentScene(over!)
-
+                    
                     hero.isHidden = false
-
+                    
                     analogJoystick.removeFromParent()
                 }
             }
         }else {
-
+            
             if collision4 == PhysicsCategory.Asteroid {
                 if collision3 == PhysicsCategory.Hero{
                     let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -502,15 +511,15 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                     health = health - 0.002
                     progressBar.setXProgress(xProgress: health)
                     if health < 0.01 {
-
+                        
                         tim?.invalidate()
                         
                         over!.scaleMode = scaleMode
-                   
+                        
                         view?.presentScene(over!)
-//                        self.removeFromParent()
+                        //                        self.removeFromParent()
                         hero.isHidden = false
-//                        isPlayerAlive = false
+                        //                        isPlayerAlive = false
                         analogJoystick.removeFromParent()
                     }
                 }
@@ -542,23 +551,23 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         return sprite
         
         
-    
+        
     }()
     
     
-  
+    
     
     lazy var analogJoystick: AnalogJoystick = {
         let js = AnalogJoystick(diameter: 175, colors: nil, images: (substrate: #imageLiteral(resourceName: "jSubstrate"), stick: #imageLiteral(resourceName: "jStick")))
         if GeneralSettings.sharedGameData.JoyPos{
-        if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
-            js.position = CGPoint(x: -ScreenSize.width * 0.63, y: -ScreenSize.height * 0.75)
-        } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
-            js.position = CGPoint(x: -ScreenSize.width * 0.70, y: -ScreenSize.height * 0.80)
-        } else {
-            js.position = CGPoint(x: -ScreenSize.width * 0.45, y: -ScreenSize.height * 0.55)
-        }
-        js.zPosition = NodesZPosition.joystick.rawValue
+            if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
+                js.position = CGPoint(x: -ScreenSize.width * 0.63, y: -ScreenSize.height * 0.75)
+            } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
+                js.position = CGPoint(x: -ScreenSize.width * 0.70, y: -ScreenSize.height * 0.80)
+            } else {
+                js.position = CGPoint(x: -ScreenSize.width * 0.45, y: -ScreenSize.height * 0.55)
+            }
+            js.zPosition = NodesZPosition.joystick.rawValue
         } else { if DeviceType.isiPhone8Plus || DeviceType.isiPhone6Plus || DeviceType.isiPhone7Plus || DeviceType.isiPhone6sPlus {
             js.position = CGPoint(x: ScreenSize.width * 0.63, y: -ScreenSize.height * 0.75)
         } else if DeviceType.isiPhone6 || DeviceType.isiPhone6s || DeviceType.isiPhone7 || DeviceType.isiPhone8 {
@@ -566,7 +575,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         } else {
             js.position = CGPoint(x: ScreenSize.width * 0.45, y: -ScreenSize.height * 0.55)
         }
-        js.zPosition = NodesZPosition.joystick.rawValue
+            js.zPosition = NodesZPosition.joystick.rawValue
             
         }
         
@@ -574,15 +583,15 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         
     }()
     
-
+    
     
     //MARK: FUNCTIONS
-//    @IBAction func mainScreen() {
-//        if let vc = storyboard?.instantiateViewController(withIdentifier: "HomeScreenViewController") as? HomeScreenViewController {
-//            navigationController?.pushViewController(vc, animated: false)
-//        }
-//    }
-//
+    //    @IBAction func mainScreen() {
+    //        if let vc = storyboard?.instantiateViewController(withIdentifier: "HomeScreenViewController") as? HomeScreenViewController {
+    //            navigationController?.pushViewController(vc, animated: false)
+    //        }
+    //    }
+    //
     
     @objc func pauseGame() {
         isFiring = false
@@ -601,38 +610,41 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         pauseLayer.isHidden = true
         
         pauseBG.position = CGPoint(x: hero.position.x, y: hero.position.y)
-            pauseBG.zPosition = 10
+        pauseBG.zPosition = 10
         
-        pauseCancel.position =  CGPoint(x: ScreenSize.width * 0.380, y: ScreenSize.height * 0.1926)
-            pauseCancel.zPosition = 11
+        pauseCancel.position = CGPoint(x: ScreenSize.width * 0.380, y: ScreenSize.height * 0.1926)
+        pauseCancel.zPosition = 11
+        pauserow.position = CGPoint(x: 0, y: ScreenSize.height * 0.195)
+        pauserow.zPosition = 10
+        pauserow.scaleTo(screenWidthPercentage: pauseText.xScale/2)
         shoton.position = CGPoint(x: +(ScreenSize.width * 0.200), y:  (-ScreenSize.height * 0.02))
         shoton.zPosition = 11
-        shotoff.position = CGPoint(x:  -(ScreenSize.width * 0.230), y:  (-ScreenSize.height * 0.02))
-        shotoff.zPosition = 11
+       
         pauseText.text = Pau
-        pauseText.position = CGPoint(x: 0, y: 100)
-            pauseText.zPosition = 11
-            pauseText.lineBreakMode = .byWordWrapping
-            pauseText.numberOfLines = 2
-            pauseText.preferredMaxLayoutWidth = 300
-            pauseText.verticalAlignmentMode = .top
+        pauseText.position = CGPoint(x: 0, y: ScreenSize.height * 0.220)
+        pauseText.fontName = "SemiBold"
+        pauseText.zPosition = 11
+        pauseText.lineBreakMode = .byWordWrapping
+        pauseText.numberOfLines = 2
+        pauseText.preferredMaxLayoutWidth = 300
+        pauseText.verticalAlignmentMode = .top
         
         pauseLeave.text = Mainss
         pauseLeave.position = CGPoint(x: 0, y: -100)
-            pauseLeave.zPosition = 11
-            pauseLeave.lineBreakMode = .byWordWrapping
-            pauseLeave.numberOfLines = 2
-            pauseLeave.preferredMaxLayoutWidth = 300
-            pauseLeave.verticalAlignmentMode = .top
+        pauseLeave.zPosition = 11
+        pauseLeave.lineBreakMode = .byWordWrapping
+        pauseLeave.numberOfLines = 2
+        pauseLeave.preferredMaxLayoutWidth = 300
+        pauseLeave.verticalAlignmentMode = .top
     }
     
-   
+    
     
     
     
     let boxTUT = SKLabelNode(text: "Hello")
     let textMex = NSLocalizedString("MexTutorial", comment: "")
- 
+    
     
     
     
@@ -651,10 +663,10 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         addChild(hudLayer)
         addChild(pauseLayer)
         
-    
+        
     }
     
-
+    
     
     
     func setupJoystick() {
@@ -667,21 +679,21 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         shotbutton.scaleTo(screenWidthPercentage: 0.35)
         scoreLabel.text = "\(Scor): \(score)"
         hudLayer.addChild(scoreLabel)
-            scoreLabel.zPosition = 3
+        scoreLabel.zPosition = 3
         timlab.text = "\(Time): \(timer3)"
-//        hudLayer.addChild(timlab)
+        //        hudLayer.addChild(timlab)
         
         gameLayer.addChild(star!)
-            star?.zPosition = -0.1
+        star?.zPosition = -0.1
         gameLayer.addChild(star2!)
-            star2?.zPosition = -0.1
+        star2?.zPosition = -0.1
         
         pauseLayer.addChild(pauseBG)
         pauseLayer.addChild(pauseCancel)
         pauseLayer.addChild(pauseText)
         pauseLayer.addChild(pauseLeave)
         pauseLayer.addChild(shoton)
-        pauseLayer.addChild(shotoff)
+        pauseLayer.addChild(pauserow)
         
         analogJoystick.trackingHandler = { [weak self] data in
             guard let mySelf = self else { return }
@@ -777,21 +789,20 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             mySelf.pauseBG.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y)
             
             mySelf.pauseCancel.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.380), y: mySelf.hero.position.y + (ScreenSize.height * 0.1926))
-           
+            
+            mySelf.pauserow.position = CGPoint(x: mySelf.hero.position.x , y: mySelf.hero.position.y + (ScreenSize.height * 0.195))
+            
             mySelf.shoton.position = CGPoint(x: mySelf.hero.position.x  + (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
             
-            mySelf.shotoff.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.230), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
+          
             
-            mySelf.pauseText.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y + (ScreenSize.height * 0.1))
+            mySelf.pauseText.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y + (ScreenSize.height * 0.220))
             
             mySelf.pauseLeave.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y - (ScreenSize.height * 0.1))
         }
-        
-        
-        
     }
     
-
+    
     
     
     override func didSimulatePhysics() {
@@ -832,7 +843,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         
     }
     
-   
+    
     
     func giveTileMapPhysicsBody(map: SKTileMapNode){
         
@@ -879,6 +890,4 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-    
-    
 }

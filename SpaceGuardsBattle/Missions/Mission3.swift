@@ -57,11 +57,11 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     let conquer = SKSpriteNode(imageNamed: "0pulsantegrigio")
     let shotbutton = SKSpriteNode(imageNamed: "sparoon")
     let pauseBG = SKSpriteNode(imageNamed: "pauseBG")
+    let pauserow = SKSpriteNode(imageNamed: "pauserow2")
     let pauseText = SKLabelNode(text: "")
     let pauseLeave = SKLabelNode(text: "")
     let pauseCancel = SKSpriteNode(imageNamed: "pauseCancel")
     let shoton = SKSpriteNode(imageNamed: "sparooff")
-    let shotoff = SKSpriteNode(imageNamed: "sparoon")
     let palle = 21
     
     let cam = SKCameraNode()
@@ -81,6 +81,11 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     //MARK: DIDMOVE FUNCTION
     override func didMove(to view: SKView) {
         
+        if GeneralSettings.sharedGameData.shotyn{
+            shoton.texture = SKTexture(imageNamed: "sparoon")
+        }else{
+            shoton.texture = SKTexture(imageNamed: "sparooff")
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
         
         //        Mission3ViewController.stop
@@ -202,7 +207,6 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 
                 conquer.position = CGPoint(x: (-ScreenSize.width * 0.45)  , y: (-ScreenSize.height * 0.30))
             }
-            
         }
         
         
@@ -221,7 +225,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             giveTileMapPhysicsBody(map: campo)
             campo.removeFromParent()
         }
-       
+        
         
         
         self.camera = cam
@@ -250,12 +254,15 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             }
             if pauseLayer.isHidden == false {
                 if shoton.contains(location){
-                    shotbutton.isHidden = true
-                    GeneralSettings.sharedGameData.shotyn = false
-                }
-                if shotoff.contains(location){
-                    shotbutton.isHidden = false
-                    GeneralSettings.sharedGameData.shotyn = true
+                    if !GeneralSettings.sharedGameData.shotyn {
+                        shoton.texture = SKTexture(imageNamed: "sparoon")
+                        shotbutton.isHidden = false
+                        GeneralSettings.sharedGameData.shotyn = true
+                    }else {
+                        shoton.texture = SKTexture(imageNamed: "sparooff")
+                        shotbutton.isHidden = true
+                        GeneralSettings.sharedGameData.shotyn = false
+                    }
                 }
                 if pauseCancel.contains(location) {
                     
@@ -284,7 +291,6 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     })
                 }
             }
-            
         }
     }
     
@@ -292,7 +298,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch in touches {
-           
+            
             let location = touch.location(in: self)
             if conquer.contains(location) {
                 if recupero == false && stoconqui == false {
@@ -313,7 +319,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                         isFiring = false
                     }
                 } else {
-                    isFiring = false 
+                    isFiring = false
                 }
             }
             if startmission == true && tutorial == false && isGamePaused == false {
@@ -340,7 +346,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 randomEnemy()
             }
         }
-       
+        
         sondabutton()
         let location = hero.position
         
@@ -362,38 +368,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         }
         
         if aggro {
-        gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
-            
-            //Aim
-            let dx = (location.x) - enemy.position.x
-            let dy = (location.y) - enemy.position.y
-            let angle = atan2(dy, dx)
-            
-            enemy.zRotation = angle - 3 * .pi/6
-            
-            
-            
-            if enemy.position.distance(point: location) < 10000 && enemy.position.distance(point: location) > 450 {
-                
-                //Seek
-                let velocityX =  cos(angle) * 5
-                let velocityY =  sin(angle) * 5
-                
-                enemy.position.x += velocityX
-                enemy.position.y += velocityY
-            }
-            if enemy.position.distance(point: location) < 700 {
-                if self.updateeShotTime == 0 {
-                    self.updateeShotTime = currentTime
-                }
-                if currentTime - self.updateeShotTime > self.firingEnemyInterval{
-                    self.fireEnemyBullet()
-                    self.updateeShotTime = currentTime
-                }
-            }
-        }
-    }
-            gameLayer.enumerateChildNodes(withName: "boss") {enemy,_ in
+            gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
                 
                 //Aim
                 let dx = (location.x) - enemy.position.x
@@ -404,18 +379,12 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 
                 
                 
-                if enemy.position.distance(point: location) < 10000 && enemy.position.distance(point: location) > 500{
+                if enemy.position.distance(point: location) < 10000 && enemy.position.distance(point: location) > 450 {
                     
-                   var velocityX =  cos(angle) * 3
-                   var  velocityY =  sin(angle) * 3
                     //Seek
-                    if enemy.position.distance(point: location) < 500 {
+                    let velocityX =  cos(angle) * 5
+                    let velocityY =  sin(angle) * 5
                     
-                     velocityX =  cos(angle) * 0
-                     velocityY =  sin(angle) * 0
-                
-                    
-                    }
                     enemy.position.x += velocityX
                     enemy.position.y += velocityY
                 }
@@ -423,12 +392,49 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     if self.updateeShotTime == 0 {
                         self.updateeShotTime = currentTime
                     }
-                    if currentTime - self.updateeShotTime > self.firingBossInterval{
-                        self.fireBossBullet()
+                    if currentTime - self.updateeShotTime > self.firingEnemyInterval{
+                        self.fireEnemyBullet()
                         self.updateeShotTime = currentTime
                     }
                 }
             }
+        }
+        gameLayer.enumerateChildNodes(withName: "boss") {enemy,_ in
+            
+            //Aim
+            let dx = (location.x) - enemy.position.x
+            let dy = (location.y) - enemy.position.y
+            let angle = atan2(dy, dx)
+            
+            enemy.zRotation = angle - 3 * .pi/6
+            
+            
+            
+            if enemy.position.distance(point: location) < 10000 && enemy.position.distance(point: location) > 500{
+                
+                var velocityX =  cos(angle) * 3
+                var  velocityY =  sin(angle) * 3
+                //Seek
+                if enemy.position.distance(point: location) < 500 {
+                    
+                    velocityX =  cos(angle) * 0
+                    velocityY =  sin(angle) * 0
+                    
+                    
+                }
+                enemy.position.x += velocityX
+                enemy.position.y += velocityY
+            }
+            if enemy.position.distance(point: location) < 700 {
+                if self.updateeShotTime == 0 {
+                    self.updateeShotTime = currentTime
+                }
+                if currentTime - self.updateeShotTime > self.firingBossInterval{
+                    self.fireBossBullet()
+                    self.updateeShotTime = currentTime
+                }
+            }
+        }
         guard !isGamePaused else {
             gameLayer.isPaused = true
             hudLayer.isPaused = true
@@ -497,7 +503,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     shot.physicsBody?.collisionBitMask = PhysicsCategory.None
                     shot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
                     shot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
-
+                    
                     
                     guard isPlayerAlive else { return }
                     
@@ -647,7 +653,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     
                     contact.bodyA.node?.removeFromParent()
                 }
-               
+                
             }
         }else {
             
@@ -777,7 +783,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     contact.bodyA.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-
+                        
                         contact.bodyA.node?.removeFromParent()
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 8){ [self] in
@@ -803,17 +809,17 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                         contact.bodyB.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-
+                            
                             contact.bodyB.node?.removeFromParent()
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 8){ [self] in
                             self.win!.scaleMode = scaleMode
                             view?.presentScene(win!)
                         }
+                    }
+                }
             }
         }
-    }
-}
         if collision3 == PhysicsCategory.eneShot {
             if collision4 == PhysicsCategory.Hero{
                 let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -1087,7 +1093,6 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     }
                 }
             }
-            
         }
     }
     
@@ -1126,13 +1131,17 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         
         pauseCancel.position = CGPoint(x: ScreenSize.width * 0.380, y: ScreenSize.height * 0.1926)
         pauseCancel.zPosition = 11
+        pauserow.position = CGPoint(x: 0, y: ScreenSize.height * 0.195)
+        pauserow.zPosition = 10
+        pauserow.scaleTo(screenWidthPercentage: pauseText.xScale/2)
         shoton.position = CGPoint(x: +(ScreenSize.width * 0.200), y:  (-ScreenSize.height * 0.02))
         shoton.zPosition = 11
-        shotoff.position = CGPoint(x:  -(ScreenSize.width * 0.230), y:  (-ScreenSize.height * 0.02))
-        shotoff.zPosition = 11
+//        shotoff.position = CGPoint(x:  -(ScreenSize.width * 0.230), y:  (-ScreenSize.height * 0.02))
+//        shotoff.zPosition = 11
         //        shotbutton.position = CGPoint(x: (ScreenSize.width * 0.45)  , y:   (-ScreenSize.height * 0.55))
         pauseText.text = Pau
-        pauseText.position = CGPoint(x: 0, y: 100)
+        pauseText.fontName = "SemiBold"
+        pauseText.position = CGPoint(x: 0, y: ScreenSize.height * 0.220)
         pauseText.zPosition = 11
         pauseText.lineBreakMode = .byWordWrapping
         pauseText.numberOfLines = 2
@@ -1197,11 +1206,12 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         star2?.zPosition = -0.1
         
         pauseLayer.addChild(pauseBG)
+        pauseLayer.addChild(pauserow)
         pauseLayer.addChild(pauseCancel)
         pauseLayer.addChild(pauseText)
         pauseLayer.addChild(pauseLeave)
         pauseLayer.addChild(shoton)
-        pauseLayer.addChild(shotoff)
+//        pauseLayer.addChild(shotoff)
         
         analogJoystick.trackingHandler = { [weak self] data in
             guard let mySelf = self else { return }
@@ -1305,18 +1315,16 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             mySelf.pauseBG.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y)
             
             mySelf.pauseCancel.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.380), y: mySelf.hero.position.y + (ScreenSize.height * 0.1926))
-           
+            
+            mySelf.pauserow.position = CGPoint(x: mySelf.hero.position.x , y: mySelf.hero.position.y + (ScreenSize.height * 0.195))
+            
             mySelf.shoton.position = CGPoint(x: mySelf.hero.position.x  + (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
             
-            mySelf.shotoff.position = CGPoint(x: mySelf.hero.position.x - (ScreenSize.width * 0.230), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
             
-            mySelf.pauseText.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y + (ScreenSize.height * 0.1))
+            mySelf.pauseText.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y + (ScreenSize.height * 0.220))
             
             mySelf.pauseLeave.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y - (ScreenSize.height * 0.1))
         }
-        
-        
-        
     }
     
     
