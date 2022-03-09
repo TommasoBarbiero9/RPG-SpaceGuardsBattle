@@ -773,13 +773,18 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         shoton.zPosition = 11
 
         pauseText.text = Pau
-        pauseText.position = CGPoint(x: 0, y: ScreenSize.height * 0.220)
-        pauseText.fontName = "SemiBold"
+        pauseText.position = CGPoint(x: 0, y: ScreenSize.height * 0.225)
+
         pauseText.zPosition = 11
         pauseText.lineBreakMode = .byWordWrapping
         pauseText.numberOfLines = 2
         pauseText.preferredMaxLayoutWidth = 300
         pauseText.verticalAlignmentMode = .top
+        
+        pauseText.fontName = "Bold"
+        pauseText.fontSize = 40
+        pauseLeave.fontName = "SemiBold"
+        
         
         pauseLeave.text = Mainss
         pauseLeave.position = CGPoint(x: 0, y: -100)
@@ -806,17 +811,14 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     
     
     func setupNodes() {
-        
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         gameLayer.addChild(hero)
         addChild(gameLayer)
-        gameLayer.zPosition = 1
         addChild(hudLayer)
-        hudLayer.zPosition = 2
+        hudLayer.zPosition = 50
         addChild(pauseLayer)
-        pauseLayer.zPosition = 3
-        
+        pauseLayer.zPosition = 51
         
     }
     

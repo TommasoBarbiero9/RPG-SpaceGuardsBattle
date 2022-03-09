@@ -103,7 +103,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         setupPauseMenu()
         setupNodes()
         let emitter = SKEmitterNode(fileNamed: "playerTrail.sks")
-        
+        emitter?.zPosition = 11
         
         emitter?.targetNode = self
         hero.addChild(emitter!)
@@ -435,6 +435,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                 contact.bodyB.node?.removeFromParent()
                 let emitter = SKEmitterNode(fileNamed: "asteroidsDestroyed.sks")
                 emitter?.targetNode = self
+                emitter?.zPosition = 11
                 contact.bodyA.node?.addChild(emitter!)
                 
                 
@@ -460,6 +461,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                     let emitter = SKEmitterNode(fileNamed: "asteroidsDestroyed.sks")
                     emitter?.targetNode = self
                     contact.bodyB.node?.addChild(emitter!)
+                    emitter?.zPosition = 11
                     
                     
                     
@@ -610,15 +612,21 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         shoton.zPosition = 11
        
         pauseText.text = Pau
-        pauseText.position = CGPoint(x: 0, y: ScreenSize.height * 0.220)
-        pauseText.fontName = "SemiBold"
+        pauseText.position = CGPoint(x: 0, y: ScreenSize.height * 0.225)
+      
         pauseText.zPosition = 11
         pauseText.lineBreakMode = .byWordWrapping
         pauseText.numberOfLines = 2
         pauseText.preferredMaxLayoutWidth = 300
         pauseText.verticalAlignmentMode = .top
         
+        pauseText.fontName = "Bold"
+        pauseText.fontSize = 40
+        pauseLeave.fontName = "SemiBold"
+        
+        
         pauseLeave.text = Mainss
+        
         pauseLeave.position = CGPoint(x: 0, y: -100)
         pauseLeave.zPosition = 11
         pauseLeave.lineBreakMode = .byWordWrapping
@@ -648,11 +656,10 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         
         gameLayer.addChild(hero)
         addChild(gameLayer)
-        gameLayer.zPosition = 1
         addChild(hudLayer)
-        hudLayer.zPosition = 2
+        hudLayer.zPosition = 50
         addChild(pauseLayer)
-        pauseLayer.zPosition = 3
+        pauseLayer.zPosition = 51
         
     }
     

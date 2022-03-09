@@ -1236,6 +1236,10 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         pauseText.preferredMaxLayoutWidth = 300
         pauseText.verticalAlignmentMode = .top
         
+    
+        
+        
+        
         pauseLeave.text = Mainss
         pauseLeave.fontName = "SemiBold"
         pauseLeave.position = CGPoint(x: 0, y: -100)
@@ -1266,11 +1270,10 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         
         gameLayer.addChild(hero)
         addChild(gameLayer)
-        gameLayer.zPosition = 1
         addChild(hudLayer)
-        hudLayer.zPosition = 2
+        hudLayer.zPosition = 50
         addChild(pauseLayer)
-        pauseLayer.zPosition = 3
+        pauseLayer.zPosition = 51
         
     }
     
