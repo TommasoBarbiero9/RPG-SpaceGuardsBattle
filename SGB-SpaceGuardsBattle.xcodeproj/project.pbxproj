@@ -21,6 +21,8 @@
 		0B6E9B6C27C3D792000FDB7D /* PauseMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */; };
 		0B6E9B7227C4D1E4000FDB7D /* asteroidsDestroyed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */; };
 		0B6E9B7427C4D443000FDB7D /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B7327C4D443000FDB7D /* Starfield.sks */; };
+		0BA3C63727D96344001F8BC4 /* enemyExplosionSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BA3C63627D96344001F8BC4 /* enemyExplosionSound.mp3 */; };
+		0BA3C63927D963CD001F8BC4 /* shotenemysound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BA3C63827D963CD001F8BC4 /* shotenemysound.mp3 */; };
 		0BB4D1F227D79DC6009C74EB /* Gamescene audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BB4D1F127D79DC6009C74EB /* Gamescene audio.mp3 */; };
 		0BB4D1F627D79E5C009C74EB /* MenuGame.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BB4D1F527D79E5B009C74EB /* MenuGame.mp3 */; };
 		0BB4D1F727D7B2D5009C74EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BB4D1F927D7B2D5009C74EB /* Main.storyboard */; };
@@ -96,6 +98,8 @@
 		0B6E9B6B27C3D792000FDB7D /* PauseMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseMenu.sks; sourceTree = "<group>"; };
 		0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = asteroidsDestroyed.sks; sourceTree = "<group>"; };
 		0B6E9B7327C4D443000FDB7D /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
+		0BA3C63627D96344001F8BC4 /* enemyExplosionSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemyExplosionSound.mp3; sourceTree = "<group>"; };
+		0BA3C63827D963CD001F8BC4 /* shotenemysound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shotenemysound.mp3; sourceTree = "<group>"; };
 		0BB4D1F127D79DC6009C74EB /* Gamescene audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Gamescene audio.mp3"; sourceTree = "<group>"; };
 		0BB4D1F527D79E5B009C74EB /* MenuGame.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MenuGame.mp3; sourceTree = "<group>"; };
 		0BB4D1F827D7B2D5009C74EB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				0BB4D1F127D79DC6009C74EB /* Gamescene audio.mp3 */,
+				0BA3C63627D96344001F8BC4 /* enemyExplosionSound.mp3 */,
+				0BA3C63827D963CD001F8BC4 /* shotenemysound.mp3 */,
 				4BFBC0F427D91ADE00C3E8A7 /* AudioNemico.mp3 */,
 				4BFBC0F527D91ADE00C3E8A7 /* EnemySituation.mp3 */,
 				0B068BBD27CFC05000CE7427 /* Tutorial.wav */,
@@ -461,6 +467,7 @@
 				0BB4D1F627D79E5C009C74EB /* MenuGame.mp3 in Resources */,
 				0B6E9B7427C4D443000FDB7D /* Starfield.sks in Resources */,
 				0BCF756127BEAFD6003A31C0 /* explosion.mp3 in Resources */,
+				0BA3C63927D963CD001F8BC4 /* shotenemysound.mp3 in Resources */,
 				4B73B8E727CFDB950072D797 /* Over.sks in Resources */,
 				0B068BBE27CFC05000CE7427 /* Tutorial.wav in Resources */,
 				0BB4D1F727D7B2D5009C74EB /* Main.storyboard in Resources */,
@@ -473,6 +480,7 @@
 				0BB4D1F227D79DC6009C74EB /* Gamescene audio.mp3 in Resources */,
 				4B246E2727CEBF1700172D65 /* fireworks.sks in Resources */,
 				9123499727C8FC31001208A7 /* LaunchScreen.storyboard in Resources */,
+				0BA3C63727D96344001F8BC4 /* enemyExplosionSound.mp3 in Resources */,
 				4BFBC0F327D9143100C3E8A7 /* bossDestroyed.sks in Resources */,
 				0B3FF08527B6E2E2000F9C12 /* laserj.mp3 in Resources */,
 				0B068BC727CFCD4D00CE7427 /* Localizable.strings in Resources */,

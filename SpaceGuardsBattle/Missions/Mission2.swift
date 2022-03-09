@@ -21,10 +21,12 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     var win = SKScene(fileNamed: "Win")
     var isFiring = false
     var updateTime: Double = 0
+    let soundon = SKSpriteNode(imageNamed: "palle")
     var firingInterval: Double = 0.6
     var updateeShotTime : Double = 0
     var firingEnemyInterval : Double = 0.8
     var isGamePaused = false
+    let Homereturn = SKSpriteNode(imageNamed: "Home")
     var star = SKEmitterNode(fileNamed: "Starfield")
     var star2 = SKEmitterNode(fileNamed: "Starfield")
     let shotbutton = SKSpriteNode(imageNamed: "sparoon")
@@ -70,6 +72,11 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     //MARK: DIDMOVE FUNCTION
     override func didMove(to view: SKView) {
         
+        if GeneralSettings.sharedGameData.bgsound{
+            soundon.texture = SKTexture(imageNamed: "VolumeYes")
+        }else{
+            soundon.texture = SKTexture(imageNamed: "VolumeNo")
+        }
         
         if GeneralSettings.sharedGameData.shotyn{
             shoton.texture = SKTexture(imageNamed: "sparoon")
@@ -227,6 +234,24 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             if pauseButton.contains(location) {
                 pauseGame()
             }
+            
+            if soundon.contains(location){
+                if !GeneralSettings.sharedGameData.bgsound {
+                    soundon.texture = SKTexture(imageNamed: "VolumeYes")
+                    GeneralSettings.sharedGameData.bgsound = true
+                    HomeScreenViewController.audioPlayer.play()
+                    GeneralSettings.sharedGameData.defaults.set(true, forKey: "bgSound")
+
+                }else {
+                    soundon.texture = SKTexture(imageNamed: "VolumeNo")
+                    GeneralSettings.sharedGameData.bgsound = false
+                    HomeScreenViewController.audioPlayer.stop()
+                    GeneralSettings.sharedGameData.defaults.set(false, forKey: "bgSound")
+
+                }
+            }
+
+            
             if pauseLayer.isHidden == false {
                 if shoton.contains(location){
                     if !GeneralSettings.sharedGameData.shotyn {
@@ -769,12 +794,17 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         pauserow.position = CGPoint(x: 0, y: ScreenSize.height * 0.195)
         pauserow.zPosition = 10
         pauserow.scaleTo(screenWidthPercentage: pauseText.xScale/2)
-        shoton.position = CGPoint(x: +(ScreenSize.width * 0.200), y:  (-ScreenSize.height * 0.02))
+        shoton.position = CGPoint(x: +(ScreenSize.width * 0.200), y:  (ScreenSize.height * 0.01))
+        soundon.position = CGPoint(x: -(ScreenSize.width * 0.200), y:  (ScreenSize.height * 0.010))
+       
+        soundon.zPosition = 11
         shoton.zPosition = 11
 
         pauseText.text = Pau
         pauseText.position = CGPoint(x: 0, y: ScreenSize.height * 0.225)
-
+        Homereturn.zPosition = 10
+        Homereturn.position = CGPoint(x: 0 , y: -(ScreenSize.height * 0.135))
+        Homereturn.scaleTo(screenWidthPercentage: pauseText.xScale/2)
         pauseText.zPosition = 11
         pauseText.lineBreakMode = .byWordWrapping
         pauseText.numberOfLines = 2
@@ -849,6 +879,8 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         pauseLayer.addChild(pauseText)
         pauseLayer.addChild(pauseLeave)
         pauseLayer.addChild(shoton)
+        pauseLayer.addChild(soundon)
+        pauseLayer.addChild(Homereturn)
         pauseLayer.addChild(pauserow)
         
         analogJoystick.trackingHandler = { [weak self] data in
@@ -948,11 +980,15 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             
             mySelf.pauserow.position = CGPoint(x: mySelf.hero.position.x , y: mySelf.hero.position.y + (ScreenSize.height * 0.195))
             
+            mySelf.Homereturn.position = CGPoint(x: mySelf.hero.position.x , y: mySelf.hero.position.y - (ScreenSize.height * 0.135))
+            
             mySelf.pauseText.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y + (ScreenSize.height * 0.220))
             
             mySelf.pauseLeave.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y - (ScreenSize.height * 0.1))
             
-            mySelf.shoton.position = CGPoint(x: mySelf.hero.position.x  + (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
+            mySelf.shoton.position = CGPoint(x: mySelf.hero.position.x  + (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (ScreenSize.height * 0.01))
+            
+            mySelf.soundon.position = CGPoint(x: mySelf.hero.position.x  - (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (ScreenSize.height * 0.01))
             
             
         }

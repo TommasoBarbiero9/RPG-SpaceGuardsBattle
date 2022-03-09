@@ -26,7 +26,9 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     var win = SKScene(fileNamed: "Win")
     let shotbutton = SKSpriteNode(imageNamed: "sparoon")
     let shoton = SKSpriteNode(imageNamed: "sparooff")
+    let soundon = SKSpriteNode(imageNamed: "palle")
     let pauserow = SKSpriteNode(imageNamed: "pauserow2")
+    let Homereturn = SKSpriteNode(imageNamed: "Home")
     var isFiring = false
     var updateTime: Double = 0
     var firingInterval: Double = 0.6
@@ -79,6 +81,13 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         }else{
             shoton.texture = SKTexture(imageNamed: "sparooff")
         }
+        
+        if GeneralSettings.sharedGameData.bgsound{
+            soundon.texture = SKTexture(imageNamed: "VolumeYes")
+        }else{
+            soundon.texture = SKTexture(imageNamed: "VolumeNo")
+        }
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
         if GeneralSettings.sharedGameData.bgsound == true {
@@ -263,6 +272,23 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
 
                     }
                 }
+                
+                if soundon.contains(location){
+                    if !GeneralSettings.sharedGameData.bgsound {
+                        soundon.texture = SKTexture(imageNamed: "VolumeYes")
+                        GeneralSettings.sharedGameData.bgsound = true
+                        HomeScreenViewController.audioPlayer.play()
+                        GeneralSettings.sharedGameData.defaults.set(true, forKey: "bgSound")
+
+                    }else {
+                        soundon.texture = SKTexture(imageNamed: "VolumeNo")
+                        GeneralSettings.sharedGameData.bgsound = false
+                        HomeScreenViewController.audioPlayer.stop()
+                        GeneralSettings.sharedGameData.defaults.set(false, forKey: "bgSound")
+
+                    }
+                }
+                
                 if pauseCancel.contains(location) {
                     
                     isGamePaused = false
@@ -605,12 +631,17 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         
         pauseCancel.position = CGPoint(x: ScreenSize.width * 0.380, y: ScreenSize.height * 0.1926)
         pauseCancel.zPosition = 11
+        Homereturn.zPosition = 10
+        Homereturn.position = CGPoint(x: 0 , y: -(ScreenSize.height * 0.135))
+        Homereturn.scaleTo(screenWidthPercentage: pauseText.xScale/2)
         pauserow.position = CGPoint(x: 0, y: ScreenSize.height * 0.195)
         pauserow.zPosition = 10
         pauserow.scaleTo(screenWidthPercentage: pauseText.xScale/2)
-        shoton.position = CGPoint(x: +(ScreenSize.width * 0.200), y:  (-ScreenSize.height * 0.02))
-        shoton.zPosition = 11
+        shoton.position = CGPoint(x: +(ScreenSize.width * 0.200), y:  (ScreenSize.height * 0.010))
+        soundon.position = CGPoint(x: -(ScreenSize.width * 0.200), y:  (ScreenSize.height * 0.010))
        
+        soundon.zPosition = 11
+        shoton.zPosition = 11
         pauseText.text = Pau
         pauseText.position = CGPoint(x: 0, y: ScreenSize.height * 0.225)
       
@@ -690,7 +721,10 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         pauseLayer.addChild(pauseText)
         pauseLayer.addChild(pauseLeave)
         pauseLayer.addChild(shoton)
+        pauseLayer.addChild(soundon)
+        pauseLayer.addChild(Homereturn)
         pauseLayer.addChild(pauserow)
+        
         
         analogJoystick.trackingHandler = { [weak self] data in
             guard let mySelf = self else { return }
@@ -789,8 +823,11 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             
             mySelf.pauserow.position = CGPoint(x: mySelf.hero.position.x , y: mySelf.hero.position.y + (ScreenSize.height * 0.195))
             
-            mySelf.shoton.position = CGPoint(x: mySelf.hero.position.x  + (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
+            mySelf.Homereturn.position = CGPoint(x: mySelf.hero.position.x , y: mySelf.hero.position.y - (ScreenSize.height * 0.135))
             
+            mySelf.shoton.position = CGPoint(x: mySelf.hero.position.x  + (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (ScreenSize.height * 0.01))
+            
+            mySelf.soundon.position = CGPoint(x: mySelf.hero.position.x  - (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (ScreenSize.height * 0.01))
           
             
             mySelf.pauseText.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y + (ScreenSize.height * 0.220))

@@ -22,6 +22,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     let scoreLabel = SKLabelNode(text: "Score : 0")
     var over = SKScene(fileNamed: "Over")
     var win = SKScene(fileNamed: "Win")
+    let soundon = SKSpriteNode(imageNamed: "palle")
     var aggro = false
     var isFiring = false
     var cooldown = 20
@@ -35,6 +36,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     var firingBossInterval : Double = 1.2
     var bossApproached = true
     var isGamePaused = false
+    let Homereturn = SKSpriteNode(imageNamed: "Home")
     var spawn = false
     var recupero = false
     var inizioanimazione = false
@@ -81,6 +83,12 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     
     //MARK: DIDMOVE FUNCTION
     override func didMove(to view: SKView) {
+        
+        if GeneralSettings.sharedGameData.bgsound{
+            soundon.texture = SKTexture(imageNamed: "VolumeYes")
+        }else{
+            soundon.texture = SKTexture(imageNamed: "VolumeNo")
+        }
         
         if GeneralSettings.sharedGameData.shotyn{
             shoton.texture = SKTexture(imageNamed: "sparoon")
@@ -253,6 +261,27 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 pauseGame()
             }
             if pauseLayer.isHidden == false {
+                
+                if soundon.contains(location){
+                    
+                    if !GeneralSettings.sharedGameData.bgsound {
+                        soundon.texture = SKTexture(imageNamed: "VolumeYes")
+                        GeneralSettings.sharedGameData.bgsound = true
+                        HomeScreenViewController.audioPlayer.play()
+                        GeneralSettings.sharedGameData.defaults.set(true, forKey: "bgSound")
+
+                    }else {
+                        soundon.texture = SKTexture(imageNamed: "VolumeNo")
+                        GeneralSettings.sharedGameData.bgsound = false
+                        HomeScreenViewController.audioPlayer.stop()
+                        GeneralSettings.sharedGameData.defaults.set(false, forKey: "bgSound")
+
+                    }
+                }
+
+                
+                
+                
                 if shoton.contains(location){
                     if !GeneralSettings.sharedGameData.shotyn {
                         shoton.texture = SKTexture(imageNamed: "sparoon")
@@ -342,12 +371,12 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     }
     override func update(_ currentTime: TimeInterval) {
         
-//        if spawn {
-//            spawn = false
-//            for _ in 1...15 {
-//                randomEnemy()
-//            }
-//        }
+        if spawn {
+            spawn = false
+            for _ in 1...20 {
+                randomEnemy()
+            }
+        }
         
         sondabutton()
         let location = hero.position
@@ -634,7 +663,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                             }
                             
                             let movement = SKAction.move(to: CGPoint(x: (1000 * cos(((angolo) * Double.pi) / 180)) + enemy.position.x, y: (1000 * cos(((180 - 90 - angolo ) * Double.pi) / 180 )) + enemy.position.y), duration: 1)
-                            let sound = SKAction.playSoundFileNamed("laserj", waitForCompletion: false)
+                            let sound = SKAction.playSoundFileNamed("shotenemysound", waitForCompletion: false)
                             let removeFromParent = SKAction.removeFromParent()
                             let actions = [sound, movement, removeFromParent]
                             
@@ -798,7 +827,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     emitter?.targetNode = self
                     contact.bodyA.node?.addChild(emitter!)
                     
-                    contact.bodyA.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
+                    contact.bodyA.node?.run(SKAction.playSoundFileNamed("enemyExplosionSound", waitForCompletion: false))
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         
@@ -843,7 +872,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                         emitter?.targetNode = self
                         contact.bodyB.node?.addChild(emitter!)
                         
-                        contact.bodyB.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
+                        contact.bodyB.node?.run(SKAction.playSoundFileNamed("enemyExplosionSound", waitForCompletion: false))
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             
@@ -1221,11 +1250,14 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         pauserow.position = CGPoint(x: 0, y: ScreenSize.height * 0.195)
         pauserow.zPosition = 10
         pauserow.scaleTo(screenWidthPercentage: pauseText.xScale/2)
-        shoton.position = CGPoint(x: +(ScreenSize.width * 0.200), y:  (-ScreenSize.height * 0.02))
+        shoton.position = CGPoint(x: +(ScreenSize.width * 0.200), y:  (ScreenSize.height * 0.01))
+        soundon.position = CGPoint(x: -(ScreenSize.width * 0.200), y:  (ScreenSize.height * 0.010))
+       
+        soundon.zPosition = 11
         shoton.zPosition = 11
-//        shotoff.position = CGPoint(x:  -(ScreenSize.width * 0.230), y:  (-ScreenSize.height * 0.02))
-//        shotoff.zPosition = 11
-        //        shotbutton.position = CGPoint(x: (ScreenSize.width * 0.45)  , y:   (-ScreenSize.height * 0.55))
+        Homereturn.zPosition = 10
+        Homereturn.position = CGPoint(x: 0 , y: -(ScreenSize.height * 0.135))
+        Homereturn.scaleTo(screenWidthPercentage: pauseText.xScale/2)
         pauseText.text = Pau
         pauseText.fontName = "Bold"
         pauseText.fontSize = 40
@@ -1303,8 +1335,10 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         pauseLayer.addChild(pauseCancel)
         pauseLayer.addChild(pauseText)
         pauseLayer.addChild(pauseLeave)
+        pauseLayer.addChild(Homereturn)
         pauseLayer.addChild(shoton)
-//        pauseLayer.addChild(shotoff)
+        pauseLayer.addChild(soundon)
+
         
         analogJoystick.trackingHandler = { [weak self] data in
             guard let mySelf = self else { return }
@@ -1409,9 +1443,13 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             
             mySelf.pauseCancel.position = CGPoint(x: mySelf.hero.position.x + (ScreenSize.width * 0.380), y: mySelf.hero.position.y + (ScreenSize.height * 0.1926))
             
+            mySelf.Homereturn.position = CGPoint(x: mySelf.hero.position.x , y: mySelf.hero.position.y - (ScreenSize.height * 0.135))
+            
             mySelf.pauserow.position = CGPoint(x: mySelf.hero.position.x , y: mySelf.hero.position.y + (ScreenSize.height * 0.195))
             
-            mySelf.shoton.position = CGPoint(x: mySelf.hero.position.x  + (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (-ScreenSize.height * 0.02))
+            mySelf.shoton.position = CGPoint(x: mySelf.hero.position.x  + (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (ScreenSize.height * 0.01))
+            
+            mySelf.soundon.position = CGPoint(x: mySelf.hero.position.x  - (ScreenSize.width * 0.200), y: mySelf.hero.position.y + (ScreenSize.height * 0.01))
             
             
             mySelf.pauseText.position = CGPoint(x: mySelf.hero.position.x, y: mySelf.hero.position.y + (ScreenSize.height * 0.220))
