@@ -109,7 +109,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         
         
         rettangolo.position = CGPoint(x: 0, y: 0)
-        rettangolo.zPosition = NodesZPosition.hero.rawValue + 1
+        rettangolo.zPosition = NodesZPosition.hero.rawValue + 4
         boxTUT.text = ("\(textMex)")
         boxTUT.fontSize = 35
         boxTUT.position = CGPoint(x: 0, y: 0)
@@ -119,9 +119,8 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         boxTUT.verticalAlignmentMode = .center
         boxTUT.fontColor = .black
         if tutorial == false {
+            
             analogJoystick.isUserInteractionEnabled = false
-            
-            
             addChild(rettangolo)
             rettangolo.addChild(boxTUT)
             
@@ -253,11 +252,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                     tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
                         timer3 = timer3 - 1
                         timlab.text = "\(Time) : \(timer3)"
-                        if timer3 < 0 {
-                            tim?.invalidate()
-                            self.over!.scaleMode = scaleMode
-                            view?.presentScene(over)
-                        }
+                       
                     }
                 }
                 if pauseLeave.contains(location) {
@@ -281,17 +276,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         isFiring = false
             
             if startmission == true && tutorial == false && isGamePaused == false {
-                tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-                    //                  print("\(timer3)")
-                    timer3 = timer3 - 1
-                    timlab.text = "\(Time) : \(timer3)"
-                    if timer3 < 0 {
-                        timer3 = 30
-                        tim?.invalidate()
-                        self.over!.scaleMode = scaleMode
-                        view?.presentScene(over)
-                    }
-                }
+
                 rettangolo.removeFromParent()
                 startmission = false
                 analogJoystick.isUserInteractionEnabled = true
@@ -300,15 +285,14 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
             if tutorial == true {
                 rettangolo.removeFromParent()
                 analogJoystick.isUserInteractionEnabled = true
+                tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                    timer3 = timer3 - 1
+                    timlab.text = "\(Time) : \(timer3)"
+                    
+                }
+                tutorial = false
                 
-                
-                
-                
-                
-                
-                
-                tutorial = false }
-            
+            }
         }
     
     
@@ -316,6 +300,16 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
+        
+        if timer3 < 0 {
+            tim?.invalidate()
+            over!.scaleMode = scaleMode
+            view?.presentScene(over!)
+            
+            hero.isHidden = false
+            
+            analogJoystick.removeFromParent()
+        }
         
         let location = hero.position
         
@@ -810,13 +804,16 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     
     
     func setupNodes() {
+        
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         gameLayer.addChild(hero)
-        //        gameLayer.addChild(enemy)
         addChild(gameLayer)
+        gameLayer.zPosition = 1
         addChild(hudLayer)
+        hudLayer.zPosition = 2
         addChild(pauseLayer)
+        pauseLayer.zPosition = 3
         
         
     }

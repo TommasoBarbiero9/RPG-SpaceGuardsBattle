@@ -89,7 +89,6 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(pauseGame), name: .goToBackground, object: nil)
         
-        //        Mission3ViewController.stop
         
         
         if GeneralSettings.sharedGameData.bgsound == true {
@@ -124,7 +123,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         
         
         rettangolo.position = CGPoint(x: 0, y: 0)
-        rettangolo.zPosition = NodesZPosition.hero.rawValue + 1
+        rettangolo.zPosition = NodesZPosition.hero.rawValue + 4
         boxTUT.text = ("\(textMex)")
         boxTUT.fontSize = 35
         boxTUT.position = CGPoint(x: 0, y: 0)
@@ -341,12 +340,12 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     }
     override func update(_ currentTime: TimeInterval) {
         
-        if spawn {
-            spawn = false
-            for _ in 1...15 {
-                randomEnemy()
-            }
-        }
+//        if spawn {
+//            spawn = false
+//            for _ in 1...15 {
+//                randomEnemy()
+//            }
+//        }
         
         sondabutton()
         let location = hero.position
@@ -607,7 +606,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     gameLayer.enumerateChildNodes(withName: "boss") {enemy,_ in
                         let location = self.hero.position
                         if enemy.position.distance(point: location) < 700 {
-                            let bossShot = SKSpriteNode(imageNamed: "lasere")
+                            let bossShot = SKSpriteNode(imageNamed: "shotboss")
                             bossShot.name = "laser"
                             
                             bossShot.position = enemy.position
@@ -632,7 +631,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                                 angolo = ( (360 + ((bossShot.zRotation * 180) / Double.pi ))  + 90)
                             }
                             
-                            let movement = SKAction.move(to: CGPoint(x: (1000 * cos(((angolo) * Double.pi) / 180)) + enemy.position.x, y: (1000 * cos(((180 - 90 - angolo ) * Double.pi) / 180 )) + enemy.position.y), duration: 0.6)
+                            let movement = SKAction.move(to: CGPoint(x: (1000 * cos(((angolo) * Double.pi) / 180)) + enemy.position.x, y: (1000 * cos(((180 - 90 - angolo ) * Double.pi) / 180 )) + enemy.position.y), duration: 1)
                             let sound = SKAction.playSoundFileNamed("laserj", waitForCompletion: false)
                             let removeFromParent = SKAction.removeFromParent()
                             let actions = [sound, movement, removeFromParent]
@@ -1226,8 +1225,9 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
 //        shotoff.zPosition = 11
         //        shotbutton.position = CGPoint(x: (ScreenSize.width * 0.45)  , y:   (-ScreenSize.height * 0.55))
         pauseText.text = Pau
-        pauseText.fontName = "SemiBold"
-        pauseText.position = CGPoint(x: 0, y: ScreenSize.height * 0.220)
+        pauseText.fontName = "Bold"
+        pauseText.fontSize = 40
+        pauseText.position = CGPoint(x: 0, y: ScreenSize.height * 0.225)
         pauseText.zPosition = 11
         pauseText.lineBreakMode = .byWordWrapping
         pauseText.numberOfLines = 2
@@ -1235,6 +1235,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         pauseText.verticalAlignmentMode = .top
         
         pauseLeave.text = Mainss
+        pauseLeave.fontName = "SemiBold"
         pauseLeave.position = CGPoint(x: 0, y: -100)
         pauseLeave.zPosition = 11
         pauseLeave.lineBreakMode = .byWordWrapping
@@ -1262,11 +1263,12 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         gameLayer.addChild(hero)
-        //        gameLayer.addChild(enemy)
         addChild(gameLayer)
+        gameLayer.zPosition = 1
         addChild(hudLayer)
+        hudLayer.zPosition = 2
         addChild(pauseLayer)
-        
+        pauseLayer.zPosition = 3
         
     }
     

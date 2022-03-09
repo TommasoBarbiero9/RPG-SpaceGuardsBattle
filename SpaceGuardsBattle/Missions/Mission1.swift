@@ -45,7 +45,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
     
     var tim : Timer? = nil
     var tutorial = false
-    let arrow = SKSpriteNode(imageNamed: "arrow2")
+   
     let rettangolo = SKSpriteNode(imageNamed: "orangebox")
     var startmission = true
     var score: Int = 0
@@ -112,7 +112,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         
         
         rettangolo.position = CGPoint(x: 0, y: 0)
-        rettangolo.zPosition = NodesZPosition.hero.rawValue + 1
+        rettangolo.zPosition = NodesZPosition.hero.rawValue + 4
         
         boxTUT.fontSize = 35
         boxTUT.position = CGPoint(x: 0, y: 0)
@@ -130,13 +130,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        arrow.position = CGPoint(x: 0, y: -ScreenSize.height + (ScreenSize.height * 0.45))
-        if GeneralSettings.sharedGameData.JoyPos {
-            arrow.zRotation = 0
-        } else {
-            arrow.zRotation = 3.14
-        }
-        
+       
         
         
         
@@ -276,11 +270,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
                     tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
                         timer3 = timer3 - 1
                         timlab.text = "\(Time) : \(timer3)"
-                        if timer3 < 0 {
-                            tim?.invalidate()
-                            self.over!.scaleMode = scaleMode
-                            view?.presentScene(over)
-                        }
+                    
                     }
                 }
                 if pauseLeave.contains(location) {
@@ -306,34 +296,21 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         
             if startmission == true && tutorial == false && isGamePaused == false {
                 tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-                    //                  print("\(timer3)")
                     timer3 = timer3 - 1
                     timlab.text = "\(Time) : \(timer3)"
-                    if timer3 < 0 {
-                        timer3 = 30
-                        tim?.invalidate()
-                        self.over!.scaleMode = scaleMode
-                        view?.presentScene(over)
-                    }
+                    
                 }
-                arrow.removeFromParent()
                 rettangolo.removeFromParent()
                 startmission = false
                 analogJoystick.isUserInteractionEnabled = true
             }
             
             if tutorial == true {
-                arrow.removeFromParent()
                 rettangolo.removeFromParent()
                 analogJoystick.isUserInteractionEnabled = true
+                tutorial = false
                 
-                
-                
-                
-                tutorial = false }
-            
-            
-            
+            }
         }
     
     
@@ -341,6 +318,15 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
+        
+        if timer3 < 0 {
+            
+            tim?.invalidate()
+            over!.scaleMode = scaleMode
+            view?.presentScene(over!)
+            hero.isHidden = false
+            analogJoystick.removeFromParent()
+        }
         
         guard !isGamePaused else {
             gameLayer.isPaused = true
@@ -570,12 +556,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
     
     
     //MARK: FUNCTIONS
-    //    @IBAction func mainScreen() {
-    //        if let vc = storyboard?.instantiateViewController(withIdentifier: "HomeScreenViewController") as? HomeScreenViewController {
-    //            navigationController?.pushViewController(vc, animated: false)
-    //        }
-    //    }
-    //
+    
     
     @objc func pauseGame() {
         isFiring = false
@@ -645,10 +626,12 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         gameLayer.addChild(hero)
-        
         addChild(gameLayer)
+        gameLayer.zPosition = 1
         addChild(hudLayer)
+        hudLayer.zPosition = 2
         addChild(pauseLayer)
+        pauseLayer.zPosition = 3
         
         
     }

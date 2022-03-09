@@ -110,7 +110,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         
         
         rettangolo.position = CGPoint(x: 0, y: 0)
-        rettangolo.zPosition = NodesZPosition.hero.rawValue + 1
+        rettangolo.zPosition = NodesZPosition.hero.rawValue + 4
         boxTUT.text = ("\(textMex)")
         boxTUT.fontSize = 35
         boxTUT.position = CGPoint(x: 0, y: 0)
@@ -648,11 +648,12 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         gameLayer.addChild(hero)
-        
         addChild(gameLayer)
+        gameLayer.zPosition = 1
         addChild(hudLayer)
+        hudLayer.zPosition = 2
         addChild(pauseLayer)
-        
+        pauseLayer.zPosition = 3
         
     }
     
