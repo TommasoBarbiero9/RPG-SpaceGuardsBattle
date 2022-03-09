@@ -28,7 +28,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
     var win = SKScene(fileNamed: "Win")
     var isFiring = false
     var updateTime: Double = 0
-    var firingInterval: Double = 0.5
+    var firingInterval: Double = 0.6
     var isGamePaused = false
     var star = SKEmitterNode(fileNamed: "Starfield")
     var star2 = SKEmitterNode(fileNamed: "Starfield")

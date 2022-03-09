@@ -15,20 +15,26 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     
     let velocityMultiplier: CGFloat = 0.10
     var health: CGFloat = 1
+    var bossHealth: CGFloat = 1
     var isPlayerAlive = true
     let progressBar = IMProgressBar(emptyImageName: "emptyImage" ,filledImageName: "filledImage")
+    let bossBar = IMProgressBar(emptyImageName: "emptyImage" ,filledImageName: "filledImage")
     let scoreLabel = SKLabelNode(text: "Score : 0")
     var over = SKScene(fileNamed: "Over")
     var win = SKScene(fileNamed: "Win")
+    var aggro = false
     var isFiring = false
     var cooldown = 20
+    var parti = true
     var updateTime: Double = 0
     var conquistato = false
-    var firingInterval: Double = 0.5
+    var firingInterval: Double = 0.6
     var updateeShotTime : Double = 0
     var stoconqui = false
     var firingEnemyInterval : Double = 0.8
+    var firingBossInterval : Double = 1.2
     var isGamePaused = false
+    var spawn = false
     var recupero = false
     var inizioanimazione = false
     var star = SKEmitterNode(fileNamed: "Starfield")
@@ -215,29 +221,8 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             giveTileMapPhysicsBody(map: campo)
             campo.removeFromParent()
         }
+       
         
-        
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
-        randomEnemy()
         
         self.camera = cam
     }
@@ -307,10 +292,12 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch in touches {
-            //            for planet in planets {
+           
             let location = touch.location(in: self)
             if conquer.contains(location) {
                 if recupero == false && stoconqui == false {
+                    spawn = true
+                    aggro = true
                     timer3 = 40
                     cooldown = 20
                     conquerplanet()
@@ -319,7 +306,6 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     inizioanimazione = true
                 }
             }
-            //        }
             for touch in touches {
                 let location = touch.location(in: self)
                 if shotbutton.isHidden == false {
@@ -348,10 +334,15 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     }
     override func update(_ currentTime: TimeInterval) {
         
+        if spawn {
+            spawn = false
+            for _ in 1...15 {
+                randomEnemy()
+            }
+        }
+       
         sondabutton()
         let location = hero.position
-        
-        
         
         if inizioanimazione {
             let dx = (location.x) -  (gameLayer.childNode(withName: "Sonda")?.position.x ?? 0)
@@ -370,7 +361,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        
+        if aggro {
         gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
             
             //Aim
@@ -382,7 +373,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             
             
             
-            if enemy.position.distance(point: location) < 1000 && enemy.position.distance(point: location) > 450 {
+            if enemy.position.distance(point: location) < 10000 && enemy.position.distance(point: location) > 450 {
                 
                 //Seek
                 let velocityX =  cos(angle) * 5
@@ -395,14 +386,49 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 if self.updateeShotTime == 0 {
                     self.updateeShotTime = currentTime
                 }
-                if currentTime - self.updateeShotTime > self.firingInterval{
+                if currentTime - self.updateeShotTime > self.firingEnemyInterval{
                     self.fireEnemyBullet()
                     self.updateeShotTime = currentTime
                 }
             }
         }
-        
-        
+    }
+            gameLayer.enumerateChildNodes(withName: "boss") {enemy,_ in
+                
+                //Aim
+                let dx = (location.x) - enemy.position.x
+                let dy = (location.y) - enemy.position.y
+                let angle = atan2(dy, dx)
+                
+                enemy.zRotation = angle - 3 * .pi/6
+                
+                
+                
+                if enemy.position.distance(point: location) < 10000 && enemy.position.distance(point: location) > 500{
+                    
+                   var velocityX =  cos(angle) * 3
+                   var  velocityY =  sin(angle) * 3
+                    //Seek
+                    if enemy.position.distance(point: location) < 500 {
+                    
+                     velocityX =  cos(angle) * 0
+                     velocityY =  sin(angle) * 0
+                
+                    
+                    }
+                    enemy.position.x += velocityX
+                    enemy.position.y += velocityY
+                }
+                if enemy.position.distance(point: location) < 700 {
+                    if self.updateeShotTime == 0 {
+                        self.updateeShotTime = currentTime
+                    }
+                    if currentTime - self.updateeShotTime > self.firingBossInterval{
+                        self.fireBossBullet()
+                        self.updateeShotTime = currentTime
+                    }
+                }
+            }
         guard !isGamePaused else {
             gameLayer.isPaused = true
             hudLayer.isPaused = true
@@ -549,6 +575,52 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                             let actions = [sound, movement, removeFromParent]
                             
                             eShot.run(SKAction.sequence(actions))
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func fireBossBullet() {
+        if pauseLayer.isHidden == true {
+            if tutorial == false {
+                if action(forKey: "shooting") == nil {
+                    
+                    gameLayer.enumerateChildNodes(withName: "boss") {enemy,_ in
+                        let location = self.hero.position
+                        if enemy.position.distance(point: location) < 700 {
+                            let bossShot = SKSpriteNode(imageNamed: "lasere")
+                            bossShot.name = "laser"
+                            
+                            bossShot.position = enemy.position
+                            bossShot.zPosition = enemy.zPosition - 1
+                            bossShot.scaleTo(screenWidthPercentage: 0.1)
+                            bossShot.physicsBody = SKPhysicsBody(rectangleOf: bossShot.size)
+                            bossShot.physicsBody?.collisionBitMask = PhysicsCategory.None
+                            bossShot.physicsBody?.categoryBitMask = PhysicsCategory.bossShot
+                            bossShot.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
+                            
+                            bossShot.zRotation = enemy.zRotation
+                            
+                            
+                            
+                            self.gameLayer.addChild(bossShot)
+                            
+                            var angolo : CGFloat
+                            
+                            if bossShot.zRotation + (3.14 / 2 ) >= 0 {
+                                angolo = (((bossShot.zRotation * 180) / Double.pi ) + 90)
+                            } else {
+                                angolo = ( (360 + ((bossShot.zRotation * 180) / Double.pi ))  + 90)
+                            }
+                            
+                            let movement = SKAction.move(to: CGPoint(x: (1000 * cos(((angolo) * Double.pi) / 180)) + enemy.position.x, y: (1000 * cos(((180 - 90 - angolo ) * Double.pi) / 180 )) + enemy.position.y), duration: 0.6)
+                            let sound = SKAction.playSoundFileNamed("laserj", waitForCompletion: false)
+                            let removeFromParent = SKAction.removeFromParent()
+                            let actions = [sound, movement, removeFromParent]
+                            
+                            bossShot.run(SKAction.sequence(actions))
                         }
                     }
                 }
@@ -704,7 +776,64 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        
+        if collision == PhysicsCategory.Boss {
+            if collision2 == PhysicsCategory.Shot{
+                contact.bodyB.node?.removeFromParent()
+                
+                bossHealth = bossHealth - 0.02
+                bossBar.setXProgress(xProgress: bossHealth)
+                if bossHealth < 0.01 {
+                    
+                    let emitter = SKEmitterNode(fileNamed: "enemyDestroyed.sks")
+                    emitter?.targetNode = self
+                    contact.bodyA.node?.addChild(emitter!)
+                    
+                    contact.bodyA.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+
+                        contact.bodyA.node?.removeFromParent()
+                    }
+                    
+//                    win!.scaleMode = scaleMode
+//                    view?.presentScene(win!)
+//
+//                    hero.isHidden = false
+//
+//                    analogJoystick.removeFromParent()
+                }
+            }
+        }else {
+            
+            if collision2 == PhysicsCategory.Boss {
+                if collision == PhysicsCategory.Shot{
+                    contact.bodyA.node?.removeFromParent()
+                    
+                    bossHealth = bossHealth - 0.02
+                    bossBar.setXProgress(xProgress: bossHealth)
+                    if bossHealth < 0.01 {
+                        
+                        let emitter = SKEmitterNode(fileNamed: "enemyDestroyed.sks")
+                        emitter?.targetNode = self
+                        contact.bodyB.node?.addChild(emitter!)
+                        
+                        contact.bodyB.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+
+                            contact.bodyB.node?.removeFromParent()
+                        }
+                        
+    //                    win!.scaleMode = scaleMode
+    //                    view?.presentScene(win!)
+    //
+    //                    hero.isHidden = false
+    //
+    //                    analogJoystick.removeFromParent()
+                    }
+            }
+        }
+        }
         
         
         if collision3 == PhysicsCategory.eneShot {
@@ -750,17 +879,62 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             }
         }
         
+        
+        if collision3 == PhysicsCategory.bossShot {
+            if collision4 == PhysicsCategory.Hero{
+                let generator = UIImpactFeedbackGenerator(style: .soft)
+                generator.impactOccurred()
+                contact.bodyA.node?.removeFromParent()
+                health = health - 0.04
+                progressBar.setXProgress(xProgress: health)
+                if health < 0.01 {
+                    
+                    tim?.invalidate()
+                    over!.scaleMode = scaleMode
+                    view?.presentScene(over!)
+                    
+                    hero.isHidden = false
+                    
+                    analogJoystick.removeFromParent()
+                }
+            }
+        }else {
+            
+            if collision4 == PhysicsCategory.bossShot {
+                if collision3 == PhysicsCategory.Hero{
+                    let generator = UIImpactFeedbackGenerator(style: .soft)
+                    generator.impactOccurred()
+                    contact.bodyB.node?.removeFromParent()
+                    health = health - 0.04
+                    progressBar.setXProgress(xProgress: health)
+                    if health < 0.01 {
+                        
+                        tim?.invalidate()
+                        
+                        over!.scaleMode = scaleMode
+                        
+                        view?.presentScene(over!)
+                        //                        self.removeFromParent()
+                        hero.isHidden = false
+                        //                        isPlayerAlive = false
+                        analogJoystick.removeFromParent()
+                    }
+                }
+            }
+        }
+        
         if collision3 == PhysicsCategory.Sonda {
             if collision4 == PhysicsCategory.Hero{
                 
                 if inizioanimazione  {
                     
                     contact.bodyA.node?.removeFromParent()
+                    spawnboss()
                     inizioanimazione = false
                     recupero = false
                     tim?.invalidate()
                     timlab.removeFromParent()
-                    stoconqui = false
+                    stoconqui = true
                 }
             }
         }else {
@@ -773,11 +947,12 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     if inizioanimazione == true {
                         
                         contact.bodyB.node?.removeFromParent()
+                        spawnboss()
                         inizioanimazione = false
                         recupero = false
                         tim?.invalidate()
                         timlab.removeFromParent()
-                        stoconqui = false
+                        stoconqui = true
                     }
                 }
             }
@@ -804,7 +979,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     
     
     func randomEnemy () {
-        let enemy = SKSpriteNode(imageNamed: "enemyBig")
+        let enemy = SKSpriteNode(imageNamed: "enemySmall")
         enemy.name = "1"
         enemy.position = CGPoint(x: Int.random(in: -6500...6500), y: Int.random(in: -6500...6500))
         enemy.zPosition = NodesZPosition.hero.rawValue
@@ -822,6 +997,23 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func spawnboss () {
+        for planet in planets {
+            let boss = SKSpriteNode(imageNamed: "enemyBig")
+            boss.name = "boss"
+            boss.position = CGPoint(x: planet.position.x, y: planet.position.y + 2000)
+            boss.zPosition = NodesZPosition.joystick.rawValue - 1
+            boss.scaleTo(screenWidthPercentage: 2.5)
+            boss.physicsBody = SKPhysicsBody(rectangleOf: boss.frame.size)
+            boss.physicsBody?.allowsRotation = false
+            boss.physicsBody?.mass = 100
+            boss.physicsBody?.categoryBitMask = PhysicsCategory.Boss
+            boss.physicsBody?.contactTestBitMask = PhysicsCategory.Shot
+            boss.physicsBody?.collisionBitMask = PhysicsCategory.None
+            
+            gameLayer.addChild(boss)
+        }
+    }
     lazy var analogJoystick: AnalogJoystick = {
         let js = AnalogJoystick(diameter: 175, colors: nil, images: (substrate: #imageLiteral(resourceName: "jSubstrate"), stick: #imageLiteral(resourceName: "jStick")))
         if GeneralSettings.sharedGameData.JoyPos{

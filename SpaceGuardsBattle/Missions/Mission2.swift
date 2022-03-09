@@ -21,7 +21,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     var win = SKScene(fileNamed: "Win")
     var isFiring = false
     var updateTime: Double = 0
-    var firingInterval: Double = 0.5
+    var firingInterval: Double = 0.6
     var updateeShotTime : Double = 0
     var firingEnemyInterval : Double = 0.8
     var isGamePaused = false

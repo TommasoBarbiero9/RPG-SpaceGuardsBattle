@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "barra hero.png",
+      "filename" : "barra enemy.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
