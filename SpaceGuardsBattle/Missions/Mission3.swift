@@ -498,6 +498,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     shot.physicsBody?.categoryBitMask = PhysicsCategory.Shot
                     shot.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid
 
+                    
                     guard isPlayerAlive else { return }
                     
                     gameLayer.addChild(shot)
@@ -640,16 +641,13 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 contact.bodyA.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
                 
                 //                score = score + 5
-                scoreLabel.text = "\(Scor) : \(score)"
+                
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     
                     contact.bodyA.node?.removeFromParent()
                 }
-                if score > 500 {
-                    win!.scaleMode = scaleMode
-                    view?.presentScene(win!)
-                }
+               
             }
         }else {
             
@@ -664,16 +662,11 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     
                     contact.bodyB.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
                     //                    score = score + 3
-                    scoreLabel.text = "\(Scor) : \(score)"
+                    
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         
                         contact.bodyB.node?.removeFromParent()
-                    }
-                    
-                    if score > 500 {
-                        win!.scaleMode = scaleMode
-                        view?.presentScene(win!)
                     }
                 }
             }
@@ -787,13 +780,10 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
 
                         contact.bodyA.node?.removeFromParent()
                     }
-                    
-//                    win!.scaleMode = scaleMode
-//                    view?.presentScene(win!)
-//
-//                    hero.isHidden = false
-//
-//                    analogJoystick.removeFromParent()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 8){ [self] in
+                        self.win!.scaleMode = scaleMode
+                        view?.presentScene(win!)
+                    }
                 }
             }
         }else {
@@ -816,19 +806,14 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
 
                             contact.bodyB.node?.removeFromParent()
                         }
-                        
-    //                    win!.scaleMode = scaleMode
-    //                    view?.presentScene(win!)
-    //
-    //                    hero.isHidden = false
-    //
-    //                    analogJoystick.removeFromParent()
-                    }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 8){ [self] in
+                            self.win!.scaleMode = scaleMode
+                            view?.presentScene(win!)
+                        }
             }
         }
-        }
-        
-        
+    }
+}
         if collision3 == PhysicsCategory.eneShot {
             if collision4 == PhysicsCategory.Hero{
                 let generator = UIImpactFeedbackGenerator(style: .soft)
