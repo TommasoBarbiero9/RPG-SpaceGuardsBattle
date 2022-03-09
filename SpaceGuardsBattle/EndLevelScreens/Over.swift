@@ -33,10 +33,10 @@ class Over: SKScene {
         // Create a simple red rectangle that's 100x44
         button = SKLabelNode(text: "Play Again")
         // Put it in the center of the scene
-        button.position = CGPoint(x:self.frame.midX, y:self.frame.midY);
+        button.position = CGPoint(x:self.frame.midX, y:self.frame.midY + 50);
         self.addChild(button)
         
-        mainScreenText.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 50)
+        mainScreenText.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 20)
         self.addChild(mainScreenText)
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

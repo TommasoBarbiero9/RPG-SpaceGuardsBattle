@@ -251,10 +251,12 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
                         shoton.texture = SKTexture(imageNamed: "sparoon")
                         shotbutton.isHidden = false
                         GeneralSettings.sharedGameData.shotyn = true
+                        GeneralSettings.sharedGameData.defaults.set(true, forKey: "shotyn")
                     }else {
                         shoton.texture = SKTexture(imageNamed: "sparooff")
                         shotbutton.isHidden = true
                         GeneralSettings.sharedGameData.shotyn = false
+                        GeneralSettings.sharedGameData.defaults.set(false, forKey: "shotyn")
                     }
                 }
                 if pauseCancel.contains(location) {

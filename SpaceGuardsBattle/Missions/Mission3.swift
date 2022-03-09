@@ -258,10 +258,12 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                         shoton.texture = SKTexture(imageNamed: "sparoon")
                         shotbutton.isHidden = false
                         GeneralSettings.sharedGameData.shotyn = true
+                        GeneralSettings.sharedGameData.defaults.set(true, forKey: "shotyn")
                     }else {
                         shoton.texture = SKTexture(imageNamed: "sparooff")
                         shotbutton.isHidden = true
                         GeneralSettings.sharedGameData.shotyn = false
+                        GeneralSettings.sharedGameData.defaults.set(false, forKey: "shotyn")
                     }
                 }
                 if pauseCancel.contains(location) {
@@ -416,7 +418,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     var velocityX =  cos(angle) * 3
                     var  velocityY =  sin(angle) * 3
                     //Seek
-                    if enemy.position.distance(point: location) < 500 {
+                    if enemy.position.distance(point: location) < 700 {
                         
                         velocityX =  cos(angle) * 0
                         velocityY =  sin(angle) * 0
@@ -426,7 +428,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     enemy.position.x += velocityX
                     enemy.position.y += velocityY
                 }
-                if enemy.position.distance(point: location) < 700 {
+                if enemy.position.distance(point: location) < 1000 {
                     if self.updateeShotTime == 0 {
                         self.updateeShotTime = currentTime
                     }
@@ -605,13 +607,13 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     
                     gameLayer.enumerateChildNodes(withName: "boss") {enemy,_ in
                         let location = self.hero.position
-                        if enemy.position.distance(point: location) < 700 {
+                        if enemy.position.distance(point: location) < 1000 {
                             let bossShot = SKSpriteNode(imageNamed: "shotboss")
                             bossShot.name = "laser"
                             
                             bossShot.position = enemy.position
                             bossShot.zPosition = enemy.zPosition - 1
-                            bossShot.scaleTo(screenWidthPercentage: 0.1)
+                            bossShot.scaleTo(screenWidthPercentage: 0.3)
                             bossShot.physicsBody = SKPhysicsBody(rectangleOf: bossShot.size)
                             bossShot.physicsBody?.collisionBitMask = PhysicsCategory.None
                             bossShot.physicsBody?.categoryBitMask = PhysicsCategory.bossShot
