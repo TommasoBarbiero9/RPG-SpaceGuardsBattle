@@ -278,15 +278,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let location = touch.location(in: self)
-            if shotbutton.isHidden == false {
-                if shotbutton.contains(location) {
-                    isFiring = false
-                }
-            } else {
-                isFiring = false
-            }
+        isFiring = false
             
             if startmission == true && tutorial == false && isGamePaused == false {
                 tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
@@ -318,7 +310,7 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
                 tutorial = false }
             
         }
-    }
+    
     
     
     
@@ -328,33 +320,35 @@ class Mission2: SKScene, SKPhysicsContactDelegate {
         let location = hero.position
         
         
-        gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
-            
-            //Aim
-            let dx = (location.x) - enemy.position.x
-            let dy = (location.y) - enemy.position.y
-            let angle = atan2(dy, dx)
-            
-            enemy.zRotation = angle - 3 * .pi/6
-            
-            
-            
-            if enemy.position.distance(point: location) < 1000 && enemy.position.distance(point: location) > 450 {
+        if pauseLayer.isHidden {
+            gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
                 
-                //Seek
-                let velocityX =  cos(angle) * 5
-                let velocityY =  sin(angle) * 5
+                //Aim
+                let dx = (location.x) - enemy.position.x
+                let dy = (location.y) - enemy.position.y
+                let angle = atan2(dy, dx)
                 
-                enemy.position.x += velocityX
-                enemy.position.y += velocityY
-            }
-            if enemy.position.distance(point: location) < 700 {
-                if self.updateeShotTime == 0 {
-                    self.updateeShotTime = currentTime
+                enemy.zRotation = angle - 3 * .pi/6
+                
+                
+                
+                if enemy.position.distance(point: location) < 1000 && enemy.position.distance(point: location) > 450 {
+                    
+                    //Seek
+                    let velocityX =  cos(angle) * 5
+                    let velocityY =  sin(angle) * 5
+                    
+                    enemy.position.x += velocityX
+                    enemy.position.y += velocityY
                 }
-                if currentTime - self.updateeShotTime > self.firingInterval{
-                    self.fireEnemyBullet()
-                    self.updateeShotTime = currentTime
+                if enemy.position.distance(point: location) < 700 {
+                    if self.updateeShotTime == 0 {
+                        self.updateeShotTime = currentTime
+                    }
+                    if currentTime - self.updateeShotTime > self.firingInterval{
+                        self.fireEnemyBullet()
+                        self.updateeShotTime = currentTime
+                    }
                 }
             }
         }

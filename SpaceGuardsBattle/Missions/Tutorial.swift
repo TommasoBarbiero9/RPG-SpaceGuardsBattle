@@ -299,18 +299,8 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        isFiring = false
         
-        for touch in touches {
-            let location = touch.location(in: self)
-            if shotbutton.isHidden == false {
-                if shotbutton.contains(location) {
-                    isFiring = false
-                }
-            } else {
-                isFiring = false
-            }
-            
-            
             if startmission == true && tutorial == false && isGamePaused == false {
                 tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
                     //                  print("\(timer3)")
@@ -355,7 +345,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             
             
         }
-    }
+    
     
     
     

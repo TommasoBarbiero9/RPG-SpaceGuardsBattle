@@ -33,6 +33,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     var stoconqui = false
     var firingEnemyInterval : Double = 0.8
     var firingBossInterval : Double = 1.2
+    var bossApproached = true
     var isGamePaused = false
     var spawn = false
     var recupero = false
@@ -296,7 +297,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        isFiring = false
         for touch in touches {
             
             let location = touch.location(in: self)
@@ -312,16 +313,16 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     inizioanimazione = true
                 }
             }
-            for touch in touches {
-                let location = touch.location(in: self)
-                if shotbutton.isHidden == false {
-                    if shotbutton.contains(location) {
-                        isFiring = false
-                    }
-                } else {
-                    isFiring = false
-                }
-            }
+//            for touch in touches {
+//                let location = touch.location(in: self)
+//                if shotbutton.isHidden == false {
+//                    if shotbutton.contains(location) {
+//                        isFiring = false
+//                    }
+//                } else {
+//                    isFiring = false
+//                }
+//            }
             if startmission == true && tutorial == false && isGamePaused == false {
                 rettangolo.removeFromParent()
                 startmission = false
@@ -367,7 +368,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        if aggro {
+        if aggro && pauseLayer.isHidden {
             gameLayer.enumerateChildNodes(withName: "1") {enemy,_ in
                 
                 //Aim
@@ -399,39 +400,55 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        gameLayer.enumerateChildNodes(withName: "boss") {enemy,_ in
-            
-            //Aim
-            let dx = (location.x) - enemy.position.x
-            let dy = (location.y) - enemy.position.y
-            let angle = atan2(dy, dx)
-            
-            enemy.zRotation = angle - 3 * .pi/6
-            
-            
-            
-            if enemy.position.distance(point: location) < 10000 && enemy.position.distance(point: location) > 500{
+        if pauseLayer.isHidden {
+            gameLayer.enumerateChildNodes(withName: "boss") {enemy,_ in
                 
-                var velocityX =  cos(angle) * 3
-                var  velocityY =  sin(angle) * 3
-                //Seek
-                if enemy.position.distance(point: location) < 500 {
+                //Aim
+                let dx = (location.x) - enemy.position.x
+                let dy = (location.y) - enemy.position.y
+                let angle = atan2(dy, dx)
+                
+                enemy.zRotation = angle - 3 * .pi/6
+                
+                
+                
+                if enemy.position.distance(point: location) < 10000 && enemy.position.distance(point: location) > 500{
                     
-                    velocityX =  cos(angle) * 0
-                    velocityY =  sin(angle) * 0
-                    
-                    
+                    var velocityX =  cos(angle) * 3
+                    var  velocityY =  sin(angle) * 3
+                    //Seek
+                    if enemy.position.distance(point: location) < 500 {
+                        
+                        velocityX =  cos(angle) * 0
+                        velocityY =  sin(angle) * 0
+                        
+                        
+                    }
+                    enemy.position.x += velocityX
+                    enemy.position.y += velocityY
                 }
-                enemy.position.x += velocityX
-                enemy.position.y += velocityY
-            }
-            if enemy.position.distance(point: location) < 700 {
-                if self.updateeShotTime == 0 {
-                    self.updateeShotTime = currentTime
+                if enemy.position.distance(point: location) < 700 {
+                    if self.updateeShotTime == 0 {
+                        self.updateeShotTime = currentTime
+                    }
+                    if currentTime - self.updateeShotTime > self.firingBossInterval{
+                        self.fireBossBullet()
+                        self.updateeShotTime = currentTime
+                    }
                 }
-                if currentTime - self.updateeShotTime > self.firingBossInterval{
-                    self.fireBossBullet()
-                    self.updateeShotTime = currentTime
+                
+                if enemy.position.distance(point: location) < 2000 && self.bossApproached {
+                    let generator = UIImpactFeedbackGenerator(style: .soft)
+                    generator.impactOccurred()
+                }
+                if enemy.position.distance(point: location) < 1500 && self.bossApproached {
+                    let generator = UIImpactFeedbackGenerator(style: .medium)
+                    generator.impactOccurred()
+                }
+                if enemy.position.distance(point: location) < 1000 && self.bossApproached{
+                    let generator = UIImpactFeedbackGenerator(style: .heavy)
+                    generator.impactOccurred()
+                    self.bossApproached.toggle()
                 }
             }
         }
@@ -776,13 +793,13 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 bossBar.setXProgress(xProgress: bossHealth)
                 if bossHealth < 0.01 {
                     
-                    let emitter = SKEmitterNode(fileNamed: "enemyDestroyed.sks")
+                    let emitter = SKEmitterNode(fileNamed: "bossDestroyed.sks")
                     emitter?.targetNode = self
                     contact.bodyA.node?.addChild(emitter!)
                     
                     contact.bodyA.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         
                         contact.bodyA.node?.removeFromParent()
                     }
@@ -790,6 +807,25 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                         self.win!.scaleMode = scaleMode
                         view?.presentScene(win!)
                     }
+                    
+                    if GeneralSettings.sharedGameData.bgsound == true {
+                        
+                        let sound = Bundle.main.path(forResource: "Gamescene audio", ofType:
+                                                        "mp3")
+                        do {
+                            // We try to get the initialize it with the URL we created above.
+                            HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
+                        }
+                        catch{
+                            print(error)
+                            
+                        }
+                        HomeScreenViewController.audioPlayer.numberOfLoops = -1
+                        HomeScreenViewController.audioPlayer.volume = 0.2
+                        HomeScreenViewController.audioPlayer.play()
+                        
+                    }
+                    
                 }
             }
         }else {
@@ -802,13 +838,13 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     bossBar.setXProgress(xProgress: bossHealth)
                     if bossHealth < 0.01 {
                         
-                        let emitter = SKEmitterNode(fileNamed: "enemyDestroyed.sks")
+                        let emitter = SKEmitterNode(fileNamed: "bossDestroyed.sks")
                         emitter?.targetNode = self
                         contact.bodyB.node?.addChild(emitter!)
                         
                         contact.bodyB.node?.run(SKAction.playSoundFileNamed("explosion", waitForCompletion: false))
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             
                             contact.bodyB.node?.removeFromParent()
                         }
@@ -816,6 +852,25 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                             self.win!.scaleMode = scaleMode
                             view?.presentScene(win!)
                         }
+                        
+                        if GeneralSettings.sharedGameData.bgsound == true {
+                            
+                            let sound = Bundle.main.path(forResource: "Gamescene audio", ofType:
+                                                            "mp3")
+                            do {
+                                // We try to get the initialize it with the URL we created above.
+                                HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
+                            }
+                            catch{
+                                print(error)
+                                
+                            }
+                            HomeScreenViewController.audioPlayer.numberOfLoops = -1
+                            HomeScreenViewController.audioPlayer.volume = 0.2
+                            HomeScreenViewController.audioPlayer.play()
+                            
+                        }
+                        
                     }
                 }
             }
@@ -869,7 +924,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                 let generator = UIImpactFeedbackGenerator(style: .soft)
                 generator.impactOccurred()
                 contact.bodyA.node?.removeFromParent()
-                health = health - 0.04
+                health = health - 0.015
                 progressBar.setXProgress(xProgress: health)
                 if health < 0.01 {
                     
@@ -889,7 +944,7 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
                     let generator = UIImpactFeedbackGenerator(style: .soft)
                     generator.impactOccurred()
                     contact.bodyB.node?.removeFromParent()
-                    health = health - 0.04
+                    health = health - 0.015
                     progressBar.setXProgress(xProgress: health)
                     if health < 0.01 {
                         
@@ -984,15 +1039,44 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
         for planet in planets {
             let boss = SKSpriteNode(imageNamed: "enemyBig")
             boss.name = "boss"
-            boss.position = CGPoint(x: planet.position.x, y: planet.position.y + 2000)
+            boss.position = CGPoint(x: planet.position.x, y: planet.position.y + 2500)
             boss.zPosition = NodesZPosition.joystick.rawValue - 1
             boss.scaleTo(screenWidthPercentage: 2.5)
-            boss.physicsBody = SKPhysicsBody(rectangleOf: boss.frame.size)
+            boss.physicsBody = SKPhysicsBody(texture: boss.texture!, size: boss.size)
             boss.physicsBody?.allowsRotation = false
             boss.physicsBody?.mass = 100
             boss.physicsBody?.categoryBitMask = PhysicsCategory.Boss
             boss.physicsBody?.contactTestBitMask = PhysicsCategory.Shot
             boss.physicsBody?.collisionBitMask = PhysicsCategory.None
+            
+            HomeScreenViewController.audioPlayer.stop()
+            
+            boss.run(SKAction.playSoundFileNamed("AudioNemico", waitForCompletion: false))
+            
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6.8) {
+                
+                if GeneralSettings.sharedGameData.bgsound == true {
+                    
+                    let sound = Bundle.main.path(forResource: "EnemySituation", ofType:
+                                                    "mp3")
+                    do {
+                        // We try to get the initialize it with the URL we created above.
+                        HomeScreenViewController.audioPlayer = try AVAudioPlayer (contentsOf: URL(fileURLWithPath: sound!) )
+                    }
+                    catch{
+                        print(error)
+                        
+                    }
+                    HomeScreenViewController.audioPlayer.numberOfLoops = -1
+                    HomeScreenViewController.audioPlayer.volume = 0.2
+                    HomeScreenViewController.audioPlayer.play()
+                    
+                }
+                
+            }
+            
             
             gameLayer.addChild(boss)
         }
@@ -1029,18 +1113,20 @@ class Mission3: SKScene, SKPhysicsContactDelegate {
     
     //MARK: FUNCTIONS
     func sondabutton() {
-        conquer.isUserInteractionEnabled = true
-        for planet in planets {
-            if planet.position.distance(point: hero.position) < 550 && stoconqui == false {
-                let Textures = (0...1).map { SKTexture(imageNamed: "\($0)ufo") }
-                let pulsante = SKAction.animate(with: Textures, timePerFrame: 0.1)
-                conquer.run(pulsante)
-                self.conquer.isUserInteractionEnabled = false
-            } else {
-                let palla = (0...1).map { SKTexture(imageNamed: "\($0)pulsantegrigio") }
-                let pulsante = SKAction.animate(with: palla, timePerFrame: 0.1)
-                conquer.run(pulsante)
-                self.conquer.isUserInteractionEnabled = true
+        if pauseLayer.isHidden {
+            conquer.isUserInteractionEnabled = true
+            for planet in planets {
+                if planet.position.distance(point: hero.position) < 550 && stoconqui == false {
+                    let Textures = (0...1).map { SKTexture(imageNamed: "\($0)ufo") }
+                    let pulsante = SKAction.animate(with: Textures, timePerFrame: 0.1)
+                    conquer.run(pulsante)
+                    self.conquer.isUserInteractionEnabled = false
+                } else {
+                    let palla = (0...1).map { SKTexture(imageNamed: "\($0)pulsantegrigio") }
+                    let pulsante = SKAction.animate(with: palla, timePerFrame: 0.1)
+                    conquer.run(pulsante)
+                    self.conquer.isUserInteractionEnabled = true
+                }
             }
         }
     }

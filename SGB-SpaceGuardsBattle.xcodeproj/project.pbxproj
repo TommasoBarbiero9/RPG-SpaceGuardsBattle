@@ -45,6 +45,9 @@
 		4B87B95127D0D2480035A37D /* Mission2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B87B95027D0D2480035A37D /* Mission2.sks */; };
 		4BF5C27C27BD40DF004F6845 /* playerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4BF5C27B27BD40DF004F6845 /* playerTrail.sks */; };
 		4BFBC0EB27D76D3300C3E8A7 /* enemyDestroyed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4BFBC0EA27D76D3300C3E8A7 /* enemyDestroyed.sks */; };
+		4BFBC0F327D9143100C3E8A7 /* bossDestroyed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4BFBC0F227D9143100C3E8A7 /* bossDestroyed.sks */; };
+		4BFBC0F627D91ADE00C3E8A7 /* AudioNemico.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BFBC0F427D91ADE00C3E8A7 /* AudioNemico.mp3 */; };
+		4BFBC0F727D91ADE00C3E8A7 /* EnemySituation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BFBC0F527D91ADE00C3E8A7 /* EnemySituation.mp3 */; };
 		6B18859C27CFE88400D35A6F /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18859B27CFE88400D35A6F /* TutorialViewController.swift */; };
 		6BC1061027D625170038D8E2 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1060C27D625170038D8E2 /* HomeScreenViewController.swift */; };
 		6BC1061127D625170038D8E2 /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1060D27D625170038D8E2 /* MissionsViewController.swift */; };
@@ -121,6 +124,9 @@
 		4B87B95027D0D2480035A37D /* Mission2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mission2.sks; sourceTree = "<group>"; };
 		4BF5C27B27BD40DF004F6845 /* playerTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = playerTrail.sks; sourceTree = "<group>"; };
 		4BFBC0EA27D76D3300C3E8A7 /* enemyDestroyed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = enemyDestroyed.sks; sourceTree = "<group>"; };
+		4BFBC0F227D9143100C3E8A7 /* bossDestroyed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = bossDestroyed.sks; sourceTree = "<group>"; };
+		4BFBC0F427D91ADE00C3E8A7 /* AudioNemico.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioNemico.mp3; sourceTree = "<group>"; };
+		4BFBC0F527D91ADE00C3E8A7 /* EnemySituation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EnemySituation.mp3; sourceTree = "<group>"; };
 		6B18859B27CFE88400D35A6F /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		6BC1060C27D625170038D8E2 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		6BC1060D27D625170038D8E2 /* MissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				0BB4D1F127D79DC6009C74EB /* Gamescene audio.mp3 */,
+				4BFBC0F427D91ADE00C3E8A7 /* AudioNemico.mp3 */,
+				4BFBC0F527D91ADE00C3E8A7 /* EnemySituation.mp3 */,
 				0B068BBD27CFC05000CE7427 /* Tutorial.wav */,
 				0BB4D1F527D79E5B009C74EB /* MenuGame.mp3 */,
 				0B068BBB27CFC04200CE7427 /* Menu.wav */,
@@ -284,6 +292,7 @@
 				4B246E2627CEBF1700172D65 /* fireworks.sks */,
 				4BFBC0EA27D76D3300C3E8A7 /* enemyDestroyed.sks */,
 				4B28939A27B57606009556A2 /* Space.sks */,
+				4BFBC0F227D9143100C3E8A7 /* bossDestroyed.sks */,
 				4BF5C27B27BD40DF004F6845 /* playerTrail.sks */,
 				0B6E9B7327C4D443000FDB7D /* Starfield.sks */,
 				0B6E9B7127C4D1E4000FDB7D /* asteroidsDestroyed.sks */,
@@ -447,6 +456,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BFBC0F627D91ADE00C3E8A7 /* AudioNemico.mp3 in Resources */,
 				4B246E2527CEBE7400172D65 /* Win.sks in Resources */,
 				0BB4D1F627D79E5C009C74EB /* MenuGame.mp3 in Resources */,
 				0B6E9B7427C4D443000FDB7D /* Starfield.sks in Resources */,
@@ -458,10 +468,12 @@
 				4B86F12727B2601C00805DB7 /* Tutorial.sks in Resources */,
 				4B86F13227B2601D00805DB7 /* Assets.xcassets in Resources */,
 				0B6E9B7227C4D1E4000FDB7D /* asteroidsDestroyed.sks in Resources */,
+				4BFBC0F727D91ADE00C3E8A7 /* EnemySituation.mp3 in Resources */,
 				4B28939B27B57606009556A2 /* Space.sks in Resources */,
 				0BB4D1F227D79DC6009C74EB /* Gamescene audio.mp3 in Resources */,
 				4B246E2727CEBF1700172D65 /* fireworks.sks in Resources */,
 				9123499727C8FC31001208A7 /* LaunchScreen.storyboard in Resources */,
+				4BFBC0F327D9143100C3E8A7 /* bossDestroyed.sks in Resources */,
 				0B3FF08527B6E2E2000F9C12 /* laserj.mp3 in Resources */,
 				0B068BC727CFCD4D00CE7427 /* Localizable.strings in Resources */,
 				9115AFAF27CCD05800558762 /* Mission1.sks in Resources */,
@@ -700,7 +712,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VLX6GXY646;
+				DEVELOPMENT_TEAM = 4W9R99S9G2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceGuardsBattle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Outer Space";
@@ -732,7 +744,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VLX6GXY646;
+				DEVELOPMENT_TEAM = 4W9R99S9G2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpaceGuardsBattle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Outer Space";
