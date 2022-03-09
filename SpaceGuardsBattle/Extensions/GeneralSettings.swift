@@ -24,11 +24,41 @@ class GeneralSettings {
         var JoyPos : Bool = true
         var shotyn : Bool = true
         let defaults = UserDefaults.standard
-        
-        init () {
-            
-            bgsound = defaults.bool(forKey: "bgSound")
-            JoyPos = defaults.bool(forKey: "JoyPos")
-            shotyn = defaults.bool(forKey: "shotyn")
+     var firsttime : Bool
+
+
+
+
+
+
+
+            init () {
+
+                if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
+
+                    firsttime = false
+                } else {
+                    defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+
+                    firsttime = true
+                }
+
+
+                if firsttime == false {
+                bgsound = defaults.bool(forKey: "bgSound")
+                JoyPos = defaults.bool(forKey: "JoyPos")
+                    shotyn = defaults.bool(forKey: "shotyn")}
+                else{
+                    bgsound = true
+                    JoyPos = true
+                        shotyn = true
+                }
+        }
+
+
+
+
+
+
     }
-}
+

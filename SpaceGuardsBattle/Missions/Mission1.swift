@@ -95,12 +95,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         }
        
         
-        if isAppAlreadyLaunchedOnce() == false {
-            setupTutorial()
-            addChild(arrow)
-            addChild(rettangolo)
-            rettangolo.addChild(boxTUT)
-        }
+        
         setupPauseMenu()
         setupNodes()
         let emitter = SKEmitterNode(fileNamed: "playerTrail.sks")
@@ -627,17 +622,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         pauseLeave.verticalAlignmentMode = .top
     }
     
-    func isAppAlreadyLaunchedOnce() -> Bool {
-        let defaults = UserDefaults.standard
-        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
-            print("App already launched")
-            return true
-        } else {
-            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
-            print("App launched first time")
-            return false
-        }
-    }
+  
     
     
     
