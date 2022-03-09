@@ -307,7 +307,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         
             if startmission == true && tutorial == false && isGamePaused == false {
                 tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-                    //                  print("\(timer3)")
+                    
                     timer3 = timer3 - 1
                     timlab.text = "\(Time) : \(timer3)"
                     if timer3 < 0 {
@@ -329,7 +329,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                 analogJoystick.isUserInteractionEnabled = true
                 
                 tim = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
-                    //                  print("\(timer3)")
+              
                     timer3 = timer3 - 1
                     timlab.text = "\(Time) : \(timer3)"
                     if timer3 < 0 {
@@ -408,7 +408,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
                     } else {
                         angolo = ( (360 + ((shot.zRotation * 180) / Double.pi ))  + 90)
                     }
-                    print (angolo)
+                 
                     
                     let movement = SKAction.move(to: CGPoint(x: (1000 * cos(((angolo) * Double.pi) / 180)) + hero.position.x, y: (1000 * cos(((180 - 90 - angolo ) * Double.pi) / 180 )) + hero.position.y), duration: 0.6)
                     let sound = SKAction.playSoundFileNamed("laserj", waitForCompletion: false)
@@ -520,12 +520,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
             }
         }
         
-        if collision == PhysicsCategory.Planet {
-            print("Conquista")
-        }
-        else if collision2 == PhysicsCategory.Planet{
-            print("Conquista")
-        }
+     
         
         
     }
@@ -852,7 +847,7 @@ class Tutorial: SKScene, SKPhysicsContactDelegate {
         let halfWidth = CGFloat(tileMap.numberOfColumns) / 2.0 * tileSize.width
         let halfHeight = CGFloat(tileMap.numberOfRows) / 2.0 * tileSize.height
         
-        print(tileSize)
+        
         
         for col in 0..<tileMap.numberOfColumns {
             

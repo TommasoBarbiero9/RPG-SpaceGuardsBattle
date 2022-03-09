@@ -382,7 +382,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
                     } else {
                         angolo = ( (360 + ((shot.zRotation * 180) / Double.pi ))  + 90)
                     }
-                    print (angolo)
+                   
                     
                     let movement = SKAction.move(to: CGPoint(x: (1000 * cos(((angolo) * Double.pi) / 180)) + hero.position.x, y: (1000 * cos(((180 - 90 - angolo ) * Double.pi) / 180 )) + hero.position.y), duration: 0.6)
                     let sound = SKAction.playSoundFileNamed("laserj", waitForCompletion: false)
@@ -494,15 +494,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
             }
         }
         
-        if collision == PhysicsCategory.Planet {
-            if collision2 == PhysicsCategory.Hero{
-                print("Conquista")}
-        }
-        else if collision2 == PhysicsCategory.Planet{
-            if collision == PhysicsCategory.Hero{
-                
-                print("Conquista")}
-        }
+ 
         
         
     }
@@ -827,7 +819,7 @@ class Mission1: SKScene, SKPhysicsContactDelegate {
         let halfWidth = CGFloat(tileMap.numberOfColumns) / 2.0 * tileSize.width
         let halfHeight = CGFloat(tileMap.numberOfRows) / 2.0 * tileSize.height
         
-        print(tileSize)
+       
         
         for col in 0..<tileMap.numberOfColumns {
             
