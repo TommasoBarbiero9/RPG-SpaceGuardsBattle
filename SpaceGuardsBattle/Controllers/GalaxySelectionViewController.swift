@@ -12,44 +12,42 @@ import SwiftUI
 class GalaxySelectionViewController : UIViewController{
     @State private var changesymbol: Bool = false
     
- 
-    
-    
-
+    @IBOutlet weak var viewLocked1: UIImageView!
+    @IBOutlet weak var viewLocked: UIImageView!
+    @IBOutlet weak var selectedNav2: UIImageView!
+    @IBOutlet weak var labelChevron2: UILabel!
+    @IBOutlet weak var gifBg: UIImageView!
     @IBOutlet weak var milkGalaxy: UILabel!
-
     @IBOutlet weak var goldGalaxy: UILabel!
-
     @IBOutlet weak var choosegalaxyLabel: UILabel!
-
     @IBOutlet weak var milkGalaxyButton: UIButton!
-
     @IBOutlet weak var goldGalaxyButton: UIButton!
-
     @IBOutlet weak var greenGalaxy: UILabel!
-    
     @IBOutlet weak var greenGalaxyButton: UIButton!
     @IBOutlet weak var planets2: UIImageView!
 
     @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
 
+        viewLocked1.layer.cornerRadius = 15
+        viewLocked.layer.cornerRadius = 15
+        selectedNav2.shake()
+        labelChevron2.shake()
+        gifBg.loadGif(name: "gif")
         planets2.rotate()
-        scrollView.contentInset = UIEdgeInsets()
+//        scrollView.contentInset = UIEdgeInsets()
         
 
         milkGalaxyButton.layer.borderWidth = 1.0
         milkGalaxyButton.layer.cornerRadius = 15
         milkGalaxyButton.layer.borderColor = UIColor.init(red: 46/255, green: 176/255, blue: 205/255, alpha: 1).cgColor;
-//        milkGalaxy.layer.backgroundColor = UIColor.orange.cgColor
         milkGalaxyButton.layer.masksToBounds = true
         milkGalaxyButton.clipsToBounds = false
 
         goldGalaxyButton.layer.borderWidth = 1.0
         goldGalaxyButton.layer.cornerRadius = 15
-//        goldGalaxyButton.layer.borderColor = UIColor.init(red: 46/255, green: 176/255, blue: 205/255, alpha: 1).cgColor;
-        goldGalaxyButton.layer.borderColor = UIColor.init(red: 255/255, green: 197/255, blue: 85/255, alpha: 1).cgColor;
-//        goldGalaxy.layer.backgroundColor = UIColor.orange.cgColor
+
+        goldGalaxyButton.layer.borderColor = UIColor.init(red: 144/255, green: 21/255, blue: 175/255, alpha: 1).cgColor;
         goldGalaxyButton.layer.masksToBounds = true
         goldGalaxyButton.clipsToBounds = false
 
@@ -57,13 +55,12 @@ class GalaxySelectionViewController : UIViewController{
         milkGalaxy.layer.borderWidth = 1.0
         milkGalaxy.layer.cornerRadius = 8
         milkGalaxy.layer.borderColor = UIColor.init(red: 46/255, green: 176/255, blue: 205/255, alpha: 1).cgColor;
-//        milkGalaxy.layer.backgroundColor = UIColor.orange.cgColor
         milkGalaxy.layer.masksToBounds = true
         milkGalaxy.clipsToBounds = false
 
         goldGalaxy.layer.borderWidth = 1.0
         goldGalaxy.layer.cornerRadius = 8
-        goldGalaxy.layer.borderColor = UIColor.init(red: 255/255, green: 197/255, blue: 85/255, alpha: 1).cgColor;
+        goldGalaxy.layer.borderColor = UIColor.init(red: 240/255, green: 201/255, blue: 254/255, alpha: 1).cgColor;
 
         goldGalaxy.layer.masksToBounds = true
         goldGalaxy.clipsToBounds = false
@@ -72,7 +69,7 @@ class GalaxySelectionViewController : UIViewController{
         greenGalaxyButton.layer.borderWidth = 1.0
         greenGalaxyButton.layer.cornerRadius = 15
 
-        greenGalaxyButton.layer.borderColor = UIColor.init(red: 255/255, green: 197/255, blue: 85/255, alpha: 1).cgColor;
+        greenGalaxyButton.layer.borderColor = UIColor.init(red: 5/255, green: 149/255, blue: 62/255, alpha: 1).cgColor;
 
         greenGalaxyButton.layer.masksToBounds = true
         greenGalaxyButton.clipsToBounds = false
@@ -80,7 +77,7 @@ class GalaxySelectionViewController : UIViewController{
 
         greenGalaxy.layer.borderWidth = 1.0
         greenGalaxy.layer.cornerRadius = 8
-        greenGalaxy.layer.borderColor = UIColor.init(red: 46/255, green: 176/255, blue: 205/255, alpha: 1).cgColor;
+        greenGalaxy.layer.borderColor = UIColor.init(red: 5/255, green: 149/255, blue: 62/255, alpha: 1).cgColor;
 
        greenGalaxy.layer.masksToBounds = true
        greenGalaxy.clipsToBounds = false

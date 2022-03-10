@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 import SwiftUI
 class SpaceshipCustomizationViewController: UIViewController {
+    
+    
+    @IBOutlet weak var orangeButtonPressed: UIButton!
+    @IBOutlet weak var greenButtonPressed: UIButton!
+    
+    @IBOutlet weak var bluButtonPressed: UIButton!
+    @IBOutlet weak var violetButtonPressed: UIButton!
     @IBAction func dismissPopup(_ sender: UIButton) {
         
         GeneralSettings.sharedGameData.defaults.set(NavType.sharedGameData.form, forKey: "form")
@@ -23,6 +30,20 @@ class SpaceshipCustomizationViewController: UIViewController {
         
         
     }
+    
+    let buttonOrangenotPressed = UIImage(named: "orange")
+    let buttonBlunotPressed = UIImage(named: "blue")
+    let buttonGreennotPressed = UIImage(named: "green")
+    let buttonVioletnotPressed = UIImage(named: "violet")
+
+
+    
+    
+    
+    let buttonorangePressed = UIImage(named: "orangeButtonPressed")
+    let buttonbluPressed = UIImage(named: "bluButtonPressed")
+    let buttongreenPressed = UIImage(named: "greenButtonPressed")
+    let buttonvioletPressed = UIImage(named: "violetButtonPressed")
 
     @IBOutlet weak var chooseyourshipLabel: UILabel!
     @IBOutlet weak var button1: UIButton!
@@ -224,12 +245,38 @@ class SpaceshipCustomizationViewController: UIViewController {
             GeneralSettings.sharedGameData.segmentBody = true
             NavType.sharedGameData.form = "q"
             
+            if NavType.sharedGameData.color == "r" {
             ship1.setImage(imageq1r, for: .normal)
             ship2.setImage(imageq2r, for: .normal)
             ship3.setImage(imageq3r, for: .normal)
             ship4.setImage(imageq4r, for: .normal)
             ship5.setImage(imageq5r, for: .normal)
             ship6.setImage(imageq6r, for: .normal)
+            }
+            else if NavType.sharedGameData.color == "v" {
+                ship1.setImage(imageq1v, for: .normal)
+                ship2.setImage(imageq2v, for: .normal)
+                ship3.setImage(imageq3v, for: .normal)
+                ship4.setImage(imageq4v, for: .normal)
+                ship5.setImage(imageq5v, for: .normal)
+                ship6.setImage(imageq6v, for: .normal)
+            }
+            else if  NavType.sharedGameData.color == "b"{
+                ship1.setImage(imageq1b, for: .normal)
+                ship2.setImage(imageq2b, for: .normal)
+                ship3.setImage(imageq3b, for: .normal)
+                ship4.setImage(imageq4b, for: .normal)
+                ship5.setImage(imageq5b, for: .normal)
+                ship6.setImage(imageq6b, for: .normal)
+            }
+            else if NavType.sharedGameData.color == "viola" {
+                ship1.setImage(imageq1violet, for: .normal)
+                ship2.setImage(imageq2violet, for: .normal)
+                ship3.setImage(imageq3violet, for: .normal)
+                ship4.setImage(imageq4violet, for: .normal)
+                ship5.setImage(imageq5violet, for: .normal)
+                ship6.setImage(imageq6violet, for: .normal)
+            }
             
             
             button1.setBackgroundColor(color: UIColor.init(red: 46/255, green: 176/255, blue: 205/255, alpha: 0), forState: .normal)
@@ -250,6 +297,39 @@ class SpaceshipCustomizationViewController: UIViewController {
             ship5.setImage(imagec5r, for: .normal)
             ship6.setImage(imagec6r, for: .normal)
             
+            if NavType.sharedGameData.color == "r" {
+            ship1.setImage(imageq1r, for: .normal)
+            ship2.setImage(imageq2r, for: .normal)
+            ship3.setImage(imageq3r, for: .normal)
+            ship4.setImage(imageq4r, for: .normal)
+            ship5.setImage(imageq5r, for: .normal)
+            ship6.setImage(imageq6r, for: .normal)
+            }
+            else if NavType.sharedGameData.color == "v" {
+                ship1.setImage(imageq1v, for: .normal)
+                ship2.setImage(imageq2v, for: .normal)
+                ship3.setImage(imageq3v, for: .normal)
+                ship4.setImage(imageq4v, for: .normal)
+                ship5.setImage(imageq5v, for: .normal)
+                ship6.setImage(imageq6v, for: .normal)
+            }
+            else if  NavType.sharedGameData.color == "b"{
+                ship1.setImage(imageq1b, for: .normal)
+                ship2.setImage(imageq2b, for: .normal)
+                ship3.setImage(imageq3b, for: .normal)
+                ship4.setImage(imageq4b, for: .normal)
+                ship5.setImage(imageq5b, for: .normal)
+                ship6.setImage(imageq6b, for: .normal)
+            }
+            else if NavType.sharedGameData.color == "viola" {
+                ship1.setImage(imageq1violet, for: .normal)
+                ship2.setImage(imageq2violet, for: .normal)
+                ship3.setImage(imageq3violet, for: .normal)
+                ship4.setImage(imageq4violet, for: .normal)
+                ship5.setImage(imageq5violet, for: .normal)
+                ship6.setImage(imageq6violet, for: .normal)
+            }
+            
             
             button1.setBackgroundColor(color: UIColor.init(red: 46/255, green: 176/255, blue: 205/255, alpha: 0), forState: .normal)
             button2.setBackgroundColor(color: UIColor.init(red: 46/255, green: 176/255, blue: 205/255, alpha: 0), forState: .normal)
@@ -260,7 +340,13 @@ class SpaceshipCustomizationViewController: UIViewController {
             
             shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
         default :
-            break
+    
+            orangeButtonPressed.setBackgroundImage(buttonOrangenotPressed, for: .normal)
+            greenButtonPressed.setBackgroundImage(buttonGreennotPressed, for: .normal)
+            violetButtonPressed.setBackgroundImage(buttonVioletnotPressed, for: .normal)
+            bluButtonPressed.setBackgroundImage(buttonBlunotPressed, for: .normal)
+            
+
            }
         
         
@@ -296,6 +382,18 @@ class SpaceshipCustomizationViewController: UIViewController {
             shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
             
         }
+        
+        orangeButtonPressed.setBackgroundImage(buttonorangePressed, for: .normal)
+        greenButtonPressed.setBackgroundImage(buttonGreennotPressed, for: .normal)
+        violetButtonPressed.setBackgroundImage(buttonVioletnotPressed, for: .normal)
+        bluButtonPressed.setBackgroundImage(buttonBlunotPressed, for: .normal)
+        
+      
+
+        
+        
+        
+        
     }
     
 //    VERDE
@@ -325,7 +423,11 @@ class SpaceshipCustomizationViewController: UIViewController {
             shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
         }
         
-        
+       
+        orangeButtonPressed.setBackgroundImage(buttonOrangenotPressed, for: .normal)
+        greenButtonPressed.setBackgroundImage(buttongreenPressed, for: .normal)
+        violetButtonPressed.setBackgroundImage(buttonVioletnotPressed, for: .normal)
+        bluButtonPressed.setBackgroundImage(buttonBlunotPressed, for: .normal)
         
     }
     
@@ -355,6 +457,10 @@ class SpaceshipCustomizationViewController: UIViewController {
             shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
             
         }
+        orangeButtonPressed.setBackgroundImage(buttonOrangenotPressed, for: .normal)
+        greenButtonPressed.setBackgroundImage(buttonGreennotPressed, for: .normal)
+        violetButtonPressed.setBackgroundImage(buttonvioletPressed, for: .normal)
+        bluButtonPressed.setBackgroundImage(buttonBlunotPressed, for: .normal)
     }
     
 //    blu
@@ -383,6 +489,11 @@ class SpaceshipCustomizationViewController: UIViewController {
             shipSelected.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
             
         }
+        orangeButtonPressed.setBackgroundImage(buttonOrangenotPressed, for: .normal)
+        greenButtonPressed.setBackgroundImage(buttonGreennotPressed, for: .normal)
+        violetButtonPressed.setBackgroundImage(buttonVioletnotPressed, for: .normal)
+        bluButtonPressed.setBackgroundImage(buttonbluPressed, for: .normal)
+        
     }
     
     @IBAction func button1Pressed(_ sender: Any) {

@@ -12,10 +12,12 @@ import AVFoundation
 
 class HomeScreenViewController: UIViewController {
     
+    @IBOutlet weak var settingsButton1: UIButton!
     @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet var SettingsMenu: UIView!
     @IBOutlet weak var  selectedNav: UIImageView!
-    @IBOutlet weak var linguetta: UIImageView!
+   
+    @IBOutlet weak var labelChevron: UILabel!
     
     @IBOutlet weak var shotbutton: UISegmentedControl!
     
@@ -36,6 +38,8 @@ class HomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         
+        selectedNav.shake()
+        labelChevron.shake()
         if GeneralSettings.sharedGameData.JoyPos{
         JoysticPos.selectedSegmentIndex = 0
     } else
@@ -64,10 +68,10 @@ class HomeScreenViewController: UIViewController {
 
       
     
-        selectedNav.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
+//        selectedNav.image = UIImage(named: NavType.sharedGameData.type + NavType.sharedGameData.form + NavType.sharedGameData.color)
         
-        linguetta.shake()
-        selectedNav.shake()
+//        linguetta.shake()
+//        selectedNav.shake()
 //      swipeShip.shake()
         planets.rotate()
 //         Do any additional setup after loading the view, typically from a nib.
