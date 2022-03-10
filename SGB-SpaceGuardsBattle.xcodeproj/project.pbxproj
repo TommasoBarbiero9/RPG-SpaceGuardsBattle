@@ -22,7 +22,6 @@
 		0B6E9B7427C4D443000FDB7D /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E9B7327C4D443000FDB7D /* Starfield.sks */; };
 		0BA3C63727D96344001F8BC4 /* enemyExplosionSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BA3C63627D96344001F8BC4 /* enemyExplosionSound.mp3 */; };
 		0BA3C63927D963CD001F8BC4 /* shotenemysound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BA3C63827D963CD001F8BC4 /* shotenemysound.mp3 */; };
-		0BA3C63B27D9798F001F8BC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA3C63A27D9798F001F8BC4 /* Main.storyboard */; };
 		0BA3C63D27D979E4001F8BC4 /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0BA3C63C27D979E4001F8BC4 /* gif.gif */; };
 		0BA3C64727D97A22001F8BC4 /* Mission1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3C63E27D97A21001F8BC4 /* Mission1ViewController.swift */; };
 		0BA3C64827D97A22001F8BC4 /* SpaceshipCusomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3C63F27D97A22001F8BC4 /* SpaceshipCusomizationViewController.swift */; };
@@ -35,6 +34,7 @@
 		0BA3C64F27D97A22001F8BC4 /* Mission3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3C64627D97A22001F8BC4 /* Mission3ViewController.swift */; };
 		0BA3C65127D97A77001F8BC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA3C65027D97A76001F8BC4 /* LaunchScreen.storyboard */; };
 		0BA3C65327D97A99001F8BC4 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3C65227D97A99001F8BC4 /* Gif.swift */; };
+		0BA3C65427D97C4D001F8BC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA3C65627D97C4D001F8BC4 /* Main.storyboard */; };
 		0BB4D1F227D79DC6009C74EB /* Gamescene audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BB4D1F127D79DC6009C74EB /* Gamescene audio.mp3 */; };
 		0BB4D1F627D79E5C009C74EB /* MenuGame.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BB4D1F527D79E5B009C74EB /* MenuGame.mp3 */; };
 		0BCF756127BEAFD6003A31C0 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BCF756027BEAFD6003A31C0 /* explosion.mp3 */; };
@@ -101,7 +101,6 @@
 		0B6E9B7327C4D443000FDB7D /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 		0BA3C63627D96344001F8BC4 /* enemyExplosionSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemyExplosionSound.mp3; sourceTree = "<group>"; };
 		0BA3C63827D963CD001F8BC4 /* shotenemysound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shotenemysound.mp3; sourceTree = "<group>"; };
-		0BA3C63A27D9798F001F8BC4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0BA3C63C27D979E4001F8BC4 /* gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif.gif; sourceTree = "<group>"; };
 		0BA3C63E27D97A21001F8BC4 /* Mission1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mission1ViewController.swift; sourceTree = "<group>"; };
 		0BA3C63F27D97A22001F8BC4 /* SpaceshipCusomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceshipCusomizationViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +113,8 @@
 		0BA3C64627D97A22001F8BC4 /* Mission3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mission3ViewController.swift; sourceTree = "<group>"; };
 		0BA3C65027D97A76001F8BC4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BA3C65227D97A99001F8BC4 /* Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
+		0BA3C65527D97C4D001F8BC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0BA3C65927D97D46001F8BC4 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = it; path = it.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BB4D1F127D79DC6009C74EB /* Gamescene audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Gamescene audio.mp3"; sourceTree = "<group>"; };
 		0BB4D1F527D79E5B009C74EB /* MenuGame.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MenuGame.mp3; sourceTree = "<group>"; };
 		0BCF756027BEAFD6003A31C0 /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosion.mp3; sourceTree = "<group>"; };
@@ -276,7 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				0BA3C65027D97A76001F8BC4 /* LaunchScreen.storyboard */,
-				0BA3C63A27D9798F001F8BC4 /* Main.storyboard */,
+				0BA3C65627D97C4D001F8BC4 /* Main.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -488,7 +489,7 @@
 				0BA3C63727D96344001F8BC4 /* enemyExplosionSound.mp3 in Resources */,
 				4BFBC0F327D9143100C3E8A7 /* bossDestroyed.sks in Resources */,
 				0B3FF08527B6E2E2000F9C12 /* laserj.mp3 in Resources */,
-				0BA3C63B27D9798F001F8BC4 /* Main.storyboard in Resources */,
+				0BA3C65427D97C4D001F8BC4 /* Main.storyboard in Resources */,
 				0B068BC727CFCD4D00CE7427 /* Localizable.strings in Resources */,
 				9115AFAF27CCD05800558762 /* Mission1.sks in Resources */,
 				0B56E7BA27D3EBC800A30ADB /* Mission3.sks in Resources */,
@@ -588,6 +589,15 @@
 				0B068BCB27CFD0DB00CE7427 /* it */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		0BA3C65627D97C4D001F8BC4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0BA3C65527D97C4D001F8BC4 /* en */,
+				0BA3C65927D97D46001F8BC4 /* it */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
