@@ -244,38 +244,43 @@ class SpaceshipCustomizationViewController: UIViewController {
         case 0 :
             GeneralSettings.sharedGameData.segmentBody = true
             NavType.sharedGameData.form = "q"
+          
             
             if NavType.sharedGameData.color == "r" {
-            ship1.setImage(imageq1r, for: .normal)
-            ship2.setImage(imageq2r, for: .normal)
-            ship3.setImage(imageq3r, for: .normal)
-            ship4.setImage(imageq4r, for: .normal)
-            ship5.setImage(imageq5r, for: .normal)
-            ship6.setImage(imageq6r, for: .normal)
+                self.ship1.setImage(imageq1r, for: .normal)
+                self.ship2.setImage(imageq2r, for: .normal)
+                self.ship3.setImage(imageq3r, for: .normal)
+                self.ship4.setImage(imageq4r, for: .normal)
+                self.ship5.setImage(imageq5r, for: .normal)
+                self.ship6.setImage(imageq6r, for: .normal)
+                
+                
+                
+                
             }
             else if NavType.sharedGameData.color == "v" {
-                ship1.setImage(imageq1v, for: .normal)
-                ship2.setImage(imageq2v, for: .normal)
-                ship3.setImage(imageq3v, for: .normal)
-                ship4.setImage(imageq4v, for: .normal)
-                ship5.setImage(imageq5v, for: .normal)
-                ship6.setImage(imageq6v, for: .normal)
+                self.ship1.setImage(imageq1v, for: .normal)
+                self.ship2.setImage(imageq2v, for: .normal)
+                self.ship3.setImage(imageq3v, for: .normal)
+                self.ship4.setImage(imageq4v, for: .normal)
+                self.ship5.setImage(imageq5v, for: .normal)
+                self.ship6.setImage(imageq6v, for: .normal)
             }
             else if  NavType.sharedGameData.color == "b"{
-                ship1.setImage(imageq1b, for: .normal)
-                ship2.setImage(imageq2b, for: .normal)
-                ship3.setImage(imageq3b, for: .normal)
-                ship4.setImage(imageq4b, for: .normal)
-                ship5.setImage(imageq5b, for: .normal)
-                ship6.setImage(imageq6b, for: .normal)
+                self.ship1.setImage(imageq1b, for: .normal)
+                self.ship2.setImage(imageq2b, for: .normal)
+                self.ship3.setImage(imageq3b, for: .normal)
+                self.ship4.setImage(imageq4b, for: .normal)
+                self.ship5.setImage(imageq5b, for: .normal)
+                self.ship6.setImage(imageq6b, for: .normal)
             }
             else if NavType.sharedGameData.color == "viola" {
-                ship1.setImage(imageq1violet, for: .normal)
-                ship2.setImage(imageq2violet, for: .normal)
-                ship3.setImage(imageq3violet, for: .normal)
-                ship4.setImage(imageq4violet, for: .normal)
-                ship5.setImage(imageq5violet, for: .normal)
-                ship6.setImage(imageq6violet, for: .normal)
+                self.ship1.setImage(imageq1violet, for: .normal)
+                self.ship2.setImage(imageq2violet, for: .normal)
+                self.ship3.setImage(imageq3violet, for: .normal)
+                self.ship4.setImage(imageq4violet, for: .normal)
+                self.ship5.setImage(imageq5violet, for: .normal)
+                self.ship6.setImage(imageq6violet, for: .normal)
             }
             
             
@@ -290,44 +295,44 @@ class SpaceshipCustomizationViewController: UIViewController {
         case 1 :
             GeneralSettings.sharedGameData.segmentBody = false
             NavType.sharedGameData.form = "c"
-            ship1.setImage(imagec1r, for: .normal)
-            ship2.setImage(imagec2r, for: .normal)
-            ship3.setImage(imagec3r, for: .normal)
-            ship4.setImage(imagec4r, for: .normal)
-            ship5.setImage(imagec5r, for: .normal)
-            ship6.setImage(imagec6r, for: .normal)
+            self.ship1.setImage(imagec1r, for: .normal)
+            self.ship2.setImage(imagec2r, for: .normal)
+            self.ship3.setImage(imagec3r, for: .normal)
+            self.ship4.setImage(imagec4r, for: .normal)
+            self.ship5.setImage(imagec5r, for: .normal)
+            self.ship6.setImage(imagec6r, for: .normal)
             
             if NavType.sharedGameData.color == "r" {
-            ship1.setImage(imageq1r, for: .normal)
-            ship2.setImage(imageq2r, for: .normal)
-            ship3.setImage(imageq3r, for: .normal)
-            ship4.setImage(imageq4r, for: .normal)
-            ship5.setImage(imageq5r, for: .normal)
-            ship6.setImage(imageq6r, for: .normal)
+                self.ship1.setImage(imageq1r, for: .normal)
+                self.ship2.setImage(imageq2r, for: .normal)
+                self.ship3.setImage(imageq3r, for: .normal)
+                self.ship4.setImage(imageq4r, for: .normal)
+                self.ship5.setImage(imageq5r, for: .normal)
+                self.ship6.setImage(imageq6r, for: .normal)
             }
             else if NavType.sharedGameData.color == "v" {
-                ship1.setImage(imageq1v, for: .normal)
-                ship2.setImage(imageq2v, for: .normal)
-                ship3.setImage(imageq3v, for: .normal)
-                ship4.setImage(imageq4v, for: .normal)
-                ship5.setImage(imageq5v, for: .normal)
-                ship6.setImage(imageq6v, for: .normal)
+                self.ship1.setImage(imageq1v, for: .normal)
+                self.ship2.setImage(imageq2v, for: .normal)
+                self.ship3.setImage(imageq3v, for: .normal)
+                self.ship4.setImage(imageq4v, for: .normal)
+                self.ship5.setImage(imageq5v, for: .normal)
+                self.ship6.setImage(imageq6v, for: .normal)
             }
             else if  NavType.sharedGameData.color == "b"{
-                ship1.setImage(imageq1b, for: .normal)
-                ship2.setImage(imageq2b, for: .normal)
-                ship3.setImage(imageq3b, for: .normal)
-                ship4.setImage(imageq4b, for: .normal)
-                ship5.setImage(imageq5b, for: .normal)
-                ship6.setImage(imageq6b, for: .normal)
+                self.ship1.setImage(imageq1b, for: .normal)
+                self.ship2.setImage(imageq2b, for: .normal)
+                self.ship3.setImage(imageq3b, for: .normal)
+                self.ship4.setImage(imageq4b, for: .normal)
+                self.ship5.setImage(imageq5b, for: .normal)
+                self.ship6.setImage(imageq6b, for: .normal)
             }
             else if NavType.sharedGameData.color == "viola" {
-                ship1.setImage(imageq1violet, for: .normal)
-                ship2.setImage(imageq2violet, for: .normal)
-                ship3.setImage(imageq3violet, for: .normal)
-                ship4.setImage(imageq4violet, for: .normal)
-                ship5.setImage(imageq5violet, for: .normal)
-                ship6.setImage(imageq6violet, for: .normal)
+                self.ship1.setImage(imageq1violet, for: .normal)
+                self.ship2.setImage(imageq2violet, for: .normal)
+                self.ship3.setImage(imageq3violet, for: .normal)
+                self.ship4.setImage(imageq4violet, for: .normal)
+                self.ship5.setImage(imageq5violet, for: .normal)
+                self.ship6.setImage(imageq6violet, for: .normal)
             }
             
             

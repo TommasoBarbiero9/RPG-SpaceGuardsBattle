@@ -557,7 +557,7 @@
                                 <constraint firstAttribute="height" constant="46" id="dMJ-R0-1nd"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="pauseCancel-1"/>
+                            <buttonConfiguration key="configuration" style="plain" image="pauseCancel"/>
                             <connections>
                                 <action selector="xButtonPressed:" destination="Xcz-YJ-VTP" eventType="touchUpInside" id="7IQ-ox-P8h"/>
                             </connections>
@@ -1386,7 +1386,7 @@
         <image name="galaxyMilk1" width="200" height="135"/>
         <image name="gear" width="30" height="30"/>
         <image name="logo" width="1498" height="1089"/>
-        <image name="pauseCancel-1" width="40" height="40"/>
+        <image name="pauseCancel" width="40" height="40"/>
         <image name="pista" width="1114" height="1725"/>
         <image name="planets" width="6073" height="5513"/>
         <image name="rhombus.fill" catalog="system" width="107" height="128"/>

@@ -312,7 +312,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kg-ec-22j">
-                                                <rect key="frame" x="69" y="94" width="71" height="27"/>
+                                                <rect key="frame" x="35" y="99" width="139" height="35"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="NAVICELLE">
                                                         <attributes>
@@ -326,14 +326,14 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="5Kg-ec-22j" secondAttribute="trailing" constant="69" id="9lX-R8-YZt"/>
-                                            <constraint firstItem="5Kg-ec-22j" firstAttribute="leading" secondItem="guA-so-TUg" secondAttribute="leading" constant="69" id="FMy-Nd-wjb"/>
-                                            <constraint firstItem="5Kg-ec-22j" firstAttribute="top" secondItem="guA-so-TUg" secondAttribute="top" constant="94" id="Kvo-v4-mcx"/>
+                                            <constraint firstAttribute="trailing" secondItem="5Kg-ec-22j" secondAttribute="trailing" constant="35" id="9lX-R8-YZt"/>
+                                            <constraint firstItem="5Kg-ec-22j" firstAttribute="leading" secondItem="guA-so-TUg" secondAttribute="leading" constant="35" id="FMy-Nd-wjb"/>
+                                            <constraint firstItem="5Kg-ec-22j" firstAttribute="top" secondItem="guA-so-TUg" secondAttribute="top" constant="99" id="Kvo-v4-mcx"/>
                                             <constraint firstAttribute="bottom" secondItem="w96-KT-xaF" secondAttribute="bottom" id="XfX-fK-d2R"/>
                                             <constraint firstItem="w96-KT-xaF" firstAttribute="leading" secondItem="guA-so-TUg" secondAttribute="leading" id="b6l-NT-pfN"/>
                                             <constraint firstItem="w96-KT-xaF" firstAttribute="top" secondItem="guA-so-TUg" secondAttribute="top" id="fwj-tN-Icf"/>
                                             <constraint firstAttribute="trailing" secondItem="w96-KT-xaF" secondAttribute="trailing" id="hX4-Xq-HfK"/>
-                                            <constraint firstAttribute="bottom" secondItem="5Kg-ec-22j" secondAttribute="bottom" constant="44" id="zk5-a2-DyN"/>
+                                            <constraint firstAttribute="bottom" secondItem="5Kg-ec-22j" secondAttribute="bottom" constant="31" id="zk5-a2-DyN"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -558,7 +558,7 @@
                                 <constraint firstAttribute="height" constant="46" id="dMJ-R0-1nd"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="pauseCancel-1"/>
+                            <buttonConfiguration key="configuration" style="plain" image="pauseCancel"/>
                             <connections>
                                 <action selector="xButtonPressed:" destination="Xcz-YJ-VTP" eventType="touchUpInside" id="7IQ-ox-P8h"/>
                             </connections>
@@ -724,9 +724,9 @@
                                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3F-Gh-4SL">
-                                                        <rect key="frame" x="93" y="133" width="82" height="20"/>
+                                                        <rect key="frame" x="84" y="133" width="99" height="20"/>
                                                         <attributedString key="attributedText">
-                                                            <fragment content="  LOCKED  ">
+                                                            <fragment content="BLOCCATO">
                                                                 <attributes>
                                                                     <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <font key="NSFont" size="17" name="ArialRoundedMTBold"/>
@@ -740,11 +740,11 @@
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="T3F-Gh-4SL" secondAttribute="bottom" constant="97" id="8Jv-gq-ogU"/>
                                                     <constraint firstItem="T3F-Gh-4SL" firstAttribute="top" secondItem="bI7-Xa-IWe" secondAttribute="bottom" constant="84" id="LPX-HO-q1L"/>
-                                                    <constraint firstItem="T3F-Gh-4SL" firstAttribute="leading" secondItem="ku7-bJ-sW2" secondAttribute="leading" constant="93" id="NGn-tl-y65"/>
+                                                    <constraint firstItem="T3F-Gh-4SL" firstAttribute="leading" secondItem="ku7-bJ-sW2" secondAttribute="leading" constant="84" id="NGn-tl-y65"/>
                                                     <constraint firstItem="bI7-Xa-IWe" firstAttribute="centerX" secondItem="tni-Nd-bjF" secondAttribute="centerX" id="V6G-Jh-LAq"/>
                                                     <constraint firstAttribute="width" constant="246" id="agg-uH-Le9"/>
                                                     <constraint firstItem="tni-Nd-bjF" firstAttribute="top" secondItem="bI7-Xa-IWe" secondAttribute="bottom" constant="26" id="fDd-VA-VJc"/>
-                                                    <constraint firstAttribute="trailing" secondItem="T3F-Gh-4SL" secondAttribute="trailing" constant="71" id="oUQ-Y4-meG"/>
+                                                    <constraint firstAttribute="trailing" secondItem="T3F-Gh-4SL" secondAttribute="trailing" constant="63" id="oUQ-Y4-meG"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fP-wU-d3x">
@@ -770,9 +770,9 @@
                                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCU-7t-xu6">
-                                                        <rect key="frame" x="100" y="132" width="82" height="20"/>
+                                                        <rect key="frame" x="94" y="132" width="100" height="20"/>
                                                         <attributedString key="attributedText">
-                                                            <fragment content="  LOCKED  ">
+                                                            <fragment content="BLOCCATO">
                                                                 <attributes>
                                                                     <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <font key="NSFont" size="17" name="ArialRoundedMTBold"/>
@@ -786,12 +786,12 @@
                                                 <constraints>
                                                     <constraint firstItem="m6T-on-0PT" firstAttribute="leading" secondItem="9fP-wU-d3x" secondAttribute="leading" constant="40" id="9Lp-51-zDC"/>
                                                     <constraint firstAttribute="bottom" secondItem="m6T-on-0PT" secondAttribute="bottom" constant="39" id="ALd-St-NF2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="yCU-7t-xu6" secondAttribute="trailing" constant="93" id="BKj-sg-LaH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="yCU-7t-xu6" secondAttribute="trailing" constant="81" id="BKj-sg-LaH"/>
                                                     <constraint firstAttribute="width" constant="275" id="DfU-eV-D8J"/>
                                                     <constraint firstAttribute="bottom" secondItem="yCU-7t-xu6" secondAttribute="bottom" constant="98" id="V3q-tl-lg9"/>
                                                     <constraint firstAttribute="trailing" secondItem="m6T-on-0PT" secondAttribute="trailing" constant="33" id="aTt-jp-IQT"/>
                                                     <constraint firstItem="m6T-on-0PT" firstAttribute="top" secondItem="Qyj-jM-KPn" secondAttribute="bottom" constant="25" id="dWx-Yu-Rz2"/>
-                                                    <constraint firstItem="yCU-7t-xu6" firstAttribute="leading" secondItem="9fP-wU-d3x" secondAttribute="leading" constant="100" id="vlG-dr-LdV"/>
+                                                    <constraint firstItem="yCU-7t-xu6" firstAttribute="leading" secondItem="9fP-wU-d3x" secondAttribute="leading" constant="94" id="vlG-dr-LdV"/>
                                                     <constraint firstItem="yCU-7t-xu6" firstAttribute="top" secondItem="Qyj-jM-KPn" secondAttribute="bottom" constant="83" id="xuT-T5-frc"/>
                                                     <constraint firstItem="Qyj-jM-KPn" firstAttribute="centerX" secondItem="3co-S2-nX8" secondAttribute="centerX" id="z1m-9M-S2p"/>
                                                 </constraints>
@@ -832,7 +832,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eO-uL-WS9">
-                                        <rect key="frame" x="69" y="98" width="71" height="27"/>
+                                        <rect key="frame" x="35" y="105" width="139" height="29"/>
                                         <attributedString key="attributedText">
                                             <fragment content="NAVICELLE">
                                                 <attributes>
@@ -846,13 +846,13 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="9eO-uL-WS9" firstAttribute="top" secondItem="uFC-ln-Tvs" secondAttribute="top" constant="98" id="0ha-fn-9wH"/>
+                                    <constraint firstItem="9eO-uL-WS9" firstAttribute="top" secondItem="uFC-ln-Tvs" secondAttribute="top" constant="105" id="0ha-fn-9wH"/>
                                     <constraint firstAttribute="bottom" secondItem="MOd-42-2UD" secondAttribute="bottom" id="1Nj-Vj-Nxo"/>
                                     <constraint firstItem="MOd-42-2UD" firstAttribute="leading" secondItem="uFC-ln-Tvs" secondAttribute="leading" id="2k3-eh-1Vc"/>
                                     <constraint firstItem="MOd-42-2UD" firstAttribute="top" secondItem="uFC-ln-Tvs" secondAttribute="top" id="BDK-nv-VbB"/>
-                                    <constraint firstAttribute="bottom" secondItem="9eO-uL-WS9" secondAttribute="bottom" constant="40" id="PRi-yR-Saq"/>
-                                    <constraint firstItem="9eO-uL-WS9" firstAttribute="leading" secondItem="uFC-ln-Tvs" secondAttribute="leading" constant="69" id="YKn-sv-4af"/>
-                                    <constraint firstAttribute="trailing" secondItem="9eO-uL-WS9" secondAttribute="trailing" constant="69" id="w0R-In-Pte"/>
+                                    <constraint firstAttribute="bottom" secondItem="9eO-uL-WS9" secondAttribute="bottom" constant="31" id="PRi-yR-Saq"/>
+                                    <constraint firstItem="9eO-uL-WS9" firstAttribute="leading" secondItem="uFC-ln-Tvs" secondAttribute="leading" constant="35" id="YKn-sv-4af"/>
+                                    <constraint firstAttribute="trailing" secondItem="9eO-uL-WS9" secondAttribute="trailing" constant="35" id="w0R-In-Pte"/>
                                     <constraint firstAttribute="trailing" secondItem="MOd-42-2UD" secondAttribute="trailing" id="zMW-2P-n2w"/>
                                 </constraints>
                             </view>
@@ -1388,7 +1388,7 @@
         <image name="galaxyMilk1" width="200" height="135"/>
         <image name="gear" width="30" height="30"/>
         <image name="logo" width="1498" height="1089"/>
-        <image name="pauseCancel-1" width="40" height="40"/>
+        <image name="pauseCancel" width="40" height="40"/>
         <image name="pista" width="1114" height="1725"/>
         <image name="planets" width="6073" height="5513"/>
         <image name="rhombus.fill" catalog="system" width="107" height="128"/>
